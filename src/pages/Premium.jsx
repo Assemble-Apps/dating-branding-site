@@ -22,7 +22,7 @@ function PlanCard({ p }) {
         </span>
       )}
       <div className="flex items-baseline justify-between">
-        <h3 className="font-display text-2xl font-semibold text-ink-800">{p.name}</h3>
+        <h3 className={`font-display text-2xl font-semibold ${p.highlight ? 'text-mist-100' : 'text-ink-800'}`}>{p.name}</h3>
         {p.highlight && <Sparkles className="h-5 w-5 text-blush-400" />}
       </div>
       <p className="mt-1 text-sm font-medium text-blush-400">{p.tag}</p>
@@ -30,11 +30,11 @@ function PlanCard({ p }) {
         <span className={`font-display text-5xl font-semibold ${p.highlight ? 'text-gradient' : 'text-ink-800'}`}>
           {p.price}
         </span>
-        <span className="mb-1.5 text-ink-700/65">{p.cadence}</span>
+        <span className={`mb-1.5 ${p.highlight ? 'text-mist-300/70' : 'text-ink-700/65'}`}>{p.cadence}</span>
       </div>
       <ul className="mt-7 flex-1 space-y-3">
         {p.perks.map((perk) => (
-          <li key={perk} className="flex items-start gap-3 text-ink-800">
+          <li key={perk} className={`flex items-start gap-3 ${p.highlight ? 'text-mist-200' : 'text-ink-800'}`}>
             <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gradient-to-br from-peach-300 to-blush-400 text-white">
               <Check className="h-3 w-3" />
             </span>
