@@ -1,0 +1,299 @@
+import {
+  BadgeCheck,
+  MessageCircleHeart,
+  Flame,
+  Sparkles,
+  ShieldCheck,
+  MapPin,
+  Clock4,
+  EyeOff,
+  Undo2,
+  Zap,
+  Heart,
+  Lock,
+  UserRoundCheck,
+  Bell,
+  Users,
+} from 'lucide-react'
+
+// ── Social-proof stats ────────────────────────────────────────────────
+export const stats = [
+  { value: '2.4M', label: 'verified humans' },
+  { value: '88%', label: 'match → first message' },
+  { value: '0', label: 'bots tolerated' },
+  { value: '4.9★', label: 'on the app stores' },
+]
+
+// ── Rotating marquee words ────────────────────────────────────────────
+export const marqueeWords = [
+  'no bots',
+  'no catfish',
+  'no ick',
+  'real humans only',
+  'verified or it doesn’t count',
+  'made to make you blush',
+  'slide in, for real',
+  'green flags only',
+]
+
+// ── Home feature teasers ──────────────────────────────────────────────
+export const featureTeasers = [
+  {
+    icon: BadgeCheck,
+    emoji: '✅',
+    title: 'Everyone’s verified',
+    body: 'A quick selfie check means the person in the pics is the person in the chat. No catfish, no surprises.',
+    tone: 'from-peach-200 to-blush-200',
+  },
+  {
+    icon: Clock4,
+    emoji: '⏳',
+    title: 'The 24-hour rule',
+    body: 'Match, then make a move. Conversations have a heartbeat — no more matches rotting in the void for weeks.',
+    tone: 'from-lilac-200 to-sky-200',
+  },
+  {
+    icon: MessageCircleHeart,
+    emoji: '💬',
+    title: 'Chat that flirts back',
+    body: 'Live typing, read receipts, presence dots and openers that actually start something. Awkward silence, cancelled.',
+    tone: 'from-blush-200 to-lilac-200',
+  },
+  {
+    icon: Flame,
+    emoji: '🔥',
+    title: 'Matches near you',
+    body: 'Distance + interest matching surfaces people you’d actually run into — and actually like.',
+    tone: 'from-peach-200 to-lilac-200',
+  },
+]
+
+// ── How it works steps ────────────────────────────────────────────────
+export const steps = [
+  {
+    n: '01',
+    emoji: '📸',
+    title: 'Make it you',
+    body: 'Drop your best pics, verify with a 5-second selfie, and answer a couple prompts that show your personality (not just your jawline).',
+  },
+  {
+    n: '02',
+    emoji: '👀',
+    title: 'Meet your deck',
+    body: 'We surface verified people near you that match your vibe. Like, pass, or super-like — your feed, your rules.',
+  },
+  {
+    n: '03',
+    emoji: '💗',
+    title: 'It’s a vibe',
+    body: 'When the like is mutual, you’ve got 24 hours to break the ice. Send the first riss and see where it goes.',
+  },
+]
+
+// ── Full features (Features page) ─────────────────────────────────────
+export const featureSections = [
+  {
+    icon: BadgeCheck,
+    title: 'Verified-only swiping',
+    blurb: 'Every profile passes a live selfie check before it ever hits your deck. Turn on “verified only” and the unverified literally can’t reach you.',
+    points: ['Live selfie + face match', 'Verified badge on every card', '“Verified only” discovery toggle'],
+    accent: 'peach',
+    emoji: '✅',
+  },
+  {
+    icon: Flame,
+    title: 'Smarter discovery',
+    blurb: 'A deck ranked by distance, shared interests and who’s actually active — not a random firehose. Filter by age, distance, and vibe.',
+    points: ['Distance + interest ranking', 'Age & distance filters', 'Surfaces active people first'],
+    accent: 'blush',
+    emoji: '🧭',
+  },
+  {
+    icon: Undo2,
+    title: 'Rewind the oops',
+    blurb: 'Passed on someone by accident? One tap brings them back. (A little Rissme+ magic.)',
+    points: ['Undo your last swipe', 'No more “wait, who was that”', 'Rissme+ perk'],
+    accent: 'lilac',
+    emoji: '↩️',
+  },
+  {
+    icon: MessageCircleHeart,
+    title: 'Real-time chat',
+    blurb: 'Typing dots, read receipts, online presence and a 24-hour spark timer. It feels alive because it is.',
+    points: ['Live typing + read receipts', 'Online / last-active dots', 'First-message timer keeps it moving'],
+    accent: 'peach',
+    emoji: '💬',
+  },
+  {
+    icon: Sparkles,
+    title: 'Openers that land',
+    blurb: 'Stuck on what to say? Tap a prompt-based opener pulled from their profile. Conversations start themselves.',
+    points: ['Profile-prompt openers', 'Super-like to stand out', 'No “hey” energy allowed'],
+    accent: 'blush',
+    emoji: '✨',
+  },
+  {
+    icon: Bell,
+    title: 'Notifications, not noise',
+    blurb: 'Get pinged for the stuff that matters — new matches, messages, likes — and mute the rest. You’re in control.',
+    points: ['Match & message alerts', 'Granular notification settings', 'Quiet mode whenever'],
+    accent: 'lilac',
+    emoji: '🔔',
+  },
+]
+
+// ── Safety pillars (Safety page) ──────────────────────────────────────
+export const safetyPillars = [
+  {
+    icon: UserRoundCheck,
+    title: 'Selfie verification',
+    body: 'A quick liveness check matches a real-time selfie to your photos. Verified humans only — catfish need not apply.',
+    emoji: '🤳',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Block & report, instantly',
+    body: 'One tap removes someone from your world — match gone, chat gone, hidden both ways. Reports go straight to our moderation team.',
+    emoji: '🛡️',
+  },
+  {
+    icon: EyeOff,
+    title: 'Your data, minimised',
+    body: 'We strip personal info before anything touches AI, never sell your data, and let you delete everything for good — gone in 30 days, fully.',
+    emoji: '🙈',
+  },
+  {
+    icon: Lock,
+    title: 'Privacy you control',
+    body: 'Hide your distance, turn off read receipts, go incognito, control who sees you online. Your visibility is a dial, not a default.',
+    emoji: '🔒',
+  },
+]
+
+export const safetyPromises = [
+  'Auto-suspend on repeat reports',
+  'No screenshots of verification selfies — ever',
+  'Photos & messages purged on account deletion',
+  'Human moderators, not just bots',
+  'Age-gated 18+ with checks',
+  'Encrypted in transit & at rest',
+]
+
+// ── Premium tiers (Premium page) ──────────────────────────────────────
+export const plans = [
+  {
+    name: 'Rissme',
+    tag: 'the free forever plan',
+    price: '₹0',
+    cadence: 'always',
+    highlight: false,
+    cta: 'Start free',
+    perks: [
+      'Verified-only swiping',
+      'Unlimited matches & chat',
+      'Live typing & read receipts',
+      'Block, report & privacy controls',
+    ],
+  },
+  {
+    name: 'Rissme+',
+    tag: 'for the main characters',
+    price: '₹499',
+    cadence: '/month',
+    highlight: true,
+    cta: 'Go Rissme+',
+    perks: [
+      'See everyone who likes you',
+      'Unlimited rewinds',
+      'Extend the 24h timer',
+      '1 free Boost a week',
+      '5 Super Likes a day',
+      'Travel mode — swipe anywhere',
+    ],
+  },
+  {
+    name: 'Rissme Gold',
+    tag: 'maximum rizz',
+    price: '₹899',
+    cadence: '/month',
+    highlight: false,
+    cta: 'Go Gold',
+    perks: [
+      'Everything in Rissme+',
+      'Weekly priority Boosts',
+      'Top of their deck',
+      'Read receipts on every chat',
+      'Premium-only profile glow',
+    ],
+  },
+]
+
+export const premiumPerks = [
+  { icon: EyeOff, title: 'See your likes', body: 'No more blurred mystery — see everyone who already swiped right on you.' },
+  { icon: Undo2, title: 'Unlimited rewinds', body: 'Take back every accidental pass, as many times as your thumb slips.' },
+  { icon: Clock4, title: 'Extend the timer', body: 'Need a few more hours to find the perfect opener? Stretch the 24h window.' },
+  { icon: Zap, title: 'Weekly boosts', body: 'Jump to the front of the deck in your area when it counts most.' },
+  { icon: MapPin, title: 'Travel mode', body: 'Swipe in any city before you even land. Romanticise the layover.' },
+  { icon: Heart, title: 'More super likes', body: 'Stand out from the deck with super likes that get 3x more replies.' },
+]
+
+// ── FAQ ───────────────────────────────────────────────────────────────
+export const faqs = [
+  {
+    q: 'Wait, what does “Rissme” even mean?',
+    a: 'It’s “kiss me” with a little more rizz. Also the sound your heart makes when a verified cutie super-likes you. Mostly the first thing.',
+  },
+  {
+    q: 'Is everyone really verified?',
+    a: 'Yep. A live selfie check matches the person to their photos before they can show up in your deck. Flip on “verified only” and you’ll never see an unverified profile.',
+  },
+  {
+    q: 'What’s the 24-hour thing?',
+    a: 'When you match, you’ve got 24 hours to send the first message before it gently expires. It keeps conversations alive instead of letting matches collect dust. Rissme+ can extend it.',
+  },
+  {
+    q: 'Is Rissme free?',
+    a: '100%. Swiping, matching and chatting are free forever. Rissme+ and Gold add extras like seeing your likes, rewinds and boosts — but you never need them to meet someone.',
+  },
+  {
+    q: 'How do you keep it safe?',
+    a: 'Verification, instant block & report, human moderators, auto-suspend on repeat reports, and privacy controls for everything. Your data is minimised and fully deletable. More on the Safety page.',
+  },
+  {
+    q: 'When can I download it?',
+    a: 'Soon™ — and it’ll be worth the wait. Join the list and you’ll be first through the door (with a little launch-day surprise).',
+  },
+]
+
+// ── Testimonials ──────────────────────────────────────────────────────
+export const testimonials = [
+  { name: 'Ananya, 24', emoji: '🦋', text: 'first app where every match was actually a real person. wild concept honestly.', tone: 'from-lilac-200 to-sky-200' },
+  { name: 'Dev, 27', emoji: '🛹', text: 'the 24h timer made me stop overthinking and just say hi. met my gf in week one.', tone: 'from-peach-200 to-blush-200' },
+  { name: 'Sim, 22', emoji: '🍓', text: 'the openers slap. no more staring at “hey” for nine business days.', tone: 'from-blush-200 to-lilac-200' },
+  { name: 'Kabir, 25', emoji: '🎧', text: 'verified-only is elite. deleted three other apps the day I joined.', tone: 'from-peach-200 to-lilac-200' },
+]
+
+// ── Real Ones scroll wall (verified-humans showcase) ──────────────────
+// Drop matching image files into `public/realones/` (see the filename in
+// each `src` below). Square / portrait crops look best; darker, photographic
+// faces make the big "real ones" title invert dramatically as they pass.
+export const realOnes = [
+  { name: 'Ananya', role: 'no ick detected', src: '/realones/ananya.webp' },
+  { name: 'Dev', role: 'green flag energy', src: '/realones/dev.webp' },
+  { name: 'Sim', role: 'certified cutie', src: '/realones/sim.webp' },
+  { name: 'Kabir', role: 'verified flirt', src: '/realones/kabir.jpg' },
+  { name: 'Mara', role: 'down for ranch talk', src: '/realones/mara.jpg' },
+  { name: 'Zoya', role: 'main character', src: '/realones/zoya.jpg' },
+  { name: 'Rhea', role: 'actually replies', src: '/realones/rhea.avif' },
+  { name: 'Arjun', role: '10/10 banter', src: '/realones/arjun.avif' },
+  { name: 'Tara', role: 'soft launch ready', src: '/realones/tara.webp' },
+  { name: 'Vihaan', role: 'no cap, real one', src: '/realones/vihaan.webp' },
+]
+
+// ── About values ──────────────────────────────────────────────────────
+export const values = [
+  { emoji: '💯', title: 'Realness over reach', body: 'We’d rather have fewer, verified humans than a billion bots. Quality of connection beats vanity numbers, every time.' },
+  { emoji: '🫶', title: 'Kindness is the algorithm', body: 'Safety, consent and good vibes aren’t features we bolted on — they’re the foundation everything else stands on.' },
+  { emoji: '🪩', title: 'Dating should be fun', body: 'Less doomscroll, more butterflies. If it doesn’t make you smile, we’ll keep building until it does.' },
+  { emoji: '🔓', title: 'Your data is yours', body: 'We minimise what we collect, never sell it, and make it one tap to take it all back. Trust is earned, not assumed.' },
+]

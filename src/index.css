@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sand: #EDE3D3;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-ink-800;
+    background-color: var(--sand);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(255, 135, 174, 0.85);
+    color: #14101c;
+  }
+
+  /* Warm sand scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #EDE3D3;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#ff9e84, #ff87ae);
+    border-radius: 999px;
+    border: 3px solid #EDE3D3;
+  }
+}
+
+@layer components {
+  /* Warm sand background with soft pastel glows — hero sections, page heroes */
+  .dreamy-bg {
+    background-color: #EDE3D3;
+    background-image:
+      radial-gradient(at 12% 16%, rgba(255, 138, 107, 0.28) 0px, transparent 50%),
+      radial-gradient(at 86% 10%, rgba(255, 135, 174, 0.22) 0px, transparent 45%),
+      radial-gradient(at 80% 84%, rgba(169, 142, 255, 0.26) 0px, transparent 52%),
+      radial-gradient(at 18% 88%, rgba(120, 150, 255, 0.18) 0px, transparent 48%);
+  }
+
+  /* Dark editorial panel — intentional dark floating island on the sand page
+     Used for CTA banners, stats bands, footer */
+  .mesh-panel {
+    background-color: #14101f;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(255, 138, 107, 0.2) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(255, 135, 174, 0.15) 0px, transparent 45%),
+      radial-gradient(at 100% 100%, rgba(169, 142, 255, 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(120, 150, 255, 0.14) 0px, transparent 45%);
+  }
+
+  /* Light frosted glass — translucent warm panel floating over the sand page */
+  .glass {
+    background: rgba(255, 255, 255, 0.52);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow: 0 4px 24px rgba(11, 9, 17, 0.08), inset 0 1px 0 rgba(255,255,255,0.85);
+  }
+
+  .glass-deep {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(28px) saturate(170%);
+    -webkit-backdrop-filter: blur(28px) saturate(170%);
+    border: 1px solid rgba(255, 255, 255, 0.80);
+    box-shadow: 0 4px 28px rgba(11, 9, 17, 0.10), inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+
+  /* Dark frosted glass — for navbar, marquee strip, dramatic dark islands */
+  .dark-glass {
+    background: rgba(15, 10, 20, 0.82);
+    backdrop-filter: blur(18px) saturate(130%);
+    -webkit-backdrop-filter: blur(18px) saturate(130%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Warm gradient text — works on any surface */
+  .text-gradient {
+    background: linear-gradient(100deg, #ff8a6b 0%, #ff87ae 38%, #a98eff 78%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-gradient-anim {
+    background: linear-gradient(100deg, #ff8a6b, #ff87ae, #a98eff, #ff87ae, #ff8a6b);
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    @apply animate-shimmer;
+  }
+
+  /* Primary squishy pill button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold text-white shadow-pill transition-all duration-300;
+    background: linear-gradient(100deg, #ff8a6b, #ff87ae 55%, #a98eff);
+    background-size: 180% auto;
+  }
+  .btn-primary:hover {
+    background-position: right center;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 18px 40px -12px rgba(255, 135, 174, 0.7);
+  }
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Ghost / secondary button — dark glass on sand */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold backdrop-blur transition-all duration-300;
+    border: 1px solid rgba(15, 10, 20, 0.25);
+    background: rgba(15, 10, 20, 0.08);
+    color: #100D18;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(15, 10, 20, 0.4);
+    background: rgba(15, 10, 20, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Small label chip — dark on sand */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold backdrop-blur;
+    border: 1px solid rgba(15, 10, 20, 0.18);
+    background: rgba(15, 10, 20, 0.07);
+    color: #100D18;
+  }
+
+  .section {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  /* Eyebrow / kicker text — blush works on both light and dark surfaces */
+  .eyebrow {
+    @apply text-sm font-bold uppercase tracking-[0.2em] text-blush-400;
+  }
+}
+
+@layer utilities {
+  /* Fine grain texture overlay for that printed/dreamy feel */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .ring-glow {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 24px 70px -20px rgba(255, 135, 174, 0.45);
+  }
+}
+
+/* Letter pop-in + gentle wave for the animated headline word */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(0.6em) scale(0.5) rotate(-14deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-0.08em) scale(1.06) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes letterWaveK {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.1em);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
