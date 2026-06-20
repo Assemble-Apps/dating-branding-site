@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Plus, Minus, Star } from 'lucide-react'
+import { ArrowRight, Plus, Minus, Star, Sparkles, Cake, Zap, Cherry, Headphones, Award, Gift } from 'lucide-react'
 import { Button, Reveal, Marquee, SectionHeading, stagger, fadeUp } from '../components/ui'
 import { PhoneFrame, SwipeScreen, MatchScreen, ChatScreen } from '../components/PhoneMockup'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
-import { PoppingGradientWord, DrawUnderline, TwinkleSparkle } from '../components/AnimatedText'
+import { TypewriterWord, DrawUnderline, TwinkleSparkle } from '../components/AnimatedText'
 import { ScrollPortraitWall } from '../components/ui/scroll-portrait-wall'
 import VerifiedReel from '../components/ui/verified-reel'
 import {
@@ -39,7 +39,7 @@ function Hero() {
               slide in.
               <br />
               <span className="relative inline-block">
-                <PoppingGradientWord text="for real" delay={0.45} />
+                <TypewriterWord text="for real" delay={0.45} />
                 <DrawUnderline className="absolute -bottom-2 left-0 h-5 w-full text-blush-300" delay={1.15} />
                 <TwinkleSparkle className="absolute -right-7 -top-5 h-7 w-7 text-lilac-300" delay={1.3} />
               </span>{' '}
@@ -50,7 +50,8 @@ function Hero() {
           <Reveal delay={0.12}>
             <p className="mx-auto mt-7 max-w-lg text-lg text-ink-700/80 lg:mx-0">
               Rissme is dating that feels like a crush, not a chore. Every human is
-              verified, every match has a heartbeat, and the ick is strictly not invited. 💗
+              verified, every match has a heartbeat, and the ick is strictly not invited.{' '}
+              <Heart className="inline h-4 w-4 -translate-y-0.5 fill-blush-400 text-blush-400" />
             </p>
           </Reveal>
 
@@ -68,12 +69,12 @@ function Hero() {
           <Reveal delay={0.24}>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 lg:justify-start">
               <div className="flex -space-x-3">
-                {['🦋', '🧁', '🛹', '🍓', '🎧'].map((e, i) => (
+                {[Sparkles, Cake, Zap, Cherry, Headphones].map((Icon, i) => (
                   <span
                     key={i}
-                    className="grid h-10 w-10 place-items-center rounded-full border-2 border-white bg-gradient-to-br from-peach-200 to-lilac-200 text-lg shadow-sm"
+                    className="grid h-10 w-10 place-items-center rounded-full border-2 border-white bg-gradient-to-br from-peach-200 to-lilac-200 shadow-sm"
                   >
-                    {e}
+                    <Icon className="h-4 w-4 text-ink-800" />
                   </span>
                 ))}
               </div>
@@ -163,7 +164,10 @@ function Stats() {
             variants={fadeUp}
             className="glass rounded-4xl p-7 text-center shadow-card"
           >
-            <div className="font-display text-4xl font-semibold text-gradient sm:text-5xl">{s.value}</div>
+            <div className="inline-flex items-center gap-1.5 font-display text-4xl font-semibold text-gradient sm:text-5xl">
+              {s.value}
+              {s.icon && <s.icon className="h-7 w-7 fill-peach-400 text-peach-400 sm:h-8 sm:w-8" />}
+            </div>
             <div className="mt-2 text-sm font-medium text-ink-700/70">{s.label}</div>
           </motion.div>
         ))}
@@ -178,7 +182,9 @@ function RealOnesWall() {
     <section className="relative">
       <div className="section pb-2 pt-4 text-center">
         <Reveal>
-          <span className="chip mx-auto">💯 the realness check</span>
+          <span className="chip mx-auto inline-flex items-center gap-1.5">
+            <Award className="h-3.5 w-3.5" /> the realness check
+          </span>
         </Reveal>
       </div>
       <ScrollPortraitWall
@@ -219,8 +225,8 @@ function Features() {
             whileHover={{ y: -6 }}
             className="group relative overflow-hidden rounded-4xl border border-white/65 bg-white/52 p-7 shadow-card backdrop-blur-md sm:p-9"
           >
-            <div className={`mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${f.tone} text-2xl shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6`}>
-              {f.emoji}
+            <div className={`mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${f.tone} shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6`}>
+              <f.icon className="h-7 w-7 text-white" />
             </div>
             <h3 className="font-display text-2xl font-semibold text-ink-800">{f.title}</h3>
             <p className="mt-3 text-ink-700/75">{f.body}</p>
@@ -252,8 +258,8 @@ function HowItWorks() {
                 <span className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-br from-peach-400 to-blush-400 px-4 py-1 font-display text-sm font-bold text-white shadow-pill">
                   step {s.n}
                 </span>
-                <div className="mx-auto mt-3 grid h-20 w-20 place-items-center rounded-blob bg-gradient-to-br from-lilac-100 to-blush-100 text-4xl animate-blob">
-                  {s.emoji}
+                <div className="mx-auto mt-3 grid h-20 w-20 place-items-center rounded-blob bg-gradient-to-br from-lilac-100 to-blush-100 animate-blob">
+                  <s.icon className="h-9 w-9 text-white" />
                 </div>
                 <h3 className="mt-6 font-display text-2xl font-semibold text-ink-800">{s.title}</h3>
                 <p className="mt-3 text-ink-700/75">{s.body}</p>
@@ -335,8 +341,8 @@ function Testimonials() {
             </div>
             <p className="mt-4 text-ink-800/80">&ldquo;{t.text}&rdquo;</p>
             <div className="mt-5 flex items-center gap-3">
-              <span className={`grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br ${t.tone} text-lg`}>
-                {t.emoji}
+              <span className={`grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br ${t.tone}`}>
+                <t.icon className="h-5 w-5 text-ink-800" />
               </span>
               <span className="font-semibold text-ink-800">{t.name}</span>
             </div>
@@ -403,13 +409,18 @@ function FinalCta() {
             your next crush is<br /><span className="text-gradient">already verified.</span>
           </h2>
           <p className="relative mx-auto mt-5 max-w-md text-lg text-mist-300">
-            Join the list and be first through the door when Rissme drops. Tiny launch-day surprise included. 🎁
+            Join the list and be first through the door when Rissme drops. Tiny launch-day surprise included.{' '}
+            <Gift className="inline h-4 w-4 -translate-y-0.5 text-blush-300" />
           </p>
           <div className="relative mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button to="/download">
               Get on the list <ArrowRight className="h-4 w-4" />
             </Button>
-            <Button to="/premium" variant="ghost">
+            <Button
+              to="/premium"
+              variant="ghost"
+              className="border-white/25 bg-white/10 text-mist-100 hover:border-white/40 hover:bg-white/[0.18]"
+            >
               Peek at Rissme+
             </Button>
           </div>

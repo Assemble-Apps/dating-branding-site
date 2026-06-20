@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Check, Sparkles, ArrowRight } from 'lucide-react'
+import { Check, Sparkles, ArrowRight, Gem } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading, stagger, fadeUp } from '../components/ui'
 import { Heart, Sparkle, Squiggle } from '../components/Decor'
@@ -17,8 +17,8 @@ function PlanCard({ p }) {
       }`}
     >
       {p.highlight && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-peach-400 to-blush-400 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-pill">
-          most loved 💗
+        <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 rounded-full bg-gradient-to-r from-peach-400 to-blush-400 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-pill">
+          most loved <Heart className="h-3 w-3 fill-white" />
         </span>
       )}
       <div className="flex items-baseline justify-between">
@@ -61,7 +61,7 @@ export default function Premium() {
   return (
     <>
       <PageHero
-        eyebrow="💎 rissme+"
+        eyebrow={<><Gem className="inline h-3.5 w-3.5 -translate-y-0.5" /> rissme+</>}
         title={<>unlock your <span className="text-gradient">main-character</span> era.</>}
         sub="The free plan already slaps. Rissme+ just turns the rizz up to eleven — see your likes, rewind your oops, and boost when it counts."
       />

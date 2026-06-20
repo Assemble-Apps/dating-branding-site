@@ -8,6 +8,7 @@ import About from './pages/About'
 import Download from './pages/Download'
 import { Button } from './components/ui'
 import { Heart, FloatingBlobs } from './components/Decor'
+import { HeartCrack } from 'lucide-react'
 
 function NotFound() {
   return (
@@ -15,8 +16,8 @@ function NotFound() {
       <FloatingBlobs />
       <div className="relative">
         <p className="font-display text-8xl font-semibold text-gradient sm:text-9xl">404</p>
-        <h1 className="mt-4 font-display text-3xl font-semibold text-mist-100 sm:text-4xl">
-          this page got left on read 💔
+        <h1 className="mt-4 inline-flex items-center gap-2 font-display text-3xl font-semibold text-mist-100 sm:text-4xl">
+          this page got left on read <HeartCrack className="h-6 w-6 text-blush-300" />
         </h1>
         <p className="mx-auto mt-4 max-w-md text-lg text-mist-300/85">
           The match you’re looking for doesn’t exist (or unmatched you). Let’s get you back to the good stuff.

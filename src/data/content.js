@@ -14,6 +14,15 @@ import {
   UserRoundCheck,
   Bell,
   Users,
+  Camera,
+  Eye,
+  Cherry,
+  Headphones,
+  Award,
+  HeartHandshake,
+  PartyPopper,
+  Unlock,
+  Star,
 } from 'lucide-react'
 
 // ── Social-proof stats ────────────────────────────────────────────────
@@ -21,7 +30,7 @@ export const stats = [
   { value: '2.4M', label: 'verified humans' },
   { value: '88%', label: 'match → first message' },
   { value: '0', label: 'bots tolerated' },
-  { value: '4.9★', label: 'on the app stores' },
+  { value: '4.9', label: 'on the app stores', icon: Star },
 ]
 
 // ── Rotating marquee words ────────────────────────────────────────────
@@ -40,28 +49,24 @@ export const marqueeWords = [
 export const featureTeasers = [
   {
     icon: BadgeCheck,
-    emoji: '✅',
     title: 'Everyone’s verified',
     body: 'A quick selfie check means the person in the pics is the person in the chat. No catfish, no surprises.',
     tone: 'from-peach-200 to-blush-200',
   },
   {
     icon: Clock4,
-    emoji: '⏳',
     title: 'The 24-hour rule',
     body: 'Match, then make a move. Conversations have a heartbeat — no more matches rotting in the void for weeks.',
     tone: 'from-lilac-200 to-sky-200',
   },
   {
     icon: MessageCircleHeart,
-    emoji: '💬',
     title: 'Chat that flirts back',
     body: 'Live typing, read receipts, presence dots and openers that actually start something. Awkward silence, cancelled.',
     tone: 'from-blush-200 to-lilac-200',
   },
   {
     icon: Flame,
-    emoji: '🔥',
     title: 'Matches near you',
     body: 'Distance + interest matching surfaces people you’d actually run into — and actually like.',
     tone: 'from-peach-200 to-lilac-200',
@@ -72,19 +77,19 @@ export const featureTeasers = [
 export const steps = [
   {
     n: '01',
-    emoji: '📸',
+    icon: Camera,
     title: 'Make it you',
     body: 'Drop your best pics, verify with a 5-second selfie, and answer a couple prompts that show your personality (not just your jawline).',
   },
   {
     n: '02',
-    emoji: '👀',
+    icon: Eye,
     title: 'Meet your deck',
     body: 'We surface verified people near you that match your vibe. Like, pass, or super-like — your feed, your rules.',
   },
   {
     n: '03',
-    emoji: '💗',
+    icon: Heart,
     title: 'It’s a vibe',
     body: 'When the like is mutual, you’ve got 24 hours to break the ice. Send the first riss and see where it goes.',
   },
@@ -98,7 +103,6 @@ export const featureSections = [
     blurb: 'Every profile passes a live selfie check before it ever hits your deck. Turn on “verified only” and the unverified literally can’t reach you.',
     points: ['Live selfie + face match', 'Verified badge on every card', '“Verified only” discovery toggle'],
     accent: 'peach',
-    emoji: '✅',
   },
   {
     icon: Flame,
@@ -106,7 +110,6 @@ export const featureSections = [
     blurb: 'A deck ranked by distance, shared interests and who’s actually active — not a random firehose. Filter by age, distance, and vibe.',
     points: ['Distance + interest ranking', 'Age & distance filters', 'Surfaces active people first'],
     accent: 'blush',
-    emoji: '🧭',
   },
   {
     icon: Undo2,
@@ -114,7 +117,6 @@ export const featureSections = [
     blurb: 'Passed on someone by accident? One tap brings them back. (A little Rissme+ magic.)',
     points: ['Undo your last swipe', 'No more “wait, who was that”', 'Rissme+ perk'],
     accent: 'lilac',
-    emoji: '↩️',
   },
   {
     icon: MessageCircleHeart,
@@ -122,7 +124,6 @@ export const featureSections = [
     blurb: 'Typing dots, read receipts, online presence and a 24-hour spark timer. It feels alive because it is.',
     points: ['Live typing + read receipts', 'Online / last-active dots', 'First-message timer keeps it moving'],
     accent: 'peach',
-    emoji: '💬',
   },
   {
     icon: Sparkles,
@@ -130,7 +131,6 @@ export const featureSections = [
     blurb: 'Stuck on what to say? Tap a prompt-based opener pulled from their profile. Conversations start themselves.',
     points: ['Profile-prompt openers', 'Super-like to stand out', 'No “hey” energy allowed'],
     accent: 'blush',
-    emoji: '✨',
   },
   {
     icon: Bell,
@@ -138,7 +138,6 @@ export const featureSections = [
     blurb: 'Get pinged for the stuff that matters — new matches, messages, likes — and mute the rest. You’re in control.',
     points: ['Match & message alerts', 'Granular notification settings', 'Quiet mode whenever'],
     accent: 'lilac',
-    emoji: '🔔',
   },
 ]
 
@@ -148,25 +147,21 @@ export const safetyPillars = [
     icon: UserRoundCheck,
     title: 'Selfie verification',
     body: 'A quick liveness check matches a real-time selfie to your photos. Verified humans only — catfish need not apply.',
-    emoji: '🤳',
   },
   {
     icon: ShieldCheck,
     title: 'Block & report, instantly',
     body: 'One tap removes someone from your world — match gone, chat gone, hidden both ways. Reports go straight to our moderation team.',
-    emoji: '🛡️',
   },
   {
     icon: EyeOff,
     title: 'Your data, minimised',
     body: 'We strip personal info before anything touches AI, never sell your data, and let you delete everything for good — gone in 30 days, fully.',
-    emoji: '🙈',
   },
   {
     icon: Lock,
     title: 'Privacy you control',
     body: 'Hide your distance, turn off read receipts, go incognito, control who sees you online. Your visibility is a dial, not a default.',
-    emoji: '🔒',
   },
 ]
 
@@ -267,10 +262,10 @@ export const faqs = [
 
 // ── Testimonials ──────────────────────────────────────────────────────
 export const testimonials = [
-  { name: 'Ananya, 24', emoji: '🦋', text: 'first app where every match was actually a real person. wild concept honestly.', tone: 'from-lilac-200 to-sky-200' },
-  { name: 'Dev, 27', emoji: '🛹', text: 'the 24h timer made me stop overthinking and just say hi. met my gf in week one.', tone: 'from-peach-200 to-blush-200' },
-  { name: 'Sim, 22', emoji: '🍓', text: 'the openers slap. no more staring at “hey” for nine business days.', tone: 'from-blush-200 to-lilac-200' },
-  { name: 'Kabir, 25', emoji: '🎧', text: 'verified-only is elite. deleted three other apps the day I joined.', tone: 'from-peach-200 to-lilac-200' },
+  { name: 'Ananya, 24', icon: Sparkles, text: 'first app where every match was actually a real person. wild concept honestly.', tone: 'from-lilac-200 to-sky-200' },
+  { name: 'Dev, 27', icon: Zap, text: 'the 24h timer made me stop overthinking and just say hi. met my gf in week one.', tone: 'from-peach-200 to-blush-200' },
+  { name: 'Sim, 22', icon: Cherry, text: 'the openers slap. no more staring at “hey” for nine business days.', tone: 'from-blush-200 to-lilac-200' },
+  { name: 'Kabir, 25', icon: Headphones, text: 'verified-only is elite. deleted three other apps the day I joined.', tone: 'from-peach-200 to-lilac-200' },
 ]
 
 // ── Real Ones scroll wall (verified-humans showcase) ──────────────────
@@ -292,8 +287,8 @@ export const realOnes = [
 
 // ── About values ──────────────────────────────────────────────────────
 export const values = [
-  { emoji: '💯', title: 'Realness over reach', body: 'We’d rather have fewer, verified humans than a billion bots. Quality of connection beats vanity numbers, every time.' },
-  { emoji: '🫶', title: 'Kindness is the algorithm', body: 'Safety, consent and good vibes aren’t features we bolted on — they’re the foundation everything else stands on.' },
-  { emoji: '🪩', title: 'Dating should be fun', body: 'Less doomscroll, more butterflies. If it doesn’t make you smile, we’ll keep building until it does.' },
-  { emoji: '🔓', title: 'Your data is yours', body: 'We minimise what we collect, never sell it, and make it one tap to take it all back. Trust is earned, not assumed.' },
+  { icon: Award, title: 'Realness over reach', body: 'We’d rather have fewer, verified humans than a billion bots. Quality of connection beats vanity numbers, every time.' },
+  { icon: HeartHandshake, title: 'Kindness is the algorithm', body: 'Safety, consent and good vibes aren’t features we bolted on — they’re the foundation everything else stands on.' },
+  { icon: PartyPopper, title: 'Dating should be fun', body: 'Less doomscroll, more butterflies. If it doesn’t make you smile, we’ll keep building until it does.' },
+  { icon: Unlock, title: 'Your data is yours', body: 'We minimise what we collect, never sell it, and make it one tap to take it all back. Trust is earned, not assumed.' },
 ]

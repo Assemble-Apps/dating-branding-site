@@ -1,28 +1,28 @@
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Lightbulb, Wrench, Rocket, Palette, Compass, ShieldCheck, Code2, PartyPopper } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading, stagger, fadeUp } from '../components/ui'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
 import { values, stats } from '../data/content'
 
 const timeline = [
-  { year: '2024', emoji: '💡', title: 'the ick that started it all', body: 'Four friends, four dead dating apps, one too many catfish. We figured dating online could feel human again — so we started sketching.' },
-  { year: '2025', emoji: '🔧', title: 'we built the trust layer first', body: 'Before a single swipe, we built verification, safety and privacy. The fun stuff means nothing if it doesn’t feel safe.' },
-  { year: '2026', emoji: '🚀', title: 'rissme goes live', body: 'Early access opens to our waitlist. Verified humans, real matches, zero bots — finally a dating app that doesn’t make you sigh.' },
+  { year: '2024', icon: Lightbulb, title: 'the ick that started it all', body: 'Four friends, four dead dating apps, one too many catfish. We figured dating online could feel human again — so we started sketching.' },
+  { year: '2025', icon: Wrench, title: 'we built the trust layer first', body: 'Before a single swipe, we built verification, safety and privacy. The fun stuff means nothing if it doesn’t feel safe.' },
+  { year: '2026', icon: Rocket, title: 'rissme goes live', body: 'Early access opens to our waitlist. Verified humans, real matches, zero bots — finally a dating app that doesn’t make you sigh.' },
 ]
 
 const team = [
-  { emoji: '🦊', name: 'Aria', role: 'design & vibes' },
-  { emoji: '🐙', name: 'Ravi', role: 'product' },
-  { emoji: '🦉', name: 'Noor', role: 'trust & safety' },
-  { emoji: '🐝', name: 'Tia', role: 'engineering' },
+  { icon: Palette, name: 'Aria', role: 'design & vibes' },
+  { icon: Compass, name: 'Ravi', role: 'product' },
+  { icon: ShieldCheck, name: 'Noor', role: 'trust & safety' },
+  { icon: Code2, name: 'Tia', role: 'engineering' },
 ]
 
 export default function About() {
   return (
     <>
       <PageHero
-        eyebrow="🪩 our whole thing"
+        eyebrow={<><PartyPopper className="inline h-3.5 w-3.5 -translate-y-0.5" /> our whole thing</>}
         title={<>we’re building dating<br />that <span className="text-gradient">doesn’t make you sigh.</span></>}
         sub="Rissme started as a group chat rant about everything wrong with dating apps. Now it’s a mission: make online dating feel human, safe, and a little bit magic again."
       />
@@ -61,7 +61,9 @@ export default function About() {
               whileHover={{ y: -6 }}
               className="rounded-4xl border border-white/65 bg-white/52 p-8 shadow-card backdrop-blur-md"
             >
-              <div className="text-4xl">{v.emoji}</div>
+              <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-peach-200 to-lilac-200">
+                <v.icon className="h-7 w-7 text-ink-800" />
+              </div>
               <h3 className="mt-4 font-display text-2xl font-semibold text-ink-800">{v.title}</h3>
               <p className="mt-3 text-ink-700/80">{v.body}</p>
             </motion.div>
@@ -75,7 +77,10 @@ export default function About() {
           <div className="grid grid-cols-2 gap-4 rounded-[2.5rem] mesh-panel p-8 shadow-card sm:grid-cols-4 sm:p-12">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="font-display text-4xl font-semibold text-gradient sm:text-5xl">{s.value}</div>
+                <div className="inline-flex items-center gap-1.5 font-display text-4xl font-semibold text-gradient sm:text-5xl">
+                  {s.value}
+                  {s.icon && <s.icon className="h-7 w-7 fill-peach-400 text-peach-400 sm:h-8 sm:w-8" />}
+                </div>
                 <div className="mt-1.5 text-sm font-medium text-mist-300/80">{s.label}</div>
               </div>
             ))}
@@ -93,8 +98,8 @@ export default function About() {
             <Reveal key={t.year} delay={i * 0.08}>
               <div className="flex items-start gap-5 rounded-3xl border border-white/65 bg-white/52 p-6 shadow-card backdrop-blur-md sm:p-8">
                 <div className="flex flex-col items-center">
-                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-peach-200 to-lilac-200 text-2xl">
-                    {t.emoji}
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-peach-200 to-lilac-200">
+                    <t.icon className="h-7 w-7 text-ink-800" />
                   </span>
                   <span className="mt-2 font-display text-sm font-bold text-blush-400">{t.year}</span>
                 </div>
@@ -127,8 +132,8 @@ export default function About() {
               whileHover={{ y: -6, rotate: -2 }}
               className="rounded-4xl border border-white/65 bg-white/52 p-6 text-center shadow-card backdrop-blur-md"
             >
-              <div className="mx-auto grid h-20 w-20 place-items-center rounded-blob bg-gradient-to-br from-lilac-100 to-blush-100 text-4xl animate-blob">
-                {m.emoji}
+              <div className="mx-auto grid h-20 w-20 place-items-center rounded-blob bg-gradient-to-br from-lilac-100 to-blush-100 animate-blob">
+                <m.icon className="h-9 w-9 text-ink-800" />
               </div>
               <h4 className="mt-4 font-display text-lg font-semibold text-ink-800">{m.name}</h4>
               <p className="text-sm text-ink-700/65">{m.role}</p>

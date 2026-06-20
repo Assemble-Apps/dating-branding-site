@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Check, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Check, ShieldCheck, Camera, Brain, BadgeCheck } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading, stagger, fadeUp } from '../components/ui'
 import { PhoneFrame, MatchScreen } from '../components/PhoneMockup'
@@ -7,16 +7,16 @@ import { Heart, Sparkle, FloatingBlobs } from '../components/Decor'
 import { safetyPillars, safetyPromises } from '../data/content'
 
 const verifySteps = [
-  { emoji: '🤳', title: 'Snap a live selfie', body: 'Follow a quick gesture prompt so we know it’s really you, right now — not a saved photo.' },
-  { emoji: '🧠', title: 'We match the face', body: 'A liveness + face-match check compares it to your profile photos in seconds.' },
-  { emoji: '✅', title: 'Get your blue badge', body: 'Pass and you’re verified. Your selfie is never shown on your profile and is purged after.' },
+  { icon: Camera, title: 'Snap a live selfie', body: 'Follow a quick gesture prompt so we know it’s really you, right now — not a saved photo.' },
+  { icon: Brain, title: 'We match the face', body: 'A liveness + face-match check compares it to your profile photos in seconds.' },
+  { icon: BadgeCheck, title: 'Get your blue badge', body: 'Pass and you’re verified. Your selfie is never shown on your profile and is purged after.' },
 ]
 
 export default function Safety() {
   return (
     <>
       <PageHero
-        eyebrow="🛡️ safety, but make it default"
+        eyebrow={<><ShieldCheck className="inline h-3.5 w-3.5 -translate-y-0.5" /> safety, but make it default</>}
         title={<>good vibes only,<br /><span className="text-gradient">protected by design.</span></>}
         sub="Verification, privacy and moderation aren’t add-ons at Rissme — they’re the foundation. Here’s exactly how we keep it real."
       >
@@ -41,8 +41,8 @@ export default function Safety() {
               whileHover={{ y: -6 }}
               className="group rounded-4xl border border-white/65 bg-white/52 p-8 shadow-card backdrop-blur-md"
             >
-              <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-lilac-200 to-blush-200 text-2xl shadow-sm transition-transform group-hover:rotate-6">
-                {p.emoji}
+              <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-lilac-200 to-blush-200 shadow-sm transition-transform group-hover:rotate-6">
+                <p.icon className="h-7 w-7 text-ink-800" />
               </div>
               <h3 className="font-display text-2xl font-semibold text-ink-800">{p.title}</h3>
               <p className="mt-3 text-ink-700/80">{p.body}</p>
@@ -66,8 +66,8 @@ export default function Safety() {
               {verifySteps.map((s, i) => (
                 <Reveal key={s.title} delay={i * 0.08}>
                   <div className="flex items-start gap-5 rounded-3xl border border-white/65 bg-white/52 p-6 shadow-card backdrop-blur-md">
-                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-peach-200 to-blush-200 text-2xl">
-                      {s.emoji}
+                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-peach-200 to-blush-200">
+                      <s.icon className="h-7 w-7 text-ink-800" />
                     </span>
                     <div>
                       <h4 className="font-display text-xl font-semibold text-ink-800">{s.title}</h4>

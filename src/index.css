@@ -80,12 +80,38 @@
     box-shadow: 0 4px 28px rgba(11, 9, 17, 0.10), inset 0 1px 0 rgba(255,255,255,0.9);
   }
 
-  /* Dark frosted glass — for navbar, marquee strip, dramatic dark islands */
+  /* Dark frosted liquid glass — for navbar, marquee strip, dramatic dark islands */
   .dark-glass {
-    background: rgba(15, 10, 20, 0.82);
-    backdrop-filter: blur(18px) saturate(130%);
-    -webkit-backdrop-filter: blur(18px) saturate(130%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    @apply relative isolate overflow-hidden;
+    background: rgba(15, 10, 20, 0.76);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  /* glass sheen: bright top edge fading to a soft dark base — reads as a lit glass tube */
+  .dark-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.04) 22%,
+      rgba(255, 255, 255, 0) 55%,
+      rgba(0, 0, 0, 0.16) 100%
+    );
+    pointer-events: none;
+  }
+  /* faint roaming highlight for extra "liquid" shimmer */
+  .dark-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
+    background-size: 250% 100%;
+    background-position: 130% 0;
+    animation: glassShimmer 7s ease-in-out infinite;
+    pointer-events: none;
   }
 
   /* Warm gradient text — works on any surface */
@@ -108,32 +134,94 @@
     @apply animate-shimmer;
   }
 
-  /* Primary squishy pill button */
+  /* Primary liquid-glass pill button — gradient + soft top sheen + shine sweep */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold text-white shadow-pill transition-all duration-300;
+    @apply relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-3.5 font-semibold text-white transition-all duration-300;
     background: linear-gradient(100deg, #ff8a6b, #ff87ae 55%, #a98eff);
     background-size: 180% auto;
+    box-shadow:
+      0 10px 22px -10px rgba(255, 135, 174, 0.5),
+      inset 0 -2px 5px rgba(120, 26, 70, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+  /* soft top sheen — a faint highlight, not a hard dome */
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 1px 1px auto 1px;
+    height: 46%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+  }
+  /* diagonal shine that sweeps across on hover */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+    background-size: 250% 100%;
+    background-position: 140% 0;
+    transition: background-position 0.85s ease;
+    pointer-events: none;
   }
   .btn-primary:hover {
-    background-position: right center;
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 18px 40px -12px rgba(255, 135, 174, 0.7);
+    transform: translateY(-1.5px);
+    filter: brightness(1.04);
+    box-shadow:
+      0 14px 28px -10px rgba(255, 135, 174, 0.6),
+      inset 0 -2px 5px rgba(120, 26, 70, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  }
+  .btn-primary:hover::after {
+    background-position: -40% 0;
   }
   .btn-primary:active {
     transform: translateY(0) scale(0.98);
+    filter: brightness(0.97);
   }
 
-  /* Ghost / secondary button — dark glass on sand */
+  /* Ghost / secondary button — frosted liquid glass on sand */
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold backdrop-blur transition-all duration-300;
-    border: 1px solid rgba(15, 10, 20, 0.25);
-    background: rgba(15, 10, 20, 0.08);
+    @apply relative isolate inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-7 py-3.5 font-semibold backdrop-blur-xl transition-all duration-300;
+    border: 1px solid rgba(15, 10, 20, 0.18);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.12));
     color: #100D18;
+    box-shadow:
+      0 6px 16px -8px rgba(15, 10, 20, 0.16),
+      inset 0 -2px 4px rgba(15, 10, 20, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .btn-ghost::before {
+    content: '';
+    position: absolute;
+    inset: 1px 1px auto 1px;
+    height: 46%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+  }
+  .btn-ghost::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+    background-size: 250% 100%;
+    background-position: 140% 0;
+    transition: background-position 0.85s ease;
+    pointer-events: none;
   }
   .btn-ghost:hover {
-    border-color: rgba(15, 10, 20, 0.4);
-    background: rgba(15, 10, 20, 0.15);
-    transform: translateY(-2px);
+    border-color: rgba(15, 10, 20, 0.3);
+    transform: translateY(-1.5px);
+    box-shadow:
+      0 9px 20px -8px rgba(15, 10, 20, 0.2),
+      inset 0 -2px 4px rgba(15, 10, 20, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  .btn-ghost:hover::after {
+    background-position: -40% 0;
+  }
+  .btn-ghost:active {
+    transform: translateY(0) scale(0.98);
   }
 
   /* Small label chip — dark on sand */
@@ -198,6 +286,27 @@
   }
   50% {
     transform: translateY(-0.1em);
+  }
+}
+
+/* Typewriter reveal for the animated headline word */
+@keyframes typeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Slow roaming glint across dark-glass surfaces (navbar, mobile menu) */
+@keyframes glassShimmer {
+  0%,
+  100% {
+    background-position: 130% 0;
+  }
+  50% {
+    background-position: -30% 0;
   }
 }
 

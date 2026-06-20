@@ -47,6 +47,32 @@ export function PoppingGradientWord({ text, delay = 0, className = '' }) {
   )
 }
 
+// Word that types itself out letter by letter, gradient-colored.
+export function TypewriterWord({ text, delay = 0, speed = 0.07, className = '' }) {
+  const letters = [...text]
+  const n = letters.length
+
+  return (
+    <span className={`inline-block ${className}`} aria-label={text}>
+      {letters.map((ch, i) => {
+        const t = n > 1 ? i / (n - 1) : 0.5
+        const d = delay + i * speed
+        if (ch === ' ') return <span key={i}>&nbsp;</span>
+        return (
+          <span
+            key={i}
+            aria-hidden="true"
+            className="inline-block"
+            style={{ color: gradColor(t), animation: `typeIn 0.01s ${d}s linear both` }}
+          >
+            {ch}
+          </span>
+        )
+      })}
+    </span>
+  )
+}
+
 // Squiggly underline that draws itself in.
 export function DrawUnderline({ className = '', delay = 0 }) {
   return (

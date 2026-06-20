@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Check, Sparkles } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading } from '../components/ui'
 import { PhoneFrame, SwipeScreen, ChatScreen } from '../components/PhoneMockup'
@@ -23,8 +23,8 @@ function FeatureRow({ f, i }) {
         }`}
       >
         <div>
-          <div className={`grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br ${a.chip} text-3xl shadow-sm`}>
-            {f.emoji}
+          <div className={`grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br ${a.chip} shadow-sm`}>
+            <f.icon className="h-8 w-8 text-ink-800" />
           </div>
           <h3 className="mt-6 font-display text-3xl font-semibold text-ink-800 sm:text-4xl">{f.title}</h3>
           <p className="mt-4 text-lg text-ink-700/80">{f.blurb}</p>
@@ -42,7 +42,6 @@ function FeatureRow({ f, i }) {
         <div className="relative flex justify-center">
           <div className={`relative grid aspect-square w-full max-w-sm place-items-center rounded-[2rem] bg-gradient-to-br ${a.chip} shadow-soft`}>
             <f.icon className="h-32 w-32 text-white/80" strokeWidth={1.3} />
-            <span className="absolute right-6 top-6 text-4xl drop-shadow-sm">{f.emoji}</span>
             <Heart className="absolute -left-3 bottom-8 h-8 w-8 animate-floaty text-white/70" />
             <Sparkle className="absolute -right-2 -top-2 h-7 w-7 animate-floatySlow text-white/80" />
           </div>
@@ -56,7 +55,7 @@ export default function Features() {
   return (
     <>
       <PageHero
-        eyebrow="✨ the feature drop"
+        eyebrow={<><Sparkles className="inline h-3.5 w-3.5 -translate-y-0.5" /> the feature drop</>}
         title={<>everything you need to <span className="text-gradient">catch feelings.</span></>}
         sub="Verified humans, smarter matching, and chat that actually flirts back. Here’s the full toolkit."
       >
@@ -99,7 +98,7 @@ export default function Features() {
             <div className="mt-7 grid grid-cols-2 gap-4">
               {steps.map((s) => (
                 <div key={s.n} className="rounded-3xl border border-white/65 bg-white/52 p-5 backdrop-blur-md">
-                  <div className="text-2xl">{s.emoji}</div>
+                  <s.icon className="h-6 w-6 text-blush-400" />
                   <p className="mt-2 font-display text-lg font-semibold text-ink-800">{s.title}</p>
                 </div>
               ))}

@@ -47,7 +47,9 @@ export default function Footer() {
           <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
             <div>
               <div className="flex items-center gap-2">
-                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-peach-400 to-blush-400 text-lg shadow-pill">💗</span>
+                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-peach-400 to-blush-400 shadow-pill">
+                  <Heart className="h-5 w-5 fill-white text-white" />
+                </span>
                 <span className="font-display text-2xl font-semibold text-mist-100">rissme</span>
               </div>
               <p className="mt-4 max-w-xs text-mist-300/80">

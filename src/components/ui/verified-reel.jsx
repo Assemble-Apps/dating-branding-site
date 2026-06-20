@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion'
+import { Lock } from 'lucide-react'
 
 import { realOnes } from '../../data/content'
 import { Heart, Sparkle } from '../Decor'
@@ -67,7 +68,7 @@ function FlipCard({ src, alt, target }) {
           className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-white bg-gradient-to-br from-peach-400 to-lilac-400 text-white shadow-card"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
-          <span className="text-xl">💗</span>
+          <Heart className="h-5 w-5 fill-white text-white" />
           <p className="mt-1 text-[8px] font-bold uppercase tracking-[0.2em]">verified</p>
         </div>
       </motion.div>
@@ -167,7 +168,9 @@ export default function VerifiedReel() {
           className="pointer-events-none absolute z-0 px-6 text-center"
           style={{ opacity: introOpacity }}
         >
-          <p className="eyebrow mb-4">🔒 every face, verified</p>
+          <p className="eyebrow mb-4 inline-flex items-center gap-1.5">
+            <Lock className="h-3.5 w-3.5" /> every face, verified
+          </p>
           <h2 className="font-display text-4xl font-semibold tracking-tight text-ink-800 sm:text-6xl">
             a whole world of <span className="text-gradient">real ones.</span>
           </h2>
@@ -181,8 +184,8 @@ export default function VerifiedReel() {
           className="pointer-events-none absolute top-[12%] z-10 px-5 text-center"
           style={{ opacity: arcOpacity, transform: `translateY(${lerp(20, 0, arcOpacity)}px)` }}
         >
-          <h2 className="font-display text-3xl font-semibold tracking-tight text-ink-800 sm:text-5xl">
-            your person is in here. 💗
+          <h2 className="inline-flex items-center gap-2 font-display text-3xl font-semibold tracking-tight text-ink-800 sm:text-5xl">
+            your person is in here. <Heart className="h-6 w-6 fill-blush-400 text-blush-400 sm:h-9 sm:w-9" />
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-ink-700/75 sm:text-base">
             somewhere in 2.4M verified cuties — no bots, no catfish, no ick.

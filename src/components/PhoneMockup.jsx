@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { BadgeCheck, Heart, X, Star, Send } from 'lucide-react'
+import { BadgeCheck, Heart, X, Star, Send, MapPin, Cake, Sparkles, Mail, Laugh, Skull } from 'lucide-react'
 
 // Reusable phone device shell.
 export function PhoneFrame({ children, className = '' }) {
@@ -16,11 +16,13 @@ export function PhoneFrame({ children, className = '' }) {
   )
 }
 
-// A pastel "photo" stand-in with a big emoji + name.
-function ProfilePhoto({ emoji, from, to, name, age, distance, verified }) {
+// A pastel "photo" stand-in with a big icon + name.
+function ProfilePhoto({ icon: Icon, from, to, name, age, distance, verified }) {
   return (
     <div className="relative h-full w-full" style={{ background: `linear-gradient(160deg, ${from}, ${to})` }}>
-      <div className="flex h-full w-full items-center justify-center text-[8rem] drop-shadow-sm">{emoji}</div>
+      <div className="flex h-full w-full items-center justify-center drop-shadow-sm">
+        <Icon className="h-32 w-32 text-white/85" strokeWidth={1.3} />
+      </div>
       {/* soft top + bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-plum-900/60 to-transparent" />
       <div className="absolute bottom-5 left-5 right-5 text-white">
@@ -28,7 +30,9 @@ function ProfilePhoto({ emoji, from, to, name, age, distance, verified }) {
           <h3 className="font-display text-2xl font-semibold">{name}, {age}</h3>
           {verified && <BadgeCheck className="h-5 w-5 fill-white text-plum-700" />}
         </div>
-        <p className="mt-1 text-sm text-white/85">📍 {distance} away</p>
+        <p className="mt-1 flex items-center gap-1 text-sm text-white/85">
+          <MapPin className="h-3.5 w-3.5" /> {distance} away
+        </p>
       </div>
     </div>
   )
@@ -40,13 +44,13 @@ export function SwipeScreen() {
     <div className="flex h-full flex-col">
       <div className="flex items-center justify-between px-5 pt-9 pb-3">
         <span className="font-display text-xl font-semibold text-plum-900">rissme</span>
-        <span className="text-xl">💗</span>
+        <Heart className="h-5 w-5 fill-blush-400 text-blush-400" />
       </div>
       <div className="relative flex-1 px-4">
         <div className="absolute inset-x-6 top-2 h-full scale-95 rounded-3xl bg-lilac-200/60" />
         <div className="absolute inset-x-5 top-1 h-full scale-[0.975] rounded-3xl bg-blush-200/70" />
         <div className="relative h-[400px] overflow-hidden rounded-3xl shadow-soft">
-          <ProfilePhoto emoji="🧁" from="#FFC9B3" to="#FFA6C4" name="Mara" age={24} distance="2 km" verified />
+          <ProfilePhoto icon={Cake} from="#FFC9B3" to="#FFA6C4" name="Mara" age={24} distance="2 km" verified />
         </div>
       </div>
       <div className="flex items-center justify-center gap-5 py-5">
@@ -67,15 +71,17 @@ export function SwipeScreen() {
 // Chat screen.
 export function ChatScreen() {
   const bubbles = [
-    { me: false, text: 'ok your prompt about ranch dressing was unhinged 😭' },
+    { me: false, text: 'ok your prompt about ranch dressing was unhinged', icon: Laugh },
     { me: true, text: 'and yet here you are, replying' },
     { me: false, text: 'fair. coffee sat?' },
-    { me: true, text: 'only if you bring the ranch 💀' },
+    { me: true, text: 'only if you bring the ranch', icon: Skull },
   ]
   return (
     <div className="flex h-full flex-col bg-gradient-to-b from-peach-50 to-lilac-100">
       <div className="flex items-center gap-3 px-5 pt-10 pb-4">
-        <div className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-peach-300 to-blush-300 text-lg">🧁</div>
+        <div className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-peach-300 to-blush-300">
+          <Cake className="h-5 w-5 text-white" />
+        </div>
         <div>
           <div className="flex items-center gap-1">
             <p className="font-semibold text-plum-900">Mara</p>
@@ -88,13 +94,13 @@ export function ChatScreen() {
         {bubbles.map((b, i) => (
           <div key={i} className={`flex ${b.me ? 'justify-end' : 'justify-start'}`}>
             <div
-              className={`max-w-[78%] rounded-2xl px-4 py-2.5 text-sm shadow-sm ${
+              className={`flex max-w-[78%] items-center gap-1.5 rounded-2xl px-4 py-2.5 text-sm shadow-sm ${
                 b.me
                   ? 'rounded-br-md bg-gradient-to-br from-peach-400 to-blush-400 text-white'
                   : 'rounded-bl-md bg-white text-plum-800'
               }`}
             >
-              {b.text}
+              {b.text} {b.icon && <b.icon className="h-4 w-4 shrink-0" />}
             </div>
           </div>
         ))}
@@ -123,27 +129,37 @@ export function MatchScreen() {
   return (
     <div className="relative flex h-full flex-col items-center justify-center overflow-hidden mesh-panel px-6 text-center">
       <motion.div
-        className="absolute left-6 top-16 text-3xl"
+        className="absolute left-6 top-16"
         animate={{ y: [0, -14, 0], rotate: [0, 8, 0] }}
         transition={{ duration: 4, repeat: Infinity }}
-      >💖</motion.div>
+      >
+        <Heart className="h-8 w-8 fill-blush-400 text-blush-400" />
+      </motion.div>
       <motion.div
-        className="absolute right-7 top-24 text-2xl"
+        className="absolute right-7 top-24"
         animate={{ y: [0, -18, 0], rotate: [0, -10, 0] }}
         transition={{ duration: 5, repeat: Infinity }}
-      >✨</motion.div>
+      >
+        <Sparkles className="h-6 w-6 text-lilac-300" />
+      </motion.div>
       <motion.div
-        className="absolute bottom-24 left-10 text-2xl"
+        className="absolute bottom-24 left-10"
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 4.5, repeat: Infinity }}
-      >💌</motion.div>
+      >
+        <Mail className="h-6 w-6 text-peach-400" />
+      </motion.div>
 
       <h3 className="font-display text-4xl font-semibold text-gradient">it's a vibe!</h3>
       <p className="mt-2 text-sm text-plum-700/80">you and Mara liked each other</p>
 
       <div className="mt-7 flex items-center -space-x-5">
-        <div className="grid h-24 w-24 place-items-center rounded-full border-4 border-white bg-gradient-to-br from-lilac-200 to-sky-200 text-4xl shadow-card">🦋</div>
-        <div className="grid h-24 w-24 place-items-center rounded-full border-4 border-white bg-gradient-to-br from-peach-200 to-blush-200 text-4xl shadow-card">🧁</div>
+        <div className="grid h-24 w-24 place-items-center rounded-full border-4 border-white bg-gradient-to-br from-lilac-200 to-sky-200 shadow-card">
+          <Sparkles className="h-10 w-10 text-white" />
+        </div>
+        <div className="grid h-24 w-24 place-items-center rounded-full border-4 border-white bg-gradient-to-br from-peach-200 to-blush-200 shadow-card">
+          <Cake className="h-10 w-10 text-white" />
+        </div>
       </div>
 
       <button className="mt-8 rounded-full bg-gradient-to-r from-peach-400 to-blush-400 px-7 py-3 text-sm font-semibold text-white shadow-pill">

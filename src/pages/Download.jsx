@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Apple, Play, Check, PartyPopper } from 'lucide-react'
+import { Apple, Play, Check, PartyPopper, Gift, Mail } from 'lucide-react'
 import { Reveal } from '../components/ui'
 import { PhoneFrame, SwipeScreen, MatchScreen } from '../components/PhoneMockup'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
@@ -20,7 +20,11 @@ function StoreBadge({ icon: Icon, top, bottom }) {
   )
 }
 
-const perks = ['First through the door at launch', 'A lil launch-day surprise 🎁', 'Help shape what we build next']
+const perks = [
+  { text: 'First through the door at launch' },
+  { text: 'A lil launch-day surprise', icon: Gift },
+  { text: 'Help shape what we build next' },
+]
 
 const WAITLIST_URL = import.meta.env.VITE_WAITLIST_API_URL
 
@@ -77,7 +81,8 @@ export default function Download() {
           <Reveal delay={0.1}>
             <p className="mx-auto mt-5 max-w-md text-lg text-ink-700/80 lg:mx-0">
               Rissme is in early access. Drop your email and skip the line — verified humans, real matches,
-              zero ick, coming to your phone very soon. 💗
+              zero ick, coming to your phone very soon.{' '}
+              <Heart className="inline h-4 w-4 -translate-y-0.5 fill-blush-400 text-blush-400" />
             </p>
           </Reveal>
 
@@ -92,7 +97,9 @@ export default function Download() {
                     className="rounded-3xl border border-white/10 bg-white/52 p-7 text-center shadow-card backdrop-blur-md"
                   >
                     <PartyPopper className="mx-auto h-10 w-10 text-blush-400" />
-                    <h3 className="mt-3 font-display text-2xl font-semibold text-mist-100">you’re on the list! 🎉</h3>
+                    <h3 className="mt-3 inline-flex items-center gap-2 font-display text-2xl font-semibold text-mist-100">
+                      you’re on the list! <PartyPopper className="h-5 w-5 text-blush-300" />
+                    </h3>
                     <p className="mt-2 text-mist-300/85">
                       Keep an eye on your inbox, <span className="font-semibold text-mist-100">{email}</span> — your
                       launch-day surprise is loading.
@@ -116,7 +123,13 @@ export default function Download() {
                       className="w-full rounded-full border border-ink-800/20 bg-white/70 px-6 py-3.5 text-ink-800 placeholder:text-ink-700/40 shadow-sm outline-none backdrop-blur transition focus:border-blush-400 focus:ring-4 focus:ring-blush-300/30"
                     />
                     <button type="submit" disabled={loading} className="btn-primary shrink-0 whitespace-nowrap disabled:opacity-60">
-                      {loading ? 'Adding you…' : 'Join the list 💌'}
+                      {loading ? (
+                        'Adding you…'
+                      ) : (
+                        <>
+                          Join the list <Mail className="h-4 w-4" />
+                        </>
+                      )}
                     </button>
                   </motion.form>
                 )}
@@ -124,11 +137,12 @@ export default function Download() {
 
               <ul className="mt-6 space-y-2.5">
                 {perks.map((p) => (
-                  <li key={p} className="flex items-center justify-center gap-3 text-ink-700/80 lg:justify-start">
+                  <li key={p.text} className="flex items-center justify-center gap-3 text-ink-700/80 lg:justify-start">
                     <span className="grid h-5 w-5 place-items-center rounded-full bg-gradient-to-br from-peach-300 to-blush-400 text-white">
                       <Check className="h-3 w-3" />
                     </span>
-                    {p}
+                    {p.text}
+                    {p.icon && <p.icon className="h-4 w-4 text-blush-400" />}
                   </li>
                 ))}
               </ul>
