@@ -1,4 +1,4 @@
-# Real Ones — portrait photos
+# Real Ones - portrait photos
 
 Drop the 10 portrait images here, named **exactly** as below. The wall on the
 home page reads these via `src/data/content.js` → `realOnes`.
@@ -18,7 +18,7 @@ home page reads these via `src/data/content.js` → `realOnes`.
 
 ## Tips
 - **Square or portrait** crops look best (they're shown in a square frame,
-  `object-cover`, centered — wide landscape shots get cropped on the sides).
+  `object-cover`, centered - wide landscape shots get cropped on the sides).
 - Aim for ~**600–900px** on the short side. Bigger is fine; smaller looks soft.
 - The wall applies a **grayscale** filter automatically.
 - **Darker / photographic** faces make the giant "real ones" title invert as

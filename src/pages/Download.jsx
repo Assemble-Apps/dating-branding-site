@@ -46,7 +46,7 @@ export default function Download() {
           body: JSON.stringify({ email }),
         })
       } catch {
-        // fail silently — still show success so UX isn't broken
+        // fail silently - still show success so UX isn't broken
       } finally {
         setLoading(false)
       }
@@ -80,7 +80,7 @@ export default function Download() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mx-auto mt-5 max-w-md text-lg text-ink-700/80 lg:mx-0">
-              Rissme is in early access. Drop your email and skip the line — verified humans, real matches,
+              Rissme is in early access. Drop your email and skip the line - verified humans, real matches,
               zero ick, coming to your phone very soon.{' '}
               <Heart className="inline h-4 w-4 -translate-y-0.5 fill-blush-400 text-blush-400" />
             </p>
@@ -101,7 +101,7 @@ export default function Download() {
                       you’re on the list! <PartyPopper className="h-5 w-5 text-blush-300" />
                     </h3>
                     <p className="mt-2 text-mist-300/85">
-                      Keep an eye on your inbox, <span className="font-semibold text-mist-100">{email}</span> — your
+                      Keep an eye on your inbox, <span className="font-semibold text-mist-100">{email}</span> - your
                       launch-day surprise is loading.
                     </p>
                   </motion.div>

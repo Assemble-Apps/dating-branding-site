@@ -96,7 +96,7 @@ export function ScrollPortraitWall({
 
       // Each portrait scrubs scale 0 → 1 → 0 across its full pass through the
       // viewport: it grows in from its transform-origin corner, peaks at
-      // centre, then shrinks away — "comes and goes".
+      // centre, then shrinks away - "comes and goes".
       items.forEach((el) => {
         gsap
           .timeline({
@@ -130,7 +130,7 @@ export function ScrollPortraitWall({
         </span>
       </div>
 
-      {/* Sticky centred title — inverts against whatever portrait is behind it */}
+      {/* Sticky centred title - inverts against whatever portrait is behind it */}
       <div className="pointer-events-none sticky top-1/2 z-20 -translate-y-1/2 text-center text-white mix-blend-exclusion">
         <h2 className="font-display text-5xl font-semibold tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl">
           {title}

@@ -50,8 +50,8 @@ export function Arrow({ className = '' }) {
   )
 }
 
-// A soft floating gradient blob — pure decoration.
-export function Blob({ className = '', from = '#FFB39A', to = '#FF87AE' }) {
+// A soft floating gradient blob - pure decoration.
+export function Blob({ className = '', from = '#FF7AC0', to = '#FF69B4' }) {
   return (
     <div
       className={`pointer-events-none absolute rounded-blob blur-2xl ${className}`}
@@ -65,9 +65,9 @@ export function Blob({ className = '', from = '#FFB39A', to = '#FF87AE' }) {
 export function FloatingBlobs() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <Blob className="left-[-6rem] top-10 h-72 w-72 animate-floatySlow opacity-25" from="#FF8A6B" to="#FF87AE" />
-      <Blob className="right-[-5rem] top-1/3 h-80 w-80 animate-floaty opacity-20" from="#A98EFF" to="#7896FF" />
-      <Blob className="bottom-[-4rem] left-1/4 h-64 w-64 animate-floatySlow opacity-20" from="#FF9E84" to="#A98EFF" />
+      <Blob className="left-[-6rem] top-10 h-72 w-72 animate-floatySlow opacity-25" from="#FF1493" to="#FF69B4" />
+      <Blob className="right-[-5rem] top-1/3 h-80 w-80 animate-floaty opacity-20" from="#FF8DC7" to="#FFB3DC" />
+      <Blob className="bottom-[-4rem] left-1/4 h-64 w-64 animate-floatySlow opacity-20" from="#FF4FA8" to="#FF8DC7" />
     </div>
   )
 }

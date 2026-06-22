@@ -1,4 +1,4 @@
-# env — never commit real keys; commit .env.example only
+# env - never commit real keys; commit .env.example only
 .env
 .env.local
 .env.*.local

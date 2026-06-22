@@ -7,7 +7,7 @@ const cols = [
     title: 'Product',
     links: [
       { to: '/features', label: 'Features' },
-      { to: '/premium', label: 'Rissme+' },
+      { to: '/premium', label: 'Premium' },
       { to: '/download', label: 'Get the app' },
       { to: '/safety', label: 'Safety' },
     ],
@@ -41,7 +41,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative mt-10 overflow-hidden">
+    <footer className="relative mt-10 overflow-hidden pb-6 sm:pb-10">
       <div className="section">
         <div className="relative overflow-hidden rounded-[2.5rem] mesh-panel px-6 py-12 shadow-card sm:px-12 sm:py-16">
           <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">

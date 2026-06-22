@@ -56,7 +56,7 @@ export const featureTeasers = [
   {
     icon: Clock4,
     title: 'The 24-hour rule',
-    body: 'Match, then make a move. Conversations have a heartbeat — no more matches rotting in the void for weeks.',
+    body: 'Match, then make a move. Conversations have a heartbeat - no more matches rotting in the void for weeks.',
     tone: 'from-lilac-200 to-sky-200',
   },
   {
@@ -68,7 +68,7 @@ export const featureTeasers = [
   {
     icon: Flame,
     title: 'Matches near you',
-    body: 'Distance + interest matching surfaces people you’d actually run into — and actually like.',
+    body: 'Distance + interest matching surfaces people you’d actually run into - and actually like.',
     tone: 'from-peach-200 to-lilac-200',
   },
 ]
@@ -85,7 +85,7 @@ export const steps = [
     n: '02',
     icon: Eye,
     title: 'Meet your deck',
-    body: 'We surface verified people near you that match your vibe. Like, pass, or super-like — your feed, your rules.',
+    body: 'We surface verified people near you that match your vibe. Like, pass, or super-like - your feed, your rules.',
   },
   {
     n: '03',
@@ -107,15 +107,15 @@ export const featureSections = [
   {
     icon: Flame,
     title: 'Smarter discovery',
-    blurb: 'A deck ranked by distance, shared interests and who’s actually active — not a random firehose. Filter by age, distance, and vibe.',
+    blurb: 'A deck ranked by distance, shared interests and who’s actually active - not a random firehose. Filter by age, distance, and vibe.',
     points: ['Distance + interest ranking', 'Age & distance filters', 'Surfaces active people first'],
     accent: 'blush',
   },
   {
     icon: Undo2,
     title: 'Rewind the oops',
-    blurb: 'Passed on someone by accident? One tap brings them back. (A little Rissme+ magic.)',
-    points: ['Undo your last swipe', 'No more “wait, who was that”', 'Rissme+ perk'],
+    blurb: 'Passed on someone by accident? One tap brings them back. (A little Premium magic.)',
+    points: ['Undo your last swipe', 'No more “wait, who was that”', 'Premium perk'],
     accent: 'lilac',
   },
   {
@@ -135,7 +135,7 @@ export const featureSections = [
   {
     icon: Bell,
     title: 'Notifications, not noise',
-    blurb: 'Get pinged for the stuff that matters — new matches, messages, likes — and mute the rest. You’re in control.',
+    blurb: 'Get pinged for the stuff that matters - new matches, messages, likes - and mute the rest. You’re in control.',
     points: ['Match & message alerts', 'Granular notification settings', 'Quiet mode whenever'],
     accent: 'lilac',
   },
@@ -146,17 +146,17 @@ export const safetyPillars = [
   {
     icon: UserRoundCheck,
     title: 'Selfie verification',
-    body: 'A quick liveness check matches a real-time selfie to your photos. Verified humans only — catfish need not apply.',
+    body: 'A quick liveness check matches a real-time selfie to your photos. Verified humans only - catfish need not apply.',
   },
   {
     icon: ShieldCheck,
     title: 'Block & report, instantly',
-    body: 'One tap removes someone from your world — match gone, chat gone, hidden both ways. Reports go straight to our moderation team.',
+    body: 'One tap removes someone from your world - match gone, chat gone, hidden both ways. Reports go straight to our moderation team.',
   },
   {
     icon: EyeOff,
     title: 'Your data, minimised',
-    body: 'We strip personal info before anything touches AI, never sell your data, and let you delete everything for good — gone in 30 days, fully.',
+    body: 'We strip personal info before anything touches AI, never sell your data, and let you delete everything for good - gone in 30 days, fully.',
   },
   {
     icon: Lock,
@@ -167,64 +167,34 @@ export const safetyPillars = [
 
 export const safetyPromises = [
   'Auto-suspend on repeat reports',
-  'No screenshots of verification selfies — ever',
+  'No screenshots of verification selfies - ever',
   'Photos & messages purged on account deletion',
   'Human moderators, not just bots',
   'Age-gated 18+ with checks',
   'Encrypted in transit & at rest',
 ]
 
-// ── Premium tiers (Premium page) ──────────────────────────────────────
+// ── Premium plans (Premium page) ────────────────────────────────────────
+// One subscription, three durations. Pricing isn't locked yet, so each card
+// shows a "reveal soon" teaser instead of digits. The 30-day plan always
+// ships with 3 extra days on the house.
 export const plans = [
-  {
-    name: 'Rissme',
-    tag: 'the free forever plan',
-    price: '₹0',
-    cadence: 'always',
-    highlight: false,
-    cta: 'Start free',
-    perks: [
-      'Verified-only swiping',
-      'Unlimited matches & chat',
-      'Live typing & read receipts',
-      'Block, report & privacy controls',
-    ],
-  },
-  {
-    name: 'Rissme+',
-    tag: 'for the main characters',
-    price: '₹499',
-    cadence: '/month',
-    highlight: true,
-    cta: 'Go Rissme+',
-    perks: [
-      'See everyone who likes you',
-      'Unlimited rewinds',
-      'Extend the 24h timer',
-      '1 free Boost a week',
-      '5 Super Likes a day',
-      'Travel mode — swipe anywhere',
-    ],
-  },
-  {
-    name: 'Rissme Gold',
-    tag: 'maximum rizz',
-    price: '₹899',
-    cadence: '/month',
-    highlight: false,
-    cta: 'Go Gold',
-    perks: [
-      'Everything in Rissme+',
-      'Weekly priority Boosts',
-      'Top of their deck',
-      'Read receipts on every chat',
-      'Premium-only profile glow',
-    ],
-  },
+  { duration: '3 Days', tag: 'try the vibe', days: 3, bonusDays: 0, highlight: false, cta: 'Get 3 days' },
+  { duration: '10 Days', tag: 'for the regulars', days: 10, bonusDays: 0, highlight: false, cta: 'Get 10 days' },
+  { duration: '30 Days', tag: 'maximum rizz', days: 30, bonusDays: 3, highlight: true, cta: 'Get 30 days' },
+]
+
+export const planPerks = [
+  'See everyone who likes you',
+  'Unlimited rewinds',
+  'Extend the 24h timer',
+  'Weekly priority Boosts',
+  '5 Super Likes a day',
+  'Travel mode - swipe anywhere',
 ]
 
 export const premiumPerks = [
-  { icon: EyeOff, title: 'See your likes', body: 'No more blurred mystery — see everyone who already swiped right on you.' },
+  { icon: EyeOff, title: 'See your likes', body: 'No more blurred mystery - see everyone who already swiped right on you.' },
   { icon: Undo2, title: 'Unlimited rewinds', body: 'Take back every accidental pass, as many times as your thumb slips.' },
   { icon: Clock4, title: 'Extend the timer', body: 'Need a few more hours to find the perfect opener? Stretch the 24h window.' },
   { icon: Zap, title: 'Weekly boosts', body: 'Jump to the front of the deck in your area when it counts most.' },
@@ -244,11 +214,11 @@ export const faqs = [
   },
   {
     q: 'What’s the 24-hour thing?',
-    a: 'When you match, you’ve got 24 hours to send the first message before it gently expires. It keeps conversations alive instead of letting matches collect dust. Rissme+ can extend it.',
+    a: 'When you match, you’ve got 24 hours to send the first message before it gently expires. It keeps conversations alive instead of letting matches collect dust. Premium can extend it.',
   },
   {
     q: 'Is Rissme free?',
-    a: '100%. Swiping, matching and chatting are free forever. Rissme+ and Gold add extras like seeing your likes, rewinds and boosts — but you never need them to meet someone.',
+    a: '100%. Swiping, matching and chatting are free forever. Premium adds extras like seeing your likes, rewinds and boosts - but you never need it to meet someone.',
   },
   {
     q: 'How do you keep it safe?',
@@ -256,7 +226,7 @@ export const faqs = [
   },
   {
     q: 'When can I download it?',
-    a: 'Soon™ — and it’ll be worth the wait. Join the list and you’ll be first through the door (with a little launch-day surprise).',
+    a: 'Soon™ - and it’ll be worth the wait. Join the list and you’ll be first through the door (with a little launch-day surprise).',
   },
 ]
 
@@ -288,7 +258,7 @@ export const realOnes = [
 // ── About values ──────────────────────────────────────────────────────
 export const values = [
   { icon: Award, title: 'Realness over reach', body: 'We’d rather have fewer, verified humans than a billion bots. Quality of connection beats vanity numbers, every time.' },
-  { icon: HeartHandshake, title: 'Kindness is the algorithm', body: 'Safety, consent and good vibes aren’t features we bolted on — they’re the foundation everything else stands on.' },
+  { icon: HeartHandshake, title: 'Kindness is the algorithm', body: 'Safety, consent and good vibes aren’t features we bolted on - they’re the foundation everything else stands on.' },
   { icon: PartyPopper, title: 'Dating should be fun', body: 'Less doomscroll, more butterflies. If it doesn’t make you smile, we’ll keep building until it does.' },
   { icon: Unlock, title: 'Your data is yours', body: 'We minimise what we collect, never sell it, and make it one tap to take it all back. Trust is earned, not assumed.' },
 ]

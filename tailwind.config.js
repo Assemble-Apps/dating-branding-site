@@ -14,39 +14,39 @@ export default {
           600: '#201A2D',
           500: '#2A2338',
         },
-        // Light text — for text on dark glass cards / dark panels
+        // Light text - for text on dark glass cards / dark panels
         mist: {
           100: '#F6F3FC',
           200: '#DBD4E8',
           300: '#B3AAC4',
           400: '#837B92',
         },
-        // Warm pastel accents
+        // Pink-family accents — deep pink to hot pink to light pink
         cream: '#FFF7F2',
         peach: {
-          50: '#FFF1EA',
-          100: '#FFE3D6',
-          200: '#FFC9B3',
-          300: '#FFB39A',
-          400: '#FF9E84',
-          500: '#FF8A6B',
+          50: '#FFF0F6',
+          100: '#FFD6E8',
+          200: '#FFA8D4',
+          300: '#FF7AC0',
+          400: '#FF4FA8',
+          500: '#FF1493',
         },
         blush: {
-          100: '#FFE0EA',
-          200: '#FFC2D6',
-          300: '#FFA6C4',
-          400: '#FF87AE',
+          100: '#FFE3EF',
+          200: '#FFC2DE',
+          300: '#FF9AC8',
+          400: '#FF69B4',
         },
         lilac: {
-          100: '#EDE6FF',
-          200: '#D9CCFF',
-          300: '#C3B0FF',
-          400: '#A98EFF',
-          500: '#8E6BFF',
+          100: '#FFEAF3',
+          200: '#FFD1E7',
+          300: '#FFB3DC',
+          400: '#FF8DC7',
+          500: '#FF5CAE',
         },
         sky: {
-          100: '#E2EEFF',
-          200: '#C4DBFF',
+          100: '#FFF3F8',
+          200: '#FFDCEC',
         },
         plum: {
           700: '#5A4761',
@@ -64,12 +64,12 @@ export default {
         blob: '42% 58% 63% 37% / 41% 44% 56% 59%',
       },
       boxShadow: {
-        soft: '0 18px 50px -20px rgba(255, 138, 107, 0.45)',
-        lilacGlow: '0 18px 60px -18px rgba(142, 107, 255, 0.45)',
-        blushGlow: '0 18px 60px -18px rgba(255, 135, 174, 0.5)',
+        soft: '0 18px 50px -20px rgba(255, 20, 147, 0.45)',
+        lilacGlow: '0 18px 60px -18px rgba(255, 141, 199, 0.45)',
+        blushGlow: '0 18px 60px -18px rgba(255, 105, 180, 0.5)',
         // Soft shadow for dark glass cards floating on the sand background
         card: '0 8px 32px -6px rgba(11,9,17,0.22), 0 2px 8px rgba(11,9,17,0.10)',
-        pill: '0 10px 34px -8px rgba(255, 135, 174, 0.55)',
+        pill: '0 10px 34px -8px rgba(255, 105, 180, 0.55)',
       },
       keyframes: {
         floaty: {

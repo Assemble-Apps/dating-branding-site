@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Branding site for Rissme — a Gen-Z dating app",
+  "description": "Branding site for Rissme - a Gen-Z dating app",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

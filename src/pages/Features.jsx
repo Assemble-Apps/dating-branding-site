@@ -63,7 +63,7 @@ export default function Features() {
           Get the app <ArrowRight className="h-4 w-4" />
         </Button>
         <Button to="/premium" variant="ghost">
-          Compare Rissme+
+          Compare plans
         </Button>
       </PageHero>
 
@@ -93,7 +93,7 @@ export default function Features() {
               center={false}
               eyebrow="designed to feel good"
               title="a feed that respects your time"
-              sub="No infinite doomscroll, no pay-to-say-hi. Rissme is built to get you matched, talking, and offline — with the people who are actually right there."
+              sub="No infinite doomscroll, no pay-to-say-hi. Rissme is built to get you matched, talking, and offline - with the people who are actually right there."
             />
             <div className="mt-7 grid grid-cols-2 gap-4">
               {steps.map((s) => (

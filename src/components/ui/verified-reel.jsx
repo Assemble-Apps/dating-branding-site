@@ -6,7 +6,7 @@ import { realOnes } from '../../data/content'
 import { Heart, Sparkle } from '../Decor'
 
 /* Scroll-driven "verified reel": a swarm of real, verified faces flies in from
- * scatter, gathers into a ring, then blooms into a rainbow arc as you scroll —
+ * scatter, gathers into a ring, then blooms into a rainbow arc as you scroll -
  * all driven by NATURAL page scroll (no wheel hijacking). Flip a card to reveal
  * its verified badge. Adapted from a TS/Next intro-hero to our JS + pastel theme. */
 
@@ -44,7 +44,7 @@ function FlipCard({ src, alt, target }) {
         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
         whileHover={{ rotateY: 180 }}
       >
-        {/* Front — the verified human */}
+        {/* Front - the verified human */}
         <div
           className="absolute inset-0 overflow-hidden rounded-2xl border-2 border-white bg-peach-100 shadow-card"
           style={{ backfaceVisibility: 'hidden' }}
@@ -63,7 +63,7 @@ function FlipCard({ src, alt, target }) {
           <div className="absolute inset-0 bg-plum-900/10 transition-colors group-hover:bg-transparent" />
         </div>
 
-        {/* Back — verified badge */}
+        {/* Back - verified badge */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-white bg-gradient-to-br from-peach-400 to-lilac-400 text-white shadow-card"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
@@ -157,13 +157,13 @@ export default function VerifiedReel() {
         ref={stageRef}
         onMouseMove={onMouseMove}
         className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden"
-        style={{ backgroundColor: '#EDE3D3', backgroundImage: 'radial-gradient(at 12% 16%, rgba(255,138,107,0.28) 0px, transparent 50%), radial-gradient(at 86% 10%, rgba(255,135,174,0.22) 0px, transparent 45%), radial-gradient(at 80% 84%, rgba(169,142,255,0.26) 0px, transparent 52%)' }}
+        style={{ backgroundColor: '#EDE3D3', backgroundImage: 'radial-gradient(at 12% 16%, rgba(255,20,147,0.22) 0px, transparent 50%), radial-gradient(at 86% 10%, rgba(255,105,180,0.22) 0px, transparent 45%), radial-gradient(at 80% 84%, rgba(255,141,199,0.26) 0px, transparent 52%)' }}
       >
         <Heart className="absolute left-[10%] top-[18%] h-8 w-8 animate-floaty text-blush-300/70" />
         <Sparkle className="absolute right-[12%] top-[26%] h-7 w-7 animate-floatySlow text-lilac-300/70" />
         <Heart className="absolute bottom-[16%] right-[16%] h-6 w-6 animate-floatySlow text-peach-300/70" />
 
-        {/* Intro copy — fades out as the ring blooms into the arc */}
+        {/* Intro copy - fades out as the ring blooms into the arc */}
         <div
           className="pointer-events-none absolute z-0 px-6 text-center"
           style={{ opacity: introOpacity }}
@@ -179,7 +179,7 @@ export default function VerifiedReel() {
           </p>
         </div>
 
-        {/* Arc copy — fades in once the arc is formed */}
+        {/* Arc copy - fades in once the arc is formed */}
         <div
           className="pointer-events-none absolute top-[12%] z-10 px-5 text-center"
           style={{ opacity: arcOpacity, transform: `translateY(${lerp(20, 0, arcOpacity)}px)` }}
@@ -188,7 +188,7 @@ export default function VerifiedReel() {
             your person is in here. <Heart className="h-6 w-6 fill-blush-400 text-blush-400 sm:h-9 sm:w-9" />
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-ink-700/75 sm:text-base">
-            somewhere in 2.4M verified cuties — no bots, no catfish, no ick.
+            somewhere in 2.4M verified cuties - no bots, no catfish, no ick.
             <br className="hidden sm:block" /> tap a face to see the badge.
           </p>
         </div>

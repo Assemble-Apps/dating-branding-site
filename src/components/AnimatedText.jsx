@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
-// Gradient stops (peach -> pink -> lilac) — same family as the CSS gradient.
+// Gradient stops - hot pink family.
 const STOPS = [
-  [255, 138, 107], // #FF8A6B
-  [255, 135, 174], // #FF87AE
-  [169, 142, 255], // #A98EFF
+  [255, 20, 147],  // #FF1493 deep pink
+  [255, 105, 180], // #FF69B4 hot pink
+  [255, 141, 199], // #FF8DC7 light hot pink
 ]
 
 // Sample the gradient at t ∈ [0,1] and return an rgb() string.
@@ -19,7 +19,7 @@ function gradColor(t) {
 
 // Word whose letters spring in one-by-one and keep a gentle staggered wave.
 // Each letter is a SOLID interpolated colour (no background-clip:text) driven
-// by pure CSS keyframes — no framer/CSS transform fight, so it always settles.
+// by pure CSS keyframes - no framer/CSS transform fight, so it always settles.
 export function PoppingGradientWord({ text, delay = 0, className = '' }) {
   const letters = [...text]
   const n = letters.length

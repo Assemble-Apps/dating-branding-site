@@ -225,12 +225,14 @@ function Features() {
             whileHover={{ y: -6 }}
             className="group relative overflow-hidden rounded-4xl border border-white/65 bg-white/52 p-7 shadow-card backdrop-blur-md sm:p-9"
           >
-            <div className={`mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${f.tone} shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6`}>
-              <f.icon className="h-7 w-7 text-white" />
+            <div className="relative z-10">
+              <div className={`mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${f.tone} shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6`}>
+                <f.icon className="h-7 w-7 text-white" />
+              </div>
+              <h3 className="font-display text-2xl font-semibold text-ink-800">{f.title}</h3>
+              <p className="mt-3 text-ink-700/75">{f.body}</p>
             </div>
-            <h3 className="font-display text-2xl font-semibold text-ink-800">{f.title}</h3>
-            <p className="mt-3 text-ink-700/75">{f.body}</p>
-            <f.icon className="absolute -bottom-5 -right-5 h-28 w-28 text-blush-100 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6" />
+            <f.icon className="pointer-events-none absolute -bottom-6 -right-6 h-24 w-24 text-blush-200/60 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6" />
           </motion.div>
         ))}
       </motion.div>
@@ -258,7 +260,7 @@ function HowItWorks() {
                 <span className="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-br from-peach-400 to-blush-400 px-4 py-1 font-display text-sm font-bold text-white shadow-pill">
                   step {s.n}
                 </span>
-                <div className="mx-auto mt-3 grid h-20 w-20 place-items-center rounded-blob bg-gradient-to-br from-lilac-100 to-blush-100 animate-blob">
+                <div className="mx-auto mt-3 grid h-20 w-20 place-items-center rounded-blob bg-gradient-to-br from-peach-400 via-blush-400 to-lilac-400 shadow-sm animate-blob">
                   <s.icon className="h-9 w-9 text-white" />
                 </div>
                 <h3 className="mt-6 font-display text-2xl font-semibold text-ink-800">{s.title}</h3>
@@ -286,7 +288,7 @@ function VerifiedCallout() {
               they’re <span className="text-gradient">actually them.</span>
             </h2>
             <p className="mt-5 max-w-md text-lg text-mist-300/85">
-              A quick selfie verification matches every person to their photos — so the
+              A quick selfie verification matches every person to their photos - so the
               cutie in your chat is the cutie in the pics. Bots and catfish? Filtered out
               before they ever reach your deck.
             </p>
@@ -421,7 +423,7 @@ function FinalCta() {
               variant="ghost"
               className="border-white/25 bg-white/10 text-mist-100 hover:border-white/40 hover:bg-white/[0.18]"
             >
-              Peek at Rissme+
+              Peek at Premium
             </Button>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { Heart, Sparkle, FloatingBlobs } from '../components/Decor'
 import { safetyPillars, safetyPromises } from '../data/content'
 
 const verifySteps = [
-  { icon: Camera, title: 'Snap a live selfie', body: 'Follow a quick gesture prompt so we know it’s really you, right now — not a saved photo.' },
+  { icon: Camera, title: 'Snap a live selfie', body: 'Follow a quick gesture prompt so we know it’s really you, right now - not a saved photo.' },
   { icon: Brain, title: 'We match the face', body: 'A liveness + face-match check compares it to your profile photos in seconds.' },
   { icon: BadgeCheck, title: 'Get your blue badge', body: 'Pass and you’re verified. Your selfie is never shown on your profile and is purged after.' },
 ]
@@ -18,7 +18,7 @@ export default function Safety() {
       <PageHero
         eyebrow={<><ShieldCheck className="inline h-3.5 w-3.5 -translate-y-0.5" /> safety, but make it default</>}
         title={<>good vibes only,<br /><span className="text-gradient">protected by design.</span></>}
-        sub="Verification, privacy and moderation aren’t add-ons at Rissme — they’re the foundation. Here’s exactly how we keep it real."
+        sub="Verification, privacy and moderation aren’t add-ons at Rissme - they’re the foundation. Here’s exactly how we keep it real."
       >
         <Button to="/download">
           Join safely <ArrowRight className="h-4 w-4" />
@@ -58,7 +58,7 @@ export default function Safety() {
             <SectionHeading
               eyebrow="how verification works"
               title="verified in under 10 seconds"
-              sub="A quick, private check that keeps catfish out — without keeping your selfie."
+              sub="A quick, private check that keeps catfish out - without keeping your selfie."
             />
           </Reveal>
           <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-center">
@@ -130,7 +130,7 @@ export default function Safety() {
               feeling unsafe? we move fast.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-ink-700/80">
-              Block and report are always one tap away — it removes the match, the chat, and hides you both ways
+              Block and report are always one tap away - it removes the match, the chat, and hides you both ways
               instantly. Real human moderators review every report, and repeat offenders get auto-suspended.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

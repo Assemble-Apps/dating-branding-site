@@ -6,9 +6,9 @@ import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
 import { values, stats } from '../data/content'
 
 const timeline = [
-  { year: '2024', icon: Lightbulb, title: 'the ick that started it all', body: 'Four friends, four dead dating apps, one too many catfish. We figured dating online could feel human again — so we started sketching.' },
+  { year: '2024', icon: Lightbulb, title: 'the ick that started it all', body: 'Four friends, four dead dating apps, one too many catfish. We figured dating online could feel human again - so we started sketching.' },
   { year: '2025', icon: Wrench, title: 'we built the trust layer first', body: 'Before a single swipe, we built verification, safety and privacy. The fun stuff means nothing if it doesn’t feel safe.' },
-  { year: '2026', icon: Rocket, title: 'rissme goes live', body: 'Early access opens to our waitlist. Verified humans, real matches, zero bots — finally a dating app that doesn’t make you sigh.' },
+  { year: '2026', icon: Rocket, title: 'rissme goes live', body: 'Early access opens to our waitlist. Verified humans, real matches, zero bots - finally a dating app that doesn’t make you sigh.' },
 ]
 
 const team = [
@@ -37,7 +37,7 @@ export default function About() {
               “Dating apps turned romance into a slot machine. We’re turning it back into{' '}
               <span className="text-gradient not-italic">butterflies.</span>”
             </p>
-            <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-blush-400">— the rissme team</p>
+            <p className="mt-6 text-sm font-semibold uppercase tracking-widest text-blush-400">- the rissme team</p>
           </div>
         </Reveal>
       </section>

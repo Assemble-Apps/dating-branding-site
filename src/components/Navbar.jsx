@@ -7,7 +7,7 @@ import { Button } from './ui'
 const links = [
   { to: '/features', label: 'Features' },
   { to: '/safety', label: 'Safety' },
-  { to: '/premium', label: 'Rissme+' },
+  { to: '/premium', label: 'Premium' },
   { to: '/about', label: 'About' },
 ]
 
