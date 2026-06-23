@@ -130,8 +130,11 @@ export function ScrollPortraitWall({
         </span>
       </div>
 
-      {/* Sticky centred title - inverts against whatever portrait is behind it */}
-      <div className="pointer-events-none sticky top-1/2 z-20 -translate-y-1/2 text-center text-white mix-blend-exclusion">
+      {/* Sticky centred title - inverts against whatever portrait is behind it.
+          mt-[20vh] keeps its pre-stuck static position clear of whatever sits
+          just above this section, since -translate-y-1/2 always shifts it up
+          by half its own (large) height, sticky or not. */}
+      <div className="pointer-events-none sticky top-1/2 z-20 mt-[20vh] -translate-y-1/2 text-center text-white mix-blend-exclusion">
         <h2 className="font-display text-5xl font-semibold tracking-tighter sm:text-7xl md:text-8xl lg:text-9xl">
           {title}
         </h2>

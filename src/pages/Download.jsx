@@ -68,7 +68,7 @@ export default function Download() {
             <span className="chip">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blush-300 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-blush-400" />
+                <span className="relative inline-flex h-2 w-2 animate-dotBlink rounded-full bg-blush-400" />
               </span>
               early access · dropping soon
             </span>

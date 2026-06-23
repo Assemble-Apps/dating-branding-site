@@ -89,7 +89,7 @@ export default function Footer() {
             <p className="flex items-center gap-1.5">
               made with <Heart className="inline h-4 w-4 text-blush-400" /> for people who are done with the ick
             </p>
-            <p>© {new Date().getFullYear()} Rissme. swipe responsibly.</p>
+            <p>© {new Date().getFullYear()} Rissme. Assemble Innovations.</p>
           </div>
         </div>
       </div>

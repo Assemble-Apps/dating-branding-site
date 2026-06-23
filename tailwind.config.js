@@ -106,6 +106,10 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-0.12em)' },
         },
+        dotBlink: {
+          '0%, 100%': { opacity: 1, boxShadow: '0 0 9px 3px rgba(255, 105, 180, 0.9)' },
+          '50%': { opacity: 0.25, boxShadow: '0 0 0 0 rgba(255, 105, 180, 0)' },
+        },
       },
       animation: {
         floaty: 'floaty 6s ease-in-out infinite',
@@ -116,6 +120,7 @@ export default {
         shimmer: 'shimmer 6s ease infinite',
         heart: 'pulseHeart 2.4s ease-in-out infinite',
         letterWave: 'letterWave 3s ease-in-out infinite',
+        dotBlink: 'dotBlink 1.3s ease-in-out infinite',
       },
     },
   },
