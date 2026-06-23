@@ -7,6 +7,7 @@ import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
 import { TypewriterWord, DrawUnderline, TwinkleSparkle } from '../components/AnimatedText'
 import { ScrollPortraitWall } from '../components/ui/scroll-portrait-wall'
 import VerifiedReel from '../components/ui/verified-reel'
+import RadialOrbitalTimeline from '../components/ui/radial-orbital-timeline'
 import {
   stats,
   marqueeWords,
@@ -207,35 +208,15 @@ function Features() {
         <SectionHeading
           eyebrow="why it hits different"
           title={<>built for butterflies,<br className="hidden sm:block" /> not boredom</>}
-          sub="Everything about Rissme is designed to get you off the app and into something real."
+          sub="Everything about Rissme is designed to get you off the app and into something real. Tap a node to see why it matters."
         />
       </Reveal>
 
-      <motion.div
-        variants={stagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '-60px' }}
-        className="mt-14 grid gap-5 sm:grid-cols-2"
-      >
-        {featureTeasers.map((f) => (
-          <motion.div
-            key={f.title}
-            variants={fadeUp}
-            whileHover={{ y: -6 }}
-            className="group relative overflow-hidden rounded-4xl border border-white/65 bg-white/52 p-7 shadow-card backdrop-blur-md sm:p-9"
-          >
-            <div className="relative z-10">
-              <div className={`mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${f.tone} shadow-sm transition-transform group-hover:scale-110 group-hover:rotate-6`}>
-                <f.icon className="h-7 w-7 text-white" />
-              </div>
-              <h3 className="font-display text-2xl font-semibold text-ink-800">{f.title}</h3>
-              <p className="mt-3 text-ink-700/75">{f.body}</p>
-            </div>
-            <f.icon className="pointer-events-none absolute -bottom-6 -right-6 h-24 w-24 text-blush-200/60 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6" />
-          </motion.div>
-        ))}
-      </motion.div>
+      <Reveal delay={0.1}>
+        <div className="mt-14">
+          <RadialOrbitalTimeline timelineData={featureTeasers} />
+        </div>
+      </Reveal>
     </section>
   )
 }

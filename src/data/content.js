@@ -48,28 +48,40 @@ export const marqueeWords = [
 // ── Home feature teasers ──────────────────────────────────────────────
 export const featureTeasers = [
   {
+    id: 1,
     icon: BadgeCheck,
     title: 'Everyone’s verified',
-    body: 'A quick selfie check means the person in the pics is the person in the chat. No catfish, no surprises.',
-    tone: 'from-peach-200 to-blush-200',
+    category: 'trust',
+    content: 'A quick selfie check means the person in the pics is the person in the chat. No catfish, no surprises.',
+    energy: 96,
+    relatedIds: [3],
   },
   {
+    id: 2,
     icon: Clock4,
     title: 'The 24-hour rule',
-    body: 'Match, then make a move. Conversations have a heartbeat - no more matches rotting in the void for weeks.',
-    tone: 'from-lilac-200 to-sky-200',
+    category: 'pacing',
+    content: 'Match, then make a move. Conversations have a heartbeat - no more matches rotting in the void for weeks.',
+    energy: 88,
+    relatedIds: [3, 4],
   },
   {
+    id: 3,
     icon: MessageCircleHeart,
     title: 'Chat that flirts back',
-    body: 'Live typing, read receipts, presence dots and openers that actually start something. Awkward silence, cancelled.',
-    tone: 'from-blush-200 to-lilac-200',
+    category: 'chat',
+    content: 'Live typing, read receipts, presence dots and openers that actually start something. Awkward silence, cancelled.',
+    energy: 91,
+    relatedIds: [1, 2],
   },
   {
+    id: 4,
     icon: Flame,
     title: 'Matches near you',
-    body: 'Distance + interest matching surfaces people you’d actually run into - and actually like.',
-    tone: 'from-peach-200 to-lilac-200',
+    category: 'discovery',
+    content: 'Distance + interest matching surfaces people you’d actually run into - and actually like.',
+    energy: 85,
+    relatedIds: [2],
   },
 ]
 
