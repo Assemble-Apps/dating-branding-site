@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Plus, Minus, Star, Sparkles, Cake, Zap, Cherry, Headphones, Award, Gift } from 'lucide-react'
 import { Button, Reveal, Marquee, SectionHeading, stagger, fadeUp } from '../components/ui'
-import { PhoneFrame, SwipeScreen, MatchScreen, ChatScreen } from '../components/PhoneMockup'
+import { PhoneFrame, ChatScreen } from '../components/PhoneMockup'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
 import { TypewriterWord, DrawUnderline, TwinkleSparkle } from '../components/AnimatedText'
 import { ScrollPortraitWall } from '../components/ui/scroll-portrait-wall'
 import VerifiedReel from '../components/ui/verified-reel'
 import RadialOrbitalTimeline from '../components/ui/radial-orbital-timeline'
+import GlobeStickers from '../components/ui/globe-stickers'
+import MatchesCalendar from '../components/ui/matches-calendar'
 import {
   stats,
   marqueeWords,
@@ -93,34 +95,15 @@ function Hero() {
           </Reveal>
         </div>
 
-        {/* Phones */}
-        <div className="relative mx-auto h-[600px] w-full max-w-md">
+        {/* Globe - matches happening everywhere, right now */}
+        <div className="relative mx-auto h-[600px] w-full max-w-xl self-start">
           <motion.div
-            className="absolute left-1/2 top-4 z-20 -translate-x-1/2"
-            initial={{ opacity: 0, y: 40, rotate: -4 }}
-            animate={{ opacity: 1, y: 0, rotate: -4 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-x-0 top-0 mx-auto w-[98%]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
-              <PhoneFrame>
-                <SwipeScreen />
-              </PhoneFrame>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="absolute -right-2 top-40 z-30 hidden w-[180px] sm:block"
-            initial={{ opacity: 0, x: 30, rotate: 8 }}
-            animate={{ opacity: 1, x: 0, rotate: 8 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-          >
-            <motion.div animate={{ y: [0, 14, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}>
-              <div className="rounded-[1.8rem] border-[7px] border-plum-900 bg-plum-900 shadow-card">
-                <div className="h-[320px] w-full overflow-hidden rounded-[1.3rem]">
-                  <MatchScreen />
-                </div>
-              </div>
-            </motion.div>
+            <GlobeStickers />
           </motion.div>
 
           <Heart className="absolute left-2 top-24 h-10 w-10 animate-floaty text-blush-300" />
@@ -152,12 +135,26 @@ function MarqueeStrip() {
 function Stats() {
   return (
     <section className="section py-16 sm:py-20">
+      <Reveal>
+        <SectionHeading
+          eyebrow="a year of riss-tory"
+          title="every day, somebody's slid in"
+          sub="A year of matches sparking, mapped out day by day. Flip on arcade mode if you're feeling chaotic."
+        />
+      </Reveal>
+
+      <Reveal delay={0.1}>
+        <div className="mt-10 overflow-x-auto pb-2">
+          <MatchesCalendar />
+        </div>
+      </Reveal>
+
       <motion.div
         variants={stagger}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-60px' }}
-        className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4"
+        className="mt-14 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4"
       >
         {stats.map((s) => (
           <motion.div
