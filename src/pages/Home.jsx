@@ -196,7 +196,7 @@ function RealOnesWall() {
         title="real ones"
         date="find you real match now !"
         hint="scroll to meet the cuties"
-        speakers={realOnes}
+        speakers={realOnes.slice(0, 6)}
         columns={3}
         showCaptions
       />
