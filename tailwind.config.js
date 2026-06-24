@@ -21,7 +21,7 @@ export default {
           300: '#B3AAC4',
           400: '#837B92',
         },
-        // Pink-family accents — deep pink to hot pink to light pink
+        // Pink-family accents - deep pink to hot pink to light pink
         cream: '#FFF7F2',
         peach: {
           50: '#FFF0F6',

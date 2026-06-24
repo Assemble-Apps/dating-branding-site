@@ -10,6 +10,7 @@ import VerifiedReel from '../components/ui/verified-reel'
 import RadialOrbitalTimeline from '../components/ui/radial-orbital-timeline'
 import GlobeStickers from '../components/ui/globe-stickers'
 import MatchesCalendar from '../components/ui/matches-calendar'
+import VerifiedWall from '../components/ui/verified-wall'
 import {
   stats,
   marqueeWords,
@@ -23,7 +24,7 @@ import {
 /* ── Hero ─────────────────────────────────────────────────────────── */
 function Hero() {
   return (
-    <section className="relative overflow-hidden dreamy-bg pb-20 pt-10 sm:pb-28">
+    <section className="relative overflow-hidden dreamy-bg pb-8 pt-10 sm:pb-10">
       <FloatingBlobs />
       <div className="section relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative text-center lg:text-left">
@@ -120,12 +121,18 @@ function Hero() {
 function MarqueeStrip() {
   const items = marqueeWords.map((w, i) => (
     <span key={i} className="flex items-center gap-10">
-      <span className="font-display text-2xl font-medium italic text-mist-200/90 sm:text-3xl">{w}</span>
-      <Heart className="h-5 w-5 text-blush-300" />
+      <span className="font-display text-2xl font-medium italic text-white sm:text-3xl">{w}</span>
+      <Heart className="h-5 w-5 fill-white text-white" />
     </span>
   ))
   return (
-    <div className="border-y border-ink-800/10 py-5" style={{ background: 'rgba(15,10,20,0.88)', backdropFilter: 'blur(12px)' }}>
+    <div
+      className="animate-shimmer border-y border-white/15 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]"
+      style={{
+        background: 'linear-gradient(100deg, #FF0F8D, #FF4FA8, #FF69B4, #FF4FA8, #FF0F8D)',
+        backgroundSize: '250% auto',
+      }}
+    >
       <Marquee items={items} />
     </div>
   )
@@ -187,7 +194,7 @@ function RealOnesWall() {
       </div>
       <ScrollPortraitWall
         title="real ones"
-        date="no bots, ever"
+        date="find you real match now !"
         hint="scroll to meet the cuties"
         speakers={realOnes}
         columns={3}
@@ -415,6 +422,7 @@ export default function Home() {
     <>
       <Hero />
       <MarqueeStrip />
+      <VerifiedWall people={realOnes} />
       <Stats />
       <RealOnesWall />
       <Features />
