@@ -1,21 +1,18 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Apple, Play, Check, PartyPopper, Gift, Mail } from 'lucide-react'
+import { Check, PartyPopper, Gift, Mail } from 'lucide-react'
 import { Reveal } from '../components/ui'
 import { PhoneFrame, SwipeScreen, MatchScreen } from '../components/PhoneMockup'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
 
-function StoreBadge({ icon: Icon, top, bottom }) {
+// Renders the real Apple/Google badge artwork - drop the official SVGs into
+// public/badges/ (see CLAUDE.md / chat for where to grab them). Apple and
+// Google's brand guidelines require using their badges unmodified, so this
+// intentionally doesn't recreate them in code.
+function StoreBadge({ src, alt, height = 52 }) {
   return (
-    <a
-      href="#"
-      className="flex items-center gap-3 rounded-2xl bg-plum-900 px-5 py-3 text-white transition-transform hover:-translate-y-0.5"
-    >
-      <Icon className="h-7 w-7" />
-      <span className="text-left leading-tight">
-        <span className="block text-[0.65rem] uppercase tracking-wide text-white/70">{top}</span>
-        <span className="block font-display text-lg font-semibold">{bottom}</span>
-      </span>
+    <a href="#" className="inline-block transition-transform hover:-translate-y-0.5">
+      <img src={src} alt={alt} height={height} className="h-[52px] w-auto" />
     </a>
   )
 }
@@ -149,8 +146,8 @@ export default function Download() {
             <div className="mt-9">
               <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blush-400">launching on</p>
               <div className="flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-                <StoreBadge icon={Apple} top="soon on the" bottom="App Store" />
-                <StoreBadge icon={Play} top="soon on" bottom="Google Play" />
+                <StoreBadge src="/badges/app-store.svg" alt="Download on the App Store" />
+                <StoreBadge src="/badges/google-play.svg" alt="Get it on Google Play" />
               </div>
             </div>
           </Reveal>

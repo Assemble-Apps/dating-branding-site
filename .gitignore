@@ -6,13 +6,13 @@
 # waitlist signups - real subscriber emails, never commit
 server/data/
 
+
 # dependencies
 node_modules
 .pnp
 .pnp.js
 
 branding idea basics/
-
 # build
 dist
 dist-ssr
