@@ -484,13 +484,45 @@ export const MatchesCalendar = memo(function MatchesCalendar({
               const formattedDate = formatTooltipDate(tooltip.date)
               const text =
                 count === 0 ? `no riss-tory on ${formattedDate}.` : `${count} match${count !== 1 ? 'es' : ''} on ${formattedDate}.`
+
+              // Clamp horizontally so the box never overhangs the left/right
+              // edge of the scroll container (cells in the first/last few
+              // weeks would otherwise render half off-screen and get clipped).
+              const TOOLTIP_HALF_W = 95
+              const clampedX = Math.min(Math.max(tooltip.x, TOOLTIP_HALF_W), Math.max(svgWidth - TOOLTIP_HALF_W, TOOLTIP_HALF_W))
+
+              // Cells in the top row don't have enough headroom above them
+              // for the tooltip - flip it to render below instead of getting
+              // clipped at the top of the scroll container.
+              const showBelow = tooltip.y < 36
+
               return (
                 <div
                   className="pointer-events-none absolute z-50 whitespace-nowrap rounded-lg bg-ink-800 px-2.5 py-1 text-[11px] font-medium text-mist-100 shadow-card"
-                  style={{ left: tooltip.x, top: tooltip.y, transform: 'translate(-50%, calc(-100% - 6px))' }}
+                  style={{
+                    left: clampedX,
+                    top: tooltip.y,
+                    transform: showBelow
+                      ? `translate(-50%, calc(${cellSize}px + 6px))`
+                      : 'translate(-50%, calc(-100% - 6px))',
+                  }}
                 >
                   {text}
-                  <div className="absolute bottom-0 left-1/2 h-1.5 w-1.5 -translate-x-1/2 translate-y-1/2 rotate-45 bg-ink-800" />
+                  <div
+                    className={cn(
+                      'absolute h-1.5 w-1.5 rotate-45 bg-ink-800',
+                      showBelow ? 'top-0 -translate-y-1/2' : 'bottom-0 translate-y-1/2',
+                    )}
+                    style={{
+                      // The box can shift away from the hovered cell to stay
+                      // on-screen (see clampedX above) - offset the arrow by
+                      // that same amount so it still points at the real cell,
+                      // but capped well inside the box's own half-width so it
+                      // can never detach and float outside the box entirely.
+                      left: `calc(50% + ${Math.max(-55, Math.min(55, tooltip.x - clampedX))}px)`,
+                      transform: 'translateX(-50%)',
+                    }}
+                  />
                 </div>
               )
             })()}

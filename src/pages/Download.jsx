@@ -26,8 +26,6 @@ const perks = [
   { text: 'Help shape what we build next' },
 ]
 
-const WAITLIST_URL = import.meta.env.VITE_WAITLIST_API_URL
-
 export default function Download() {
   const [email, setEmail] = useState('')
   const [done, setDone] = useState(false)
@@ -37,19 +35,17 @@ export default function Download() {
     e.preventDefault()
     if (!email.trim()) return
 
-    if (WAITLIST_URL) {
-      setLoading(true)
-      try {
-        await fetch(WAITLIST_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
-        })
-      } catch {
-        // fail silently - still show success so UX isn't broken
-      } finally {
-        setLoading(false)
-      }
+    setLoading(true)
+    try {
+      await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+    } catch {
+      // fail silently - still show success so UX isn't broken
+    } finally {
+      setLoading(false)
     }
 
     setDone(true)

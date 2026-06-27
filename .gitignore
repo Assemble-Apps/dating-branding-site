@@ -3,6 +3,9 @@
 .env.local
 .env.*.local
 
+# waitlist signups - real subscriber emails, never commit
+server/data/
+
 # dependencies
 node_modules
 .pnp
