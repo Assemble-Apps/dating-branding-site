@@ -4,6 +4,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import express from 'express'
 import { Resend } from 'resend'
+import { buildWelcomeEmail } from './welcomeEmail.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const distPath = path.join(__dirname, '..', 'dist')
@@ -55,21 +56,38 @@ app.post('/api/waitlist', async (req, res) => {
 
   // Everything below is best-effort - the signup is already durably saved
   // above, so a Resend outage should never turn into an error response.
-  if (isNew && resend && process.env.WAITLIST_NOTIFY_EMAIL) {
-    // Resend's sandbox sender - works without verifying a domain, but can
-    // only deliver to your own account email. Switch to an @rissme.com
-    // address once that domain is verified in the Resend dashboard.
-    resend.emails
-      .send({
-        from: 'onboarding@resend.dev',
-        to: process.env.WAITLIST_NOTIFY_EMAIL,
-        subject: 'New Rissme waitlist signup',
-        text: `${email} just joined the Rissme waitlist.`,
-      })
-      .then(({ error }) => {
-        if (error) console.error('[waitlist] notify email failed (non-fatal):', error)
-      })
-      .catch((err) => console.error('[waitlist] notify email failed (non-fatal):', err))
+  if (isNew && resend) {
+    // Internal heads-up. Resend's sandbox sender works without verifying a
+    // domain, but can only deliver to your own account email - fine here
+    // since the recipient is always you, not the subscriber.
+    if (process.env.WAITLIST_NOTIFY_EMAIL) {
+      resend.emails
+        .send({
+          from: 'onboarding@resend.dev',
+          to: process.env.WAITLIST_NOTIFY_EMAIL,
+          subject: 'New Rissme waitlist signup',
+          text: `${email} just joined the Rissme waitlist.`,
+        })
+        .then(({ error }) => {
+          if (error) console.error('[waitlist] notify email failed (non-fatal):', error)
+        })
+        .catch((err) => console.error('[waitlist] notify email failed (non-fatal):', err))
+    }
+
+    // The actual welcome email, sent to the subscriber. This needs a
+    // verified domain in Resend (Resend > Domains > Add domain) - sending
+    // to anyone other than your own account email fails until that's done.
+    // WAITLIST_FROM_EMAIL should be an address on that verified domain,
+    // e.g. hello@rissme.com.
+    if (process.env.WAITLIST_FROM_EMAIL) {
+      const { subject, text, html } = buildWelcomeEmail(email)
+      resend.emails
+        .send({ from: process.env.WAITLIST_FROM_EMAIL, to: email, subject, text, html })
+        .then(({ error }) => {
+          if (error) console.error('[waitlist] welcome email failed (non-fatal):', error)
+        })
+        .catch((err) => console.error('[waitlist] welcome email failed (non-fatal):', err))
+    }
 
     if (process.env.RESEND_AUDIENCE_ID) {
       resend.contacts
