@@ -216,14 +216,50 @@ export const MatchesCalendar = memo(function MatchesCalendar({
       }),
     )
 
-    const player = { x: width / 2 - 15, y: height - 25, width: 30, height: 20, speed: 4, direction: 1, color: '#FF69B4' }
+    const player = { x: width / 2 - 15, y: height - 25, width: 30, height: 20, color: '#FF69B4' }
     let bullets = []
+    let targetX = player.x
     let lastShot = 0
-    const cooldown = 140
+    const fireCooldown = 180
 
     const shoot = () => {
       bullets.push({ x: player.x + player.width / 2 - 1.5, y: player.y - 4, vy: -6, width: 3, height: 8, color: '#FFFFFF' })
     }
+
+    // Player control: ship follows the cursor (or finger, on touch - Pointer
+    // Events unify both under clientX), click/tap to fire.
+    const handlePointerMove = (e) => {
+      const rect = canvas.getBoundingClientRect()
+      targetX = e.clientX - rect.left - player.width / 2
+    }
+    const handlePointerDown = (e) => {
+      handlePointerMove(e)
+      shoot()
+    }
+    canvas.addEventListener('pointermove', handlePointerMove)
+    canvas.addEventListener('pointerdown', handlePointerDown)
+
+    // Keyboard control: WASD/arrows to steer, Space/W/Up to shoot. Bound on
+    // window (not the canvas) since a <canvas> isn't focusable by default.
+    const keys = { left: false, right: false }
+    const handleKeyDown = (e) => {
+      if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') {
+        keys.left = true
+        e.preventDefault()
+      } else if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
+        keys.right = true
+        e.preventDefault()
+      } else if (e.key === ' ' || e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
+        shoot()
+        e.preventDefault()
+      }
+    }
+    const handleKeyUp = (e) => {
+      if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') keys.left = false
+      else if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') keys.right = false
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
 
     const stars = Array.from({ length: 140 }).map(() => ({
       x: Math.random() * width,
@@ -265,19 +301,21 @@ export const MatchesCalendar = memo(function MatchesCalendar({
         minX = minWi * step
         maxX = Math.max(minX, Math.min(width - player.width, (maxWi + 1) * step - player.width))
       }
+
+      // WASD/arrows nudge the same target the cursor steers - whichever you
+      // used most recently wins, since the other one only moves it on input.
+      if (keys.left) targetX -= 6
+      if (keys.right) targetX += 6
+
+      // Glide toward the target instead of snapping straight to it - feels
+      // like steering a ship rather than teleporting it.
+      const clampedTarget = Math.max(minX, Math.min(maxX, targetX))
+      player.x += (clampedTarget - player.x) * 0.25
       player.x = Math.max(minX, Math.min(maxX, player.x))
 
-      player.x += player.speed * player.direction
-      if (player.x >= maxX) {
-        player.x = maxX
-        player.direction = -1
-      } else if (player.x <= minX) {
-        player.x = minX
-        player.direction = 1
-      }
-
+      // Auto-fire on a timer - you steer, the ship handles shooting.
       const now = Date.now()
-      if (now - lastShot >= cooldown) {
+      if (now - lastShot >= fireCooldown) {
         shoot()
         lastShot = now
       }
@@ -400,7 +438,13 @@ export const MatchesCalendar = memo(function MatchesCalendar({
     }
     animationFrameId = requestAnimationFrame(loop)
 
-    return () => cancelAnimationFrame(animationFrameId)
+    return () => {
+      cancelAnimationFrame(animationFrameId)
+      canvas.removeEventListener('pointermove', handlePointerMove)
+      canvas.removeEventListener('pointerdown', handlePointerDown)
+      window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
+    }
   }, [gameActive, data, weeks, step, cellSize, cellGap, monthLabelHeight, id, svgWidth, svgHeight])
 
   const cellRx = cellShape === 'circle' ? cellSize / 2 : cellSize * 0.2
@@ -474,7 +518,7 @@ export const MatchesCalendar = memo(function MatchesCalendar({
             <canvas
               ref={canvasRef}
               className="absolute inset-0 z-10 cursor-crosshair pointer-events-auto"
-              style={{ width: svgWidth, height: svgHeight + 80 }}
+              style={{ width: svgWidth, height: svgHeight + 80, touchAction: 'none' }}
             />
           )}
 
@@ -563,6 +607,9 @@ export const MatchesCalendar = memo(function MatchesCalendar({
                     )}
                   />
                 </button>
+                {gameActive && (
+                  <span className="select-none text-[10px] text-mist-300/70">mouse or A/D to move - it fires on its own</span>
+                )}
               </div>
             </div>
           )}
