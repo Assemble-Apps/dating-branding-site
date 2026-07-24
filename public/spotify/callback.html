@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Connecting Spotify - rissme</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #EDE3D3;
+      background-image:
+        radial-gradient(at 12% 16%, rgba(255, 20, 147, 0.22) 0px, transparent 50%),
+        radial-gradient(at 86% 10%, rgba(255, 105, 180, 0.22) 0px, transparent 45%),
+        radial-gradient(at 80% 84%, rgba(255, 141, 199, 0.26) 0px, transparent 52%),
+        radial-gradient(at 18% 88%, rgba(255, 192, 219, 0.22) 0px, transparent 48%);
+      color: #100D18;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(28px) saturate(170%);
+      -webkit-backdrop-filter: blur(28px) saturate(170%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 28px rgba(11, 9, 17, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #1DB954;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .icon svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(16, 13, 24, 0.65);
+      margin: 0 0 24px;
+    }
+
+    .spinner {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 3px solid rgba(16, 13, 24, 0.14);
+      border-top-color: #FF1493;
+      margin: 0 auto 20px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      color: #ffffff;
+      text-decoration: none;
+      background: linear-gradient(100deg, #FF1493, #FF69B4 55%, #FF8DC7);
+      box-shadow: 0 10px 22px -10px rgba(255, 105, 180, 0.5);
+      border: none;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .error-icon {
+      background: #14101f;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="state-connecting">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.586 14.424a.622.622 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 1 1-.277-1.215c3.809-.871 7.077-.496 9.712 1.115.293.18.386.564.207.857zm1.223-2.723a.78.78 0 0 1-1.072.257c-2.688-1.652-6.786-2.131-9.965-1.166a.78.78 0 1 1-.453-1.492c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 0 1 .257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.936.936 0 1 1-.543-1.79c3.532-1.072 9.404-.865 13.115 1.335a.936.936 0 0 1-.955 1.611z" fill="white"/>
+        </svg>
+      </div>
+      <h1>Connecting your Spotify</h1>
+      <p>Hang tight, we're linking your account and sending you back to rissme.</p>
+      <div class="spinner"></div>
+    </div>
+
+    <div id="state-error" class="hidden">
+      <div class="icon error-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+      </div>
+      <h1 id="error-title">Couldn't connect Spotify</h1>
+      <p id="error-message">Something went wrong. Please try again from the app.</p>
+    </div>
+
+    <div id="state-manual" class="hidden">
+      <h1>Return to the app</h1>
+      <p>If rissme didn't open automatically, tap below.</p>
+      <a id="open-app-link" class="btn" href="#">Open rissme</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get('code');
+      var state = params.get('state');
+      var error = params.get('error');
+
+      var connectingEl = document.getElementById('state-connecting');
+      var errorEl = document.getElementById('state-error');
+      var manualEl = document.getElementById('state-manual');
+      var errorMessageEl = document.getElementById('error-message');
+      var openAppLinkEl = document.getElementById('open-app-link');
+
+      function showError(message) {
+        connectingEl.classList.add('hidden');
+        errorEl.classList.remove('hidden');
+        if (message) errorMessageEl.textContent = message;
+      }
+
+      function showManual(deepLink) {
+        connectingEl.classList.add('hidden');
+        manualEl.classList.remove('hidden');
+        openAppLinkEl.href = deepLink;
+      }
+
+      if (error) {
+        var deniedDeepLink = 'rissme://spotify-callback?error=' + encodeURIComponent(error);
+        window.location.href = deniedDeepLink;
+        showError(error === 'access_denied'
+          ? 'You declined Spotify access. You can try connecting again from the app anytime.'
+          : 'Spotify returned an error. Please try again from the app.');
+        setTimeout(function () { showManual(deniedDeepLink); }, 1500);
+        return;
+      }
+
+      if (!code || !state) {
+        showError('This link is missing required information. Please restart the connection from the app.');
+        return;
+      }
+
+      var deepLink = 'rissme://spotify-callback?code=' + encodeURIComponent(code) + '&state=' + encodeURIComponent(state);
+      window.location.href = deepLink;
+
+      setTimeout(function () {
+        showManual(deepLink);
+      }, 1800);
+    })();
+  </script>
+</body>
+</html>
