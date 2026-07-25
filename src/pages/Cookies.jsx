@@ -21,7 +21,7 @@ const cookieTypes = [
     name: 'Essential cookies',
     canOptOut: false,
     color: 'from-peach-300 to-blush-400',
-    description: 'These make the site work. They handle things like keeping you logged in, remembering your session, and basic security checks. Without these, Rissme can't function.',
+    description: "These make the site work. They handle things like keeping you logged in, remembering your session, and basic security checks. Without these, Rissme can't function.",
     examples: ['Session token (keeps you logged in)', 'CSRF protection token', 'Cookie consent record'],
   },
   {
@@ -37,7 +37,7 @@ const cookieTypes = [
     name: 'Functional cookies',
     canOptOut: true,
     color: 'from-lilac-300 to-blush-300',
-    description: 'Remember your preferences so you don't have to set them every visit — things like your theme choice or any toggles you've set.',
+    description: "Remember your preferences so you don't have to set them every visit — things like your theme choice or any toggles you've set.",
     examples: ['UI preference settings', 'Locale / language preference'],
   },
   {
@@ -45,7 +45,7 @@ const cookieTypes = [
     name: 'Advertising cookies',
     canOptOut: false,
     color: 'from-peach-200 to-blush-200',
-    description: 'We don't use them. Full stop. No ad networks, no retargeting pixels, no Facebook/TikTok conversion tracking.',
+    description: "We don't use them. Full stop. No ad networks, no retargeting pixels, no Facebook/TikTok conversion tracking.",
     examples: ['None — we don\'t run ad cookies'],
     isNone: true,
   },
@@ -197,7 +197,7 @@ export default function Cookies() {
                 {[
                   { title: 'Browser settings', desc: 'All major browsers let you view, block, or delete cookies. Blocking essential cookies will break login and core site features.' },
                   { title: 'Google Analytics opt-out', desc: 'Install the Google Analytics Opt-out Browser Add-on (available at tools.google.com/dlpage/gaoptout) to prevent your data reaching GA.' },
-                  { title: 'Incognito / private mode', desc: 'Most cookies are not persisted between private sessions. Good for one-off visits where you don't want cookies saved.' },
+                  { title: 'Incognito / private mode', desc: "Most cookies are not persisted between private sessions. Good for one-off visits where you don't want cookies saved." },
                 ].map((item) => (
                   <div key={item.title} className="rounded-2xl border border-white/60 bg-white/30 px-5 py-4">
                     <p className="font-semibold text-ink-800">{item.title}</p>

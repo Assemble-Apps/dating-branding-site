@@ -140,7 +140,7 @@ export default function Terms() {
                 'Use your real name, real photos, and accurate information on your profile — no catfishing, ever',
                 'You may only create one account. Duplicate accounts (especially after a ban) are not permitted',
                 'Notify us immediately at support@rissme.com if you suspect unauthorised access to your account',
-                'Don't transfer or sell your account to anyone else',
+                "Don't transfer or sell your account to anyone else",
               ]} />
               <P>You can delete your account at any time via Settings → Delete account. Deletion is permanent and removes your data within 30 days.</P>
             </Section>
@@ -167,8 +167,8 @@ export default function Terms() {
               <P>You agree that content you post:</P>
               <UL items={[
                 'Is yours to share (you hold the rights or have permission)',
-                'Doesn't infringe anyone else's intellectual property, privacy, or rights',
-                'Doesn't contain nudity, graphic violence, or illegal material',
+                "Doesn't infringe anyone else's intellectual property, privacy, or rights",
+                "Doesn't contain nudity, graphic violence, or illegal material",
                 'Is accurate and not misleading',
               ]} />
               <P>We may remove content that violates these rules without notice.</P>
@@ -178,11 +178,11 @@ export default function Terms() {
               <P>Premium plans are available in 3-day, 10-day, and 30-day durations. The 30-day plan includes 3 bonus days.</P>
               <UL items={[
                 'All prices are in INR and inclusive of applicable GST',
-                'Payments are processed by third-party payment providers — we don't store your card details',
+                "Payments are processed by third-party payment providers — we don't store your card details",
                 'Premium features activate immediately upon successful payment',
                 'Plans are non-auto-renewing by default — you choose when to top up',
-                'Refunds: if a technical issue on our side prevented you from using Premium features you paid for, contact us within 7 days and we'll make it right',
-                'We reserve the right to change pricing with 14 days' notice to existing users',
+                "Refunds: if a technical issue on our side prevented you from using Premium features you paid for, contact us within 7 days and we'll make it right",
+                "We reserve the right to change pricing with 14 days' notice to existing users",
               ]} />
               <Note>Exact pricing is not yet published. By continuing to use the App you acknowledge that pricing will be disclosed before any purchase is required.</Note>
             </Section>
@@ -211,7 +211,7 @@ export default function Terms() {
               <UL items={[
                 'Any indirect, incidental, or consequential damages arising from your use of the App',
                 'Loss of data, loss of profits, or loss of goodwill',
-                'Actions or content of other users — we moderate, but we can't see everything in real time',
+                "Actions or content of other users — we moderate, but we can't see everything in real time",
                 'Third-party services (payment processors, analytics, etc.) linked to or integrated with the App',
               ]} />
               <P>Nothing in these Terms limits our liability for fraud, death, or personal injury caused by our negligence, as required by Indian law.</P>

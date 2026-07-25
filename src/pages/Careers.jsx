@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Briefcase, Heart as HeartIcon, Zap, Users, Globe, Coffee, ArrowRight, Mail, Sparkles } from 'lucide-react'
+import { Briefcase, Heart as HeartIcon, Zap, Users, Globe, Coffee, ArrowRight, Mail, Sparkles, CheckCircle2 } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading, stagger, fadeUp } from '../components/ui'
 import { Heart, Sparkle, FloatingBlobs } from '../components/Decor'
@@ -8,32 +8,32 @@ const values = [
   {
     icon: HeartIcon,
     title: 'Real > perfect',
-    body: 'We ship things that feel human. We'd rather be honest and imperfect than polished and hollow.',
+    body: "We ship things that feel human. We'd rather be honest and imperfect than polished and hollow.",
     color: 'from-peach-300 to-blush-400',
   },
   {
     icon: Zap,
     title: 'Move fast, break ick',
-    body: 'We iterate quickly, learn from users, and cut anything that doesn't serve real connections.',
+    body: "We iterate quickly, learn from users, and cut anything that doesn't serve real connections.",
     color: 'from-blush-300 to-lilac-400',
   },
   {
     icon: Users,
     title: 'Safety by default',
-    body: 'Every feature we build gets pressure-tested for how it could be misused. Safety isn't a feature — it's the foundation.',
+    body: "Every feature we build gets pressure-tested for how it could be misused. Safety isn't a feature — it's the foundation.",
     color: 'from-lilac-300 to-blush-300',
   },
   {
     icon: Globe,
     title: 'Built for Bharat',
-    body: 'We're building a product that understands Indian dating culture — not a copy-paste of what works in San Francisco.',
+    body: "We're building a product that understands Indian dating culture — not a copy-paste of what works in San Francisco.",
     color: 'from-peach-200 to-blush-300',
   },
 ]
 
 const perks = [
   { icon: Coffee, text: 'Remote-first team — work from wherever your Wi-Fi works' },
-  { icon: Sparkles, text: 'Equity for early hires — you own a piece of what you're building' },
+  { icon: Sparkles, text: "Equity for early hires — you own a piece of what you're building" },
   { icon: HeartIcon, text: 'Health insurance from day one' },
   { icon: Zap, text: 'Learning budget — books, courses, conferences, whatever helps you grow' },
   { icon: Users, text: 'Small team, high ownership — no committees, no bureaucracy' },
@@ -45,13 +45,13 @@ const openRoles = [
     title: 'Full-Stack Engineer (React + Spring Boot)',
     type: 'Full-time · Remote',
     team: 'Engineering',
-    description: 'You'll own features end-to-end — from the Figma mock to the database query. We use React (Vite), Tailwind, and Spring Boot on Java 21. Experience with WebRTC or real-time systems is a big plus.',
+    description: "You'll own features end-to-end — from the Figma mock to the database query. We use React (Vite), Tailwind, and Spring Boot on Java 21. Experience with WebRTC or real-time systems is a big plus.",
   },
   {
     title: 'Growth & Community Manager',
     type: 'Full-time · Remote',
     team: 'Growth',
-    description: 'Drive waitlist growth and build the Rissme community before and after launch. You'll own social, influencer partnerships, and the content calendar. You live on Instagram Reels and know what actually goes viral.',
+    description: "Drive waitlist growth and build the Rissme community before and after launch. You'll own social, influencer partnerships, and the content calendar. You live on Instagram Reels and know what actually goes viral.",
   },
   {
     title: 'Product Designer (UI/UX)',
@@ -134,9 +134,9 @@ export default function Careers() {
       <section className="section pb-16 sm:pb-24">
         <Reveal>
           <SectionHeading
-            eyebrow="open roles"
-            title="who we're looking for"
-            sub="We're hiring across engineering, design, and growth. All roles are remote and based in India."
+            eyebrow="current openings"
+            title="positions for now"
+            sub="We're a lean early team — all current roles have been filled. Stay tuned for new openings."
           />
         </Reveal>
 
@@ -147,30 +147,27 @@ export default function Careers() {
           viewport={{ once: true, margin: '-60px' }}
           className="mt-10 space-y-5"
         >
-          {openRoles.map((role, i) => (
+          {openRoles.map((role) => (
             <motion.div
               key={role.title}
               variants={fadeUp}
-              className="group rounded-[2rem] border border-white/65 bg-white/52 p-8 shadow-card backdrop-blur-md transition-all hover:border-blush-300/40"
+              className="rounded-[2rem] border border-white/50 bg-white/30 p-8 shadow-card backdrop-blur-md opacity-75"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-full bg-gradient-to-br from-peach-300 to-blush-400 px-3 py-0.5 text-xs font-bold text-white">
+                    <span className="rounded-full bg-ink-800/20 px-3 py-0.5 text-xs font-bold text-ink-700/60">
                       {role.team}
                     </span>
-                    <span className="text-xs text-ink-700/55">{role.type}</span>
+                    <span className="text-xs text-ink-700/40">{role.type}</span>
                   </div>
-                  <h3 className="mt-3 font-display text-xl font-semibold text-ink-800 sm:text-2xl">{role.title}</h3>
-                  <p className="mt-2 text-ink-700/80 leading-relaxed">{role.description}</p>
+                  <h3 className="mt-3 font-display text-xl font-semibold text-ink-700/60 line-through decoration-ink-700/30 sm:text-2xl">{role.title}</h3>
+                  <p className="mt-2 text-ink-700/50 leading-relaxed">{role.description}</p>
                 </div>
                 <div className="shrink-0">
-                  <a
-                    href={`mailto:careers@rissme.com?subject=Application: ${encodeURIComponent(role.title)}`}
-                    className="inline-flex items-center gap-2 rounded-2xl border border-white/65 bg-white/52 px-5 py-3 text-sm font-semibold text-ink-800 shadow-sm backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-blush-300/50 hover:shadow-md"
-                  >
-                    Apply <ArrowRight className="h-4 w-4" />
-                  </a>
+                  <span className="inline-flex items-center gap-2 rounded-2xl border border-green-200/60 bg-green-50/60 px-5 py-3 text-sm font-semibold text-green-700/80">
+                    <CheckCircle2 className="h-4 w-4" /> Position filled
+                  </span>
                 </div>
               </div>
             </motion.div>
