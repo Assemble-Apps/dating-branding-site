@@ -6,6 +6,7 @@ import Safety from './pages/Safety'
 import Premium from './pages/Premium'
 import About from './pages/About'
 import Download from './pages/Download'
+import Privacy from './pages/Privacy'
 import { Button } from './components/ui'
 import { Heart, FloatingBlobs } from './components/Decor'
 import { HeartCrack } from 'lucide-react'
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="/premium" element={<Premium />} />
         <Route path="/about" element={<About />} />
         <Route path="/download" element={<Download />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

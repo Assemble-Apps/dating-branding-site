@@ -25,9 +25,9 @@ const cols = [
     title: 'Legal',
     links: [
       { to: '/safety', label: 'Community guidelines' },
-      { to: '/safety', label: 'Privacy' },
-      { to: '/safety', label: 'Terms' },
-      { to: '/safety', label: 'Cookie settings' },
+      { to: '/privacy', label: 'Privacy policy' },
+      { to: '/privacy', label: 'Terms' },
+      { to: '/privacy', label: 'Cookie settings' },
     ],
   },
 ]
