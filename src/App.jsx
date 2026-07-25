@@ -7,6 +7,11 @@ import Premium from './pages/Premium'
 import About from './pages/About'
 import Download from './pages/Download'
 import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
+import Cookies from './pages/Cookies'
+import Blog from './pages/Blog'
+import Careers from './pages/Careers'
+import Press from './pages/Press'
 import { Button } from './components/ui'
 import { Heart, FloatingBlobs } from './components/Decor'
 import { HeartCrack } from 'lucide-react'
@@ -44,6 +49,11 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/download" element={<Download />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/cookies" element={<Cookies />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/press" element={<Press />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

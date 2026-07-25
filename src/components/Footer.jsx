@@ -16,9 +16,9 @@ const cols = [
     title: 'Company',
     links: [
       { to: '/about', label: 'About us' },
-      { to: '/about', label: 'Careers' },
-      { to: '/about', label: 'Press kit' },
-      { to: '/about', label: 'Blog' },
+      { to: '/careers', label: 'Careers' },
+      { to: '/press', label: 'Press kit' },
+      { to: '/blog', label: 'Blog' },
     ],
   },
   {
@@ -26,8 +26,8 @@ const cols = [
     links: [
       { to: '/safety', label: 'Community guidelines' },
       { to: '/privacy', label: 'Privacy policy' },
-      { to: '/privacy', label: 'Terms' },
-      { to: '/privacy', label: 'Cookie settings' },
+      { to: '/terms', label: 'Terms of service' },
+      { to: '/cookies', label: 'Cookie policy' },
     ],
   },
 ]
