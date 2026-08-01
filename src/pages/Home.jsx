@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Plus, Minus, Star, Sparkles, Cake, Zap, Cherry, Headphones, Award, Gift } from 'lucide-react'
 import { Button, Reveal, Marquee, SectionHeading, stagger, fadeUp } from '../components/ui'
-import { PhoneFrame, ChatScreen } from '../components/PhoneMockup'
+import IphoneChat from '../components/ui/IphoneChat'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
 import { TypewriterWord, DrawUnderline, TwinkleSparkle } from '../components/AnimatedText'
 import { ScrollPortraitWall } from '../components/ui/scroll-portrait-wall'
@@ -11,6 +11,7 @@ import RadialOrbitalTimeline from '../components/ui/radial-orbital-timeline'
 import GlobeStickers from '../components/ui/globe-stickers'
 import MatchesCalendar from '../components/ui/matches-calendar'
 import VerifiedWall from '../components/ui/verified-wall'
+import PhoneCarousel from '../components/ui/phone-carousel'
 import {
   stats,
   marqueeWords,
@@ -259,6 +260,64 @@ function HowItWorks() {
   )
 }
 
+/* ── App preview carousel ────────────────────────────────────────── */
+const appScreens = [
+  { src: '/screens/profile.jpg',  alt: 'Rissme profile screen'  },
+  { src: '/screens/swipe.jpg',    alt: 'Rissme swipe screen'    },
+  { src: '/screens/passport.jpg', alt: 'Rissme passport screen' },
+]
+
+function AppPreview() {
+  return (
+    <section className="relative overflow-hidden py-20 sm:py-28">
+      <div className="section">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
+          {/* Copy */}
+          <div>
+            <Reveal>
+              <span className="chip">in your pocket</span>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-ink-800 sm:text-5xl">
+                swipe like you mean it,{' '}
+                <span className="text-gradient">not like a chore.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mt-5 max-w-md text-lg text-ink-700/75">
+                Clean, fast, and built around real connections. Rissme fits in your pocket and gets out of the way — so you spend less time on the app and more time on the date.
+              </p>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <ul className="mt-8 space-y-3">
+                {[
+                  'Verified profiles only — zero catfish, guaranteed',
+                  '24-hour match window keeps things moving',
+                  'Super-like, rewind, and boost when it counts',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-ink-700/80">
+                    <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-gradient-to-br from-peach-300 to-blush-400 text-white">
+                      <svg className="h-3 w-3" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          {/* Carousel */}
+          <Reveal delay={0.1}>
+            <PhoneCarousel images={appScreens} />
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ── Verified callout ─────────────────────────────────────────────── */
 function VerifiedCallout() {
   return (
@@ -285,9 +344,7 @@ function VerifiedCallout() {
           </div>
           <div className="relative flex justify-center">
             <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
-              <PhoneFrame className="w-[240px]">
-                <ChatScreen />
-              </PhoneFrame>
+              <IphoneChat />
             </motion.div>
           </div>
         </div>
@@ -427,6 +484,7 @@ export default function Home() {
       <RealOnesWall />
       <Features />
       <HowItWorks />
+      <AppPreview />
       <VerifiedCallout />
       <Testimonials />
       <Faq />

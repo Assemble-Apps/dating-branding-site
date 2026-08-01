@@ -1,241 +1,93 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { motion, useScroll, useSpring, useMotionValue } from 'framer-motion'
 import { Lock } from 'lucide-react'
-
 import { realOnes } from '../../data/content'
 import { Heart, Sparkle } from '../Decor'
+import MarqueeAlongSvgPath from './marquee-along-svg-path'
 
-/* Scroll-driven "verified reel": a swarm of real, verified faces flies in from
- * scatter, gathers into a ring, then blooms into a rainbow arc as you scroll -
- * all driven by NATURAL page scroll (no wheel hijacking). Flip a card to reveal
- * its verified badge. Adapted from a TS/Next intro-hero to our JS + pastel theme. */
+const WAVE_PATH =
+  'M1 209.434C58.5872 255.935 387.926 325.938 482.583 209.434C600.905 63.8051 525.516 -43.2211 427.332 19.9613C329.149 83.1436 352.902 242.723 515.041 267.302C644.752 286.966 943.56 181.94 995 156.5'
+const VIEW_BOX = '0 0 996 330'
 
-const IMG_W = 66
-const IMG_H = 92
-const CARD_COUNT = 16
-const CARDS = Array.from({ length: CARD_COUNT }, (_, i) => realOnes[i % realOnes.length])
+// 13 faces × repeat=2 = 26 items — same ratio as the demo (13 imgs × 2 repeats)
+// 26 × 56px ≈ 1456px ≈ path arc length → cards nearly touching, just like the demo
+const FACES = realOnes.slice(0, 13)
 
-const lerp = (a, b, t) => a * (1 - t) + b * t
-const clamp01 = (v) => Math.min(1, Math.max(0, v))
-
-function FlipCard({ src, alt, target }) {
+function FaceCard({ src, name }) {
   return (
-    <motion.div
-      animate={{
-        x: target.x,
-        y: target.y,
-        rotate: target.rotation,
-        scale: target.scale,
-        opacity: target.opacity,
-      }}
-      transition={{ type: 'spring', stiffness: 45, damping: 16 }}
-      style={{
-        position: 'absolute',
-        width: IMG_W,
-        height: IMG_H,
-        transformStyle: 'preserve-3d',
-        perspective: 1000,
-      }}
-      className="group cursor-pointer"
+    <div
+      className="group relative"
+      style={{ width: 56, height: 56 }}
     >
-      <motion.div
-        className="relative h-full w-full"
-        style={{ transformStyle: 'preserve-3d' }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-        whileHover={{ rotateY: 180 }}
-      >
-        {/* Front - the verified human */}
-        <div
-          className="absolute inset-0 overflow-hidden rounded-2xl border-2 border-white bg-peach-100 shadow-card"
-          style={{ backfaceVisibility: 'hidden' }}
-        >
-          <img
-            src={src}
-            alt={alt}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-            onError={(e) => {
-              e.currentTarget.style.display = 'none'
-            }}
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-plum-900/10 transition-colors group-hover:bg-transparent" />
-        </div>
-
-        {/* Back - verified badge */}
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-white bg-gradient-to-br from-peach-400 to-lilac-400 text-white shadow-card"
-          style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-        >
-          <Heart className="h-5 w-5 fill-white text-white" />
-          <p className="mt-1 text-[8px] font-bold uppercase tracking-[0.2em]">verified</p>
-        </div>
-      </motion.div>
-    </motion.div>
+      <div className="h-full w-full overflow-hidden rounded-xl border-[2.5px] border-white shadow-[0_3px_12px_rgba(0,0,0,0.18)] transition-transform duration-300 group-hover:scale-125">
+        <img
+          src={src}
+          alt={name}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          onError={(e) => { e.currentTarget.style.display = 'none' }}
+          className="h-full w-full object-cover"
+        />
+      </div>
+      {/* tiny verified badge — stays subtle, not distracting */}
+      <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-white bg-gradient-to-br from-peach-400 to-blush-400 text-[5px] leading-none text-white">
+        ✓
+      </span>
+    </div>
   )
 }
 
 export default function VerifiedReel() {
-  const sectionRef = useRef(null)
-  const stageRef = useRef(null)
-  const [size, setSize] = useState({ width: 0, height: 0 })
-
-  // Measure the pinned stage so circle/arc maths are responsive.
-  useEffect(() => {
-    const el = stageRef.current
-    if (!el) return
-    const ro = new ResizeObserver(([entry]) => {
-      setSize({ width: entry.contentRect.width, height: entry.contentRect.height })
-    })
-    ro.observe(el)
-    setSize({ width: el.offsetWidth, height: el.offsetHeight })
-    return () => ro.disconnect()
-  }, [])
-
-  // Drive everything from the section's own scroll progress (0 → 1).
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end end'],
-  })
-  const smooth = useSpring(scrollYProgress, { stiffness: 60, damping: 20 })
-  const [p, setP] = useState(0)
-  useEffect(() => smooth.on('change', setP), [smooth])
-
-  // Gentle mouse parallax on the arc.
-  const mouseX = useMotionValue(0)
-  const smoothMouseX = useSpring(mouseX, { stiffness: 30, damping: 20 })
-  const [parallax, setParallax] = useState(0)
-  useEffect(() => smoothMouseX.on('change', setParallax), [smoothMouseX])
-
-  const onMouseMove = (e) => {
-    const el = stageRef.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1
-    mouseX.set(nx * 70)
-  }
-
-  // Stable random scatter origin per card.
-  const scatter = useMemo(
-    () =>
-      CARDS.map(() => ({
-        x: (Math.random() - 0.5) * 1400,
-        y: (Math.random() - 0.5) * 900,
-        rotation: (Math.random() - 0.5) * 160,
-        scale: 0.6,
-      })),
-    [],
-  )
-
-  // Phase progress slices: scatter → ring → arc, then the arc just holds
-  // (clean + symmetric) for the rest of the scroll so it can be admired.
-  const assembleP = clamp01(p / 0.38) // scatter → ring
-  const morphP = clamp01((p - 0.38) / 0.34) // ring → arc (settled by p≈0.72)
-
-  const introOpacity = clamp01(1 - morphP * 2)
-  const arcOpacity = clamp01((morphP - 0.5) / 0.4)
-
-  const isMobile = size.width < 768
-  const W = size.width || 800
-  const H = size.height || 600
-  const minDim = Math.min(W, H)
-  const ringRadius = Math.min(minDim * 0.34, 300)
-
-  // Fit the rainbow arch to the stage: pick a visible half-width + arch height,
-  // then solve the radius/angle so the endpoints land near the screen edges
-  // (rather than the original's oversized radius that flew cards off-screen).
-  const halfWidth = W * (isMobile ? 0.4 : 0.42)
-  const archHeight = H * (isMobile ? 0.3 : 0.4)
-  const theta = 2 * Math.atan(archHeight / halfWidth) // half the angular spread (rad)
-  const arcRadius = halfWidth / Math.sin(theta)
-  const arcCenterY = -H * 0.06 + arcRadius // apex sits just above stage centre
-
   return (
-    <section ref={sectionRef} className="relative h-[210vh]">
-      <div
-        ref={stageRef}
-        onMouseMove={onMouseMove}
-        className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden"
-        style={{ backgroundColor: '#EDE3D3', backgroundImage: 'radial-gradient(at 12% 16%, rgba(255,20,147,0.22) 0px, transparent 50%), radial-gradient(at 86% 10%, rgba(255,105,180,0.22) 0px, transparent 45%), radial-gradient(at 80% 84%, rgba(255,141,199,0.26) 0px, transparent 52%)' }}
-      >
-        <Heart className="absolute left-[10%] top-[18%] h-8 w-8 animate-floaty text-blush-300/70" />
-        <Sparkle className="absolute right-[12%] top-[26%] h-7 w-7 animate-floatySlow text-lilac-300/70" />
-        <Heart className="absolute bottom-[16%] right-[16%] h-6 w-6 animate-floatySlow text-peach-300/70" />
+    <section
+      className="relative overflow-hidden py-16 sm:py-24"
+      style={{
+        backgroundColor: '#EDE3D3',
+        backgroundImage:
+          'radial-gradient(at 12% 16%, rgba(255,20,147,0.22) 0px, transparent 50%), radial-gradient(at 86% 10%, rgba(255,105,180,0.22) 0px, transparent 45%), radial-gradient(at 80% 84%, rgba(255,141,199,0.26) 0px, transparent 52%)',
+      }}
+    >
+      {/* Floating decor */}
+      <Heart className="pointer-events-none absolute left-[8%] top-[12%] h-8 w-8 animate-floaty text-blush-300/60" />
+      <Sparkle className="pointer-events-none absolute right-[9%] top-[18%] h-7 w-7 animate-floatySlow text-lilac-300/60" />
+      <Heart className="pointer-events-none absolute bottom-[10%] right-[13%] h-5 w-5 animate-floatySlow text-peach-300/60" />
 
-        {/* Intro copy - fades out as the ring blooms into the arc */}
-        <div
-          className="pointer-events-none absolute z-0 px-6 text-center"
-          style={{ opacity: introOpacity }}
-        >
-          <p className="eyebrow mb-4 inline-flex items-center gap-1.5">
-            <Lock className="h-3.5 w-3.5" /> every face, verified
-          </p>
-          <h2 className="font-display text-4xl font-semibold tracking-tight text-ink-800 sm:text-6xl">
-            a whole world of <span className="text-gradient">real ones.</span>
-          </h2>
-          <p className="mt-4 text-sm font-bold uppercase tracking-[0.25em] text-ink-700/55">
-            keep scrolling
-          </p>
-        </div>
-
-        {/* Arc copy - fades in once the arc is formed */}
-        <div
-          className="pointer-events-none absolute top-[12%] z-10 px-5 text-center"
-          style={{ opacity: arcOpacity, transform: `translateY(${lerp(20, 0, arcOpacity)}px)` }}
-        >
-          <h2 className="inline-flex items-center gap-2 font-display text-3xl font-semibold tracking-tight text-ink-800 sm:text-5xl">
-            your person is in here. <Heart className="h-6 w-6 fill-blush-400 text-blush-400 sm:h-9 sm:w-9" />
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-ink-700/75 sm:text-base">
-            somewhere in 2.4M verified cuties - no bots, no catfish, no ick.
-            <br className="hidden sm:block" /> tap a face to see the badge.
-          </p>
-        </div>
-
-        {/* The card swarm */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {CARDS.map((card, i) => {
-            // Ring position
-            const ringAngle = (i / CARD_COUNT) * 360
-            const ringRad = (ringAngle * Math.PI) / 180
-            const ring = {
-              x: Math.cos(ringRad) * ringRadius,
-              y: Math.sin(ringRad) * ringRadius,
-              rotation: ringAngle + 90,
-              scale: 1,
-            }
-
-            // Arc position (convex-up rainbow), apex at angle 0
-            const f = CARD_COUNT > 1 ? i / (CARD_COUNT - 1) : 0.5
-            const ang = lerp(-theta, theta, f)
-            const arc = {
-              x: Math.sin(ang) * arcRadius + parallax,
-              y: arcCenterY - Math.cos(ang) * arcRadius,
-              rotation: (ang * 180) / Math.PI * 0.6, // softened tangent tilt
-              scale: isMobile ? 1.15 : 1.4,
-            }
-
-            // scatter → ring → arc
-            const s = scatter[i]
-            const assembled = {
-              x: lerp(s.x, ring.x, assembleP),
-              y: lerp(s.y, ring.y, assembleP),
-              rotation: lerp(s.rotation, ring.rotation, assembleP),
-              scale: lerp(s.scale, ring.scale, assembleP),
-            }
-            const target = {
-              x: lerp(assembled.x, arc.x, morphP),
-              y: lerp(assembled.y, arc.y, morphP),
-              rotation: lerp(assembled.rotation, arc.rotation, morphP),
-              scale: lerp(assembled.scale, arc.scale, morphP),
-              opacity: clamp01(p / 0.05),
-            }
-
-            return <FlipCard key={i} src={card.src} alt={card.name} target={target} />
-          })}
-        </div>
+      {/* Heading */}
+      <div className="section relative z-50 mb-20 text-center">
+        <p className="eyebrow mb-4 inline-flex items-center gap-1.5">
+          <Lock className="h-3.5 w-3.5" /> every face, verified
+        </p>
+        <h2 className="font-display text-4xl font-semibold tracking-tight text-ink-800 sm:text-6xl">
+          your person is{' '}
+          <span className="inline-flex items-end gap-3">
+            in here.{' '}
+            <Heart className="mb-1 h-9 w-9 fill-blush-400 text-blush-400 sm:h-12 sm:w-12" />
+          </span>
+        </h2>
+        <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink-700/70">
+          2.4M verified cuties — no bots, no catfish, no ick.
+        </p>
       </div>
+
+      <MarqueeAlongSvgPath
+        path={WAVE_PATH}
+        viewBox={VIEW_BOX}
+        baseVelocity={8}
+        repeat={2}
+        slowdownOnHover
+        slowDownFactor={0.2}
+        draggable
+        dragSensitivity={0.08}
+        grabCursor
+        responsive
+        enableRollingZIndex
+        zIndexBase={1}
+        zIndexRange={20}
+        className="w-full scale-105"
+      >
+        {FACES.map(({ name, src }) => (
+          <FaceCard key={name} src={src} name={name} />
+        ))}
+      </MarqueeAlongSvgPath>
     </section>
   )
 }
