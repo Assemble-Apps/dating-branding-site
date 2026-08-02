@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Check, ShieldCheck, Camera, Brain, BadgeCheck } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading, stagger, fadeUp } from '../components/ui'
-import { PhoneFrame, MatchScreen } from '../components/PhoneMockup'
+import IphoneChat from '../components/ui/IphoneChat'
 import { Heart, Sparkle, FloatingBlobs } from '../components/Decor'
 import { safetyPillars, safetyPromises } from '../data/content'
 
@@ -81,9 +81,7 @@ export default function Safety() {
               <div className="relative flex justify-center">
                 <Sparkle className="absolute -left-2 top-4 h-8 w-8 animate-floatySlow text-lilac-300" />
                 <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
-                  <PhoneFrame className="w-[250px]">
-                    <MatchScreen />
-                  </PhoneFrame>
+                  <IphoneChat />
                 </motion.div>
               </div>
             </Reveal>

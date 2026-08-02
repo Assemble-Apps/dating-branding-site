@@ -29,7 +29,7 @@ const cookieTypes = [
     name: 'Analytics cookies',
     canOptOut: true,
     color: 'from-blush-300 to-lilac-400',
-    description: 'Help us understand how people use the site — which pages get visited, where users drop off, and how features perform. All data is anonymised and aggregated. We use Google Analytics 4.',
+    description: 'Help us understand how people use the site - which pages get visited, where users drop off, and how features perform. All data is anonymised and aggregated. We use Google Analytics 4.',
     examples: ['Page views and session duration', 'Button click events (anonymised)', 'Referral source (how you found us)'],
   },
   {
@@ -37,7 +37,7 @@ const cookieTypes = [
     name: 'Functional cookies',
     canOptOut: true,
     color: 'from-lilac-300 to-blush-300',
-    description: "Remember your preferences so you don't have to set them every visit — things like your theme choice or any toggles you've set.",
+    description: "Remember your preferences so you don't have to set them every visit - things like your theme choice or any toggles you've set.",
     examples: ['UI preference settings', 'Locale / language preference'],
   },
   {
@@ -46,7 +46,7 @@ const cookieTypes = [
     canOptOut: false,
     color: 'from-peach-200 to-blush-200',
     description: "We don't use them. Full stop. No ad networks, no retargeting pixels, no Facebook/TikTok conversion tracking.",
-    examples: ['None — we don\'t run ad cookies'],
+    examples: ['None - we don\'t run ad cookies'],
     isNone: true,
   },
 ]
@@ -81,7 +81,7 @@ export default function Cookies() {
       <PageHero
         eyebrow={<><Cookie className="inline h-3.5 w-3.5 -translate-y-0.5" /> cookie policy</>}
         title={<>cookies, <span className="text-gradient">the honest kind.</span></>}
-        sub="We use cookies to make the site work and to understand how people use it. Here's exactly what we use and why — no hidden trackers."
+        sub="We use cookies to make the site work and to understand how people use it. Here's exactly what we use and why - no hidden trackers."
       />
 
       <div className="section pb-24">
@@ -124,7 +124,7 @@ export default function Cookies() {
           >
             {/* What are cookies */}
             <Section id="what" icon={Cookie} title="What are cookies?">
-              <P>Cookies are small text files stored on your device when you visit a website. They let the site remember information about your visit — like whether you're logged in, your preferences, or how you navigated around.</P>
+              <P>Cookies are small text files stored on your device when you visit a website. They let the site remember information about your visit - like whether you're logged in, your preferences, or how you navigated around.</P>
               <P>They're not programs and can't execute code or carry viruses. They're just data. Most of the web uses them; we're transparent about ours.</P>
             </Section>
 
@@ -176,7 +176,7 @@ export default function Cookies() {
               <div className="overflow-hidden rounded-2xl border border-white/60 bg-white/40">
                 <div className="divide-y divide-white/40">
                   {[
-                    { name: 'Google Analytics 4', purpose: 'Anonymised site analytics', canOptOut: 'Yes — see below' },
+                    { name: 'Google Analytics 4', purpose: 'Anonymised site analytics', canOptOut: 'Yes - see below' },
                     { name: 'Resend', purpose: 'Email delivery (no cookie set in browser)', canOptOut: 'N/A' },
                   ].map((row) => (
                     <div key={row.name} className="grid grid-cols-3 gap-2 px-5 py-3.5 text-sm">
@@ -221,7 +221,7 @@ export default function Cookies() {
             <Reveal>
               <div className="flex items-center gap-3 rounded-2xl border border-white/65 bg-white/40 px-6 py-4 text-sm text-ink-700/70 shadow-card backdrop-blur-md">
                 <Heart className="h-4 w-4 shrink-0 text-blush-400" />
-                <p>tl;dr — we use the minimum cookies needed to run the site and understand what's working. No ad trackers, no surprises.</p>
+                <p>tl;dr - we use the minimum cookies needed to run the site and understand what's working. No ad trackers, no surprises.</p>
               </div>
             </Reveal>
           </motion.div>

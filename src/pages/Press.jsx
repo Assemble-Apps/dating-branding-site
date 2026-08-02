@@ -29,7 +29,7 @@ const keyFacts = [
   { label: 'Operated by', value: 'Assemble Innovations' },
 ]
 
-const boilerplate = `Rissme is a Gen Z dating app built on a simple premise: everyone on the app is a real, verified human. Developed by Assemble Innovations and launching in India in 2026, Rissme uses face-liveness verification to eliminate bots and catfish before they can reach users. The app is designed for the 18–28 demographic who want dating to feel like a genuine connection — not a swipe conveyor belt. Rissme is currently in private waitlist mode at rissme.com.`
+const boilerplate = `Rissme is a Gen Z dating app built on a simple premise: everyone on the app is a real, verified human. Developed by Assemble Innovations and launching in India in 2026, Rissme uses face-liveness verification to eliminate bots and catfish before they can reach users. The app is designed for the 18–28 demographic who want dating to feel like a genuine connection - not a swipe conveyor belt. Rissme is currently in private waitlist mode at rissme.com.`
 
 function CopyButton({ text }) {
   const [copied, setCopied] = useState(false)
@@ -68,7 +68,7 @@ export default function Press() {
       <PageHero
         eyebrow={<><Newspaper className="inline h-3.5 w-3.5 -translate-y-0.5" /> press kit</>}
         title={<>writing about <span className="text-gradient">rissme?</span></>}
-        sub="Everything you need to cover us accurately — brand assets, key facts, boilerplate copy, and a direct line to the team."
+        sub="Everything you need to cover us accurately - brand assets, key facts, boilerplate copy, and a direct line to the team."
       />
 
       <div className="section space-y-8 pb-24">

@@ -73,7 +73,7 @@ export default function Terms() {
       <PageHero
         eyebrow={<><FileText className="inline h-3.5 w-3.5 -translate-y-0.5" /> terms of service</>}
         title={<>the rules, <span className="text-gradient">kept real.</span></>}
-        sub="We keep legalese to a minimum. These terms exist to protect everyone on Rissme — including you. Please read them."
+        sub="We keep legalese to a minimum. These terms exist to protect everyone on Rissme - including you. Please read them."
       />
 
       <div className="section pb-24">
@@ -119,7 +119,7 @@ export default function Terms() {
           >
             <Section id="acceptance" icon={FileText} title="Acceptance of terms">
               <P>By creating an account, accessing, or using Rissme (the "App"), you agree to these Terms of Service and our <a href="/privacy" className="font-semibold text-blush-500 hover:underline">Privacy Policy</a>. If you don't agree, don't use the App.</P>
-              <P>These terms form a binding legal agreement between you and <Bold>Assemble Innovations</Bold> ("we", "us", "our"). We may update them — we'll notify you of material changes before they take effect.</P>
+              <P>These terms form a binding legal agreement between you and <Bold>Assemble Innovations</Bold> ("we", "us", "our"). We may update them - we'll notify you of material changes before they take effect.</P>
             </Section>
 
             <Section id="eligibility" icon={UserCheck} title="Eligibility">
@@ -137,7 +137,7 @@ export default function Terms() {
             <Section id="account" icon={Shield} title="Your account">
               <P>You're responsible for everything that happens under your account. Keep your login credentials secure and don't share them with anyone.</P>
               <UL items={[
-                'Use your real name, real photos, and accurate information on your profile — no catfishing, ever',
+                'Use your real name, real photos, and accurate information on your profile - no catfishing, ever',
                 'You may only create one account. Duplicate accounts (especially after a ban) are not permitted',
                 'Notify us immediately at support@rissme.com if you suspect unauthorised access to your account',
                 "Don't transfer or sell your account to anyone else",
@@ -158,7 +158,7 @@ export default function Terms() {
                 'Creating fake, bot-driven, or AI-generated profiles',
               ]} />
               <P>Violations may result in immediate account suspension, permanent ban, and/or referral to law enforcement. We take this seriously.</P>
-              <P>You can report any user with one tap on their profile. Reports are reviewed by real humans — we don't just auto-close tickets.</P>
+              <P>You can report any user with one tap on their profile. Reports are reviewed by real humans - we don't just auto-close tickets.</P>
             </Section>
 
             <Section id="content" icon={MessageSquare} title="Your content">
@@ -178,9 +178,9 @@ export default function Terms() {
               <P>Premium plans are available in 3-day, 10-day, and 30-day durations. The 30-day plan includes 3 bonus days.</P>
               <UL items={[
                 'All prices are in INR and inclusive of applicable GST',
-                "Payments are processed by third-party payment providers — we don't store your card details",
+                "Payments are processed by third-party payment providers - we don't store your card details",
                 'Premium features activate immediately upon successful payment',
-                'Plans are non-auto-renewing by default — you choose when to top up',
+                'Plans are non-auto-renewing by default - you choose when to top up',
                 "Refunds: if a technical issue on our side prevented you from using Premium features you paid for, contact us within 7 days and we'll make it right",
                 "We reserve the right to change pricing with 14 days' notice to existing users",
               ]} />
@@ -188,13 +188,13 @@ export default function Terms() {
             </Section>
 
             <Section id="ip" icon={Shield} title="Intellectual property">
-              <P>Everything that makes Rissme, Rissme — the logo, design, code, brand, copy, and features — belongs to Assemble Innovations and is protected under Indian and international intellectual property law.</P>
-              <P>You may not copy, reproduce, distribute, or create derivative works from any part of the App without our written permission. "Rissme" is a brand name of Assemble Innovations — don't use it in a way that implies endorsement or affiliation.</P>
+              <P>Everything that makes Rissme, Rissme - the logo, design, code, brand, copy, and features - belongs to Assemble Innovations and is protected under Indian and international intellectual property law.</P>
+              <P>You may not copy, reproduce, distribute, or create derivative works from any part of the App without our written permission. "Rissme" is a brand name of Assemble Innovations - don't use it in a way that implies endorsement or affiliation.</P>
               <P>If you believe content on Rissme infringes your intellectual property rights, email <Bold>legal@rissme.com</Bold> with details of the alleged infringement.</P>
             </Section>
 
             <Section id="termination" icon={AlertTriangle} title="Termination">
-              <P>You can stop using Rissme and delete your account at any time — no awkward breakup conversation required.</P>
+              <P>You can stop using Rissme and delete your account at any time - no awkward breakup conversation required.</P>
               <P>We may suspend or permanently terminate your account if you:</P>
               <UL items={[
                 'Violate any part of these Terms or our Community Guidelines',
@@ -211,7 +211,7 @@ export default function Terms() {
               <UL items={[
                 'Any indirect, incidental, or consequential damages arising from your use of the App',
                 'Loss of data, loss of profits, or loss of goodwill',
-                "Actions or content of other users — we moderate, but we can't see everything in real time",
+                "Actions or content of other users - we moderate, but we can't see everything in real time",
                 'Third-party services (payment processors, analytics, etc.) linked to or integrated with the App',
               ]} />
               <P>Nothing in these Terms limits our liability for fraud, death, or personal injury caused by our negligence, as required by Indian law.</P>
@@ -245,7 +245,7 @@ export default function Terms() {
             <Reveal>
               <div className="flex items-center gap-3 rounded-2xl border border-white/65 bg-white/40 px-6 py-4 text-sm text-ink-700/70 shadow-card backdrop-blur-md">
                 <Heart className="h-4 w-4 shrink-0 text-blush-400" />
-                <p>These terms exist to protect you as much as they protect us. If something's unclear or seems unfair, email us — we'd rather fix it than defend it.</p>
+                <p>These terms exist to protect you as much as they protect us. If something's unclear or seems unfair, email us - we'd rather fix it than defend it.</p>
               </div>
             </Reveal>
           </motion.div>

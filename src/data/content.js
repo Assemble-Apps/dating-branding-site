@@ -27,10 +27,10 @@ import {
 
 // ── Social-proof stats ────────────────────────────────────────────────
 export const stats = [
-  { value: '2.4M', label: 'verified humans' },
+  { value: '10K+', label: 'verified humans' },
   { value: '88%', label: 'match → first message' },
   { value: '0', label: 'bots tolerated' },
-  { value: '4.9', label: 'on the app stores', icon: Star },
+  { value: '4.5', label: 'on the app store', icon: Star },
 ]
 
 // ── Rotating marquee words ────────────────────────────────────────────

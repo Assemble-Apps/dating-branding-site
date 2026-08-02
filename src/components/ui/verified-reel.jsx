@@ -7,7 +7,7 @@ const WAVE_PATH =
   'M1 209.434C58.5872 255.935 387.926 325.938 482.583 209.434C600.905 63.8051 525.516 -43.2211 427.332 19.9613C329.149 83.1436 352.902 242.723 515.041 267.302C644.752 286.966 943.56 181.94 995 156.5'
 const VIEW_BOX = '0 0 996 330'
 
-// 13 faces × repeat=2 = 26 items — same ratio as the demo (13 imgs × 2 repeats)
+// 13 faces × repeat=2 = 26 items - same ratio as the demo (13 imgs × 2 repeats)
 // 26 × 56px ≈ 1456px ≈ path arc length → cards nearly touching, just like the demo
 const FACES = realOnes.slice(0, 13)
 
@@ -28,7 +28,7 @@ function FaceCard({ src, name }) {
           className="h-full w-full object-cover"
         />
       </div>
-      {/* tiny verified badge — stays subtle, not distracting */}
+      {/* tiny verified badge - stays subtle, not distracting */}
       <span className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-white bg-gradient-to-br from-peach-400 to-blush-400 text-[5px] leading-none text-white">
         ✓
       </span>
@@ -64,7 +64,7 @@ export default function VerifiedReel() {
           </span>
         </h2>
         <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink-700/70">
-          2.4M verified cuties — no bots, no catfish, no ick.
+          10K+ verified cuties - no bots, no catfish, no ick.
         </p>
       </div>
 

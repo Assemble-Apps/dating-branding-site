@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, PartyPopper, Gift, Mail } from 'lucide-react'
 import { Reveal } from '../components/ui'
-import { PhoneFrame, SwipeScreen, MatchScreen } from '../components/PhoneMockup'
+import IphoneChat from '../components/ui/IphoneChat'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
 
 // Renders the real Apple/Google badge artwork - drop the official SVGs into
@@ -153,35 +153,18 @@ export default function Download() {
           </Reveal>
         </div>
 
-        {/* Right: phones */}
-        <div className="relative mx-auto h-[560px] w-full max-w-md">
+        {/* Right: phone mockup */}
+        <div className="relative mx-auto flex justify-center">
+          <Squiggle className="absolute -left-10 top-1/4 h-6 w-28 text-blush-300" />
           <motion.div
-            className="absolute left-1/2 top-2 z-20 -translate-x-1/2"
-            initial={{ opacity: 0, y: 30, rotate: -5 }}
-            animate={{ opacity: 1, y: 0, rotate: -5 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
-              <PhoneFrame>
-                <SwipeScreen />
-              </PhoneFrame>
+              <IphoneChat />
             </motion.div>
           </motion.div>
-          <motion.div
-            className="absolute -right-2 bottom-4 z-30 hidden w-[170px] sm:block"
-            initial={{ opacity: 0, x: 30, rotate: 7 }}
-            animate={{ opacity: 1, x: 0, rotate: 7 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-          >
-            <motion.div animate={{ y: [0, 12, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}>
-              <div className="rounded-[1.8rem] border-[7px] border-plum-900 bg-plum-900 shadow-card">
-                <div className="h-[300px] w-full overflow-hidden rounded-[1.3rem]">
-                  <MatchScreen />
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-          <Squiggle className="absolute -left-2 top-1/2 h-6 w-28 text-blush-300" />
         </div>
       </div>
     </section>

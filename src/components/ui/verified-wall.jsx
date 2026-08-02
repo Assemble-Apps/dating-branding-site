@@ -130,7 +130,7 @@ export default function VerifiedWall({
           </span>
           {subtitle ?? (
             <>
-              <span className="font-semibold text-blush-400">2.4M+</span> verified humans and counting
+              <span className="font-semibold text-blush-400">10K+</span> verified humans and counting
             </>
           )}
         </span>

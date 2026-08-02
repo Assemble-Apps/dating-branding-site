@@ -20,24 +20,24 @@ const values = [
   {
     icon: Users,
     title: 'Safety by default',
-    body: "Every feature we build gets pressure-tested for how it could be misused. Safety isn't a feature — it's the foundation.",
+    body: "Every feature we build gets pressure-tested for how it could be misused. Safety isn't a feature - it's the foundation.",
     color: 'from-lilac-300 to-blush-300',
   },
   {
     icon: Globe,
     title: 'Built for Bharat',
-    body: "We're building a product that understands Indian dating culture — not a copy-paste of what works in San Francisco.",
+    body: "We're building a product that understands Indian dating culture - not a copy-paste of what works in San Francisco.",
     color: 'from-peach-200 to-blush-300',
   },
 ]
 
 const perks = [
-  { icon: Coffee, text: 'Remote-first team — work from wherever your Wi-Fi works' },
-  { icon: Sparkles, text: "Equity for early hires — you own a piece of what you're building" },
+  { icon: Coffee, text: 'Remote-first team - work from wherever your Wi-Fi works' },
+  { icon: Sparkles, text: "Equity for early hires - you own a piece of what you're building" },
   { icon: HeartIcon, text: 'Health insurance from day one' },
-  { icon: Zap, text: 'Learning budget — books, courses, conferences, whatever helps you grow' },
-  { icon: Users, text: 'Small team, high ownership — no committees, no bureaucracy' },
-  { icon: Globe, text: 'Flexible hours — we care about output, not check-ins' },
+  { icon: Zap, text: 'Learning budget - books, courses, conferences, whatever helps you grow' },
+  { icon: Users, text: 'Small team, high ownership - no committees, no bureaucracy' },
+  { icon: Globe, text: 'Flexible hours - we care about output, not check-ins' },
 ]
 
 const openRoles = [
@@ -45,7 +45,7 @@ const openRoles = [
     title: 'Full-Stack Engineer (React + Spring Boot)',
     type: 'Full-time · Remote',
     team: 'Engineering',
-    description: "You'll own features end-to-end — from the Figma mock to the database query. We use React (Vite), Tailwind, and Spring Boot on Java 21. Experience with WebRTC or real-time systems is a big plus.",
+    description: "You'll own features end-to-end - from the Figma mock to the database query. We use React (Vite), Tailwind, and Spring Boot on Java 21. Experience with WebRTC or real-time systems is a big plus.",
   },
   {
     title: 'Growth & Community Manager',
@@ -136,7 +136,7 @@ export default function Careers() {
           <SectionHeading
             eyebrow="current openings"
             title="positions for now"
-            sub="We're a lean early team — all current roles have been filled. Stay tuned for new openings."
+            sub="We're a lean early team - all current roles have been filled. Stay tuned for new openings."
           />
         </Reveal>
 

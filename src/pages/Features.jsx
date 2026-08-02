@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Check, Sparkles } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading } from '../components/ui'
-import { PhoneFrame, SwipeScreen, ChatScreen } from '../components/PhoneMockup'
+import IphoneChat from '../components/ui/IphoneChat'
 import { Heart, Sparkle } from '../components/Decor'
 import { featureSections, steps } from '../data/content'
 
@@ -71,20 +71,9 @@ export default function Features() {
       <section className="section py-16">
         <div className="grid items-center gap-10 sm:grid-cols-2 lg:grid-cols-2">
           <Reveal>
-            <div className="flex justify-center gap-6">
+            <div className="flex justify-center">
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}>
-                <PhoneFrame className="w-[230px]">
-                  <SwipeScreen />
-                </PhoneFrame>
-              </motion.div>
-              <motion.div
-                className="mt-10 hidden sm:block"
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <PhoneFrame className="w-[230px]">
-                  <ChatScreen />
-                </PhoneFrame>
+                <IphoneChat />
               </motion.div>
             </div>
           </Reveal>

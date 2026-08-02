@@ -81,7 +81,7 @@ export default function Privacy() {
         </Reveal>
 
         <div className="grid gap-8 lg:grid-cols-[260px_1fr] lg:items-start">
-          {/* Table of contents — sticky on desktop */}
+          {/* Table of contents - sticky on desktop */}
           <Reveal>
             <div className="sticky top-28 hidden rounded-[2rem] border border-white/65 bg-white/52 p-6 shadow-card backdrop-blur-md lg:block">
               <p className="mb-4 text-xs font-bold uppercase tracking-widest text-blush-400">On this page</p>
@@ -129,7 +129,7 @@ export default function Privacy() {
                   <p className="mb-2 font-semibold text-ink-800">Usage & activity</p>
                   <UL items={[
                     'Swipe history, matches, and messages (to make matching better, not to judge you)',
-                    'App activity — features you use, time spent, and how you interact with profiles',
+                    'App activity - features you use, time spent, and how you interact with profiles',
                     'Device info: model, OS version, app version, crash logs',
                     'IP address and broad location (city-level) for safety and fraud prevention',
                   ]} />
@@ -137,14 +137,14 @@ export default function Privacy() {
                 <div>
                   <p className="mb-2 font-semibold text-ink-800">Verification data</p>
                   <UL items={[
-                    'Selfies taken during the liveness verification check — these are processed to confirm you\'re a real human and then deleted. They are never stored on your profile.',
-                    'Face match result (pass/fail) is stored — not the biometric data itself',
+                    'Selfies taken during the liveness verification check - these are processed to confirm you\'re a real human and then deleted. They are never stored on your profile.',
+                    'Face match result (pass/fail) is stored - not the biometric data itself',
                   ]} />
                 </div>
                 <div>
                   <p className="mb-2 font-semibold text-ink-800">What we do NOT collect</p>
                   <UL items={[
-                    'Precise GPS location — we use approximate location only for distance matching',
+                    'Precise GPS location - we use approximate location only for distance matching',
                     'Contacts, call logs, or anything outside the app',
                     'Sensitive financial info (payments are handled by third-party processors)',
                   ]} />
@@ -154,13 +154,13 @@ export default function Privacy() {
 
             {/* 2. How we use it */}
             <Section id="use" icon={Eye} title="How we use it">
-              <P>We use your data to run the app — full stop. Here's the breakdown:</P>
+              <P>We use your data to run the app - full stop. Here's the breakdown:</P>
               <UL items={[
                 'Matching: showing you profiles and computing compatibility based on your preferences and activity',
-                'Safety: detecting bots, fake profiles, harassment, and spam — this is the #1 use case',
+                'Safety: detecting bots, fake profiles, harassment, and spam - this is the #1 use case',
                 'Verification: running the liveness check to give you (and your matches) the blue badge',
                 'Communications: sending you match notifications, important account emails, and (if you opt in) re-engagement nudges',
-                'Product improvement: understanding which features land and which ones don\'t — in aggregate, not by watching individuals',
+                'Product improvement: understanding which features land and which ones don\'t - in aggregate, not by watching individuals',
                 'Legal compliance: fulfilling our obligations under Indian law (IT Act 2000, DPDP Act 2023)',
               ]} />
               <P>We do <Bold>not</Bold> use your data to train public AI models or sell insights about you to advertisers.</P>
@@ -170,10 +170,10 @@ export default function Privacy() {
             <Section id="share" icon={Share2} title="Who we share it with">
               <P>Your data is never sold. Period. We share it only where absolutely necessary:</P>
               <UL items={[
-                'Other users — your public profile (photos, bio, age, location distance) is shown to potential matches. Messages are visible only to the two people in the chat.',
-                'Service providers — cloud hosting (servers that store your data), email delivery, payment processors, and crash-reporting tools. All are bound by data processing agreements.',
-                'Law enforcement — only when legally required by a valid court order or government request under Indian law.',
-                'Business transfers — if Rissme is acquired or merges, your data may transfer to the new entity. We\'ll notify you before that happens.',
+                'Other users - your public profile (photos, bio, age, location distance) is shown to potential matches. Messages are visible only to the two people in the chat.',
+                'Service providers - cloud hosting (servers that store your data), email delivery, payment processors, and crash-reporting tools. All are bound by data processing agreements.',
+                'Law enforcement - only when legally required by a valid court order or government request under Indian law.',
+                'Business transfers - if Rissme is acquired or merges, your data may transfer to the new entity. We\'ll notify you before that happens.',
               ]} />
               <P>We share the minimum needed to do the job. No more.</P>
             </Section>
@@ -182,12 +182,12 @@ export default function Privacy() {
             <Section id="rights" icon={UserCheck} title="Your rights">
               <P>Under India's Digital Personal Data Protection Act 2023 (DPDP), you have clear rights over your data:</P>
               <UL items={[
-                'Access — request a copy of the personal data we hold about you',
-                'Correction — ask us to fix inaccurate or incomplete data',
-                'Erasure ("right to be forgotten") — delete your account and all associated data from our systems',
-                'Data portability — get your data in a machine-readable format',
-                'Withdraw consent — opt out of non-essential processing (like re-engagement emails) at any time',
-                'Grievance redressal — raise a complaint with our Data Protection Officer (contact below)',
+                'Access - request a copy of the personal data we hold about you',
+                'Correction - ask us to fix inaccurate or incomplete data',
+                'Erasure ("right to be forgotten") - delete your account and all associated data from our systems',
+                'Data portability - get your data in a machine-readable format',
+                'Withdraw consent - opt out of non-essential processing (like re-engagement emails) at any time',
+                'Grievance redressal - raise a complaint with our Data Protection Officer (contact below)',
               ]} />
               <P>To exercise any of these, email us at <Bold>privacy@rissme.com</Bold>. We respond within 30 days. Account deletion can also be done directly in the app: Settings → Delete account.</P>
             </Section>
@@ -209,7 +209,7 @@ export default function Privacy() {
               <P>The website uses cookies and similar technologies. Here's what and why:</P>
               <UL items={[
                 'Essential cookies: keep you logged in and make the site work. You can\'t opt out of these without breaking the experience.',
-                'Analytics cookies: help us understand which pages people visit and where they drop off — using aggregate, anonymised data only (Google Analytics 4).',
+                'Analytics cookies: help us understand which pages people visit and where they drop off - using aggregate, anonymised data only (Google Analytics 4).',
                 'No advertising cookies: we don\'t run retargeting ads or share cookie data with ad networks.',
               ]} />
               <P>You can manage cookie preferences in your browser settings. Clearing cookies will log you out of the site.</P>
@@ -258,7 +258,7 @@ export default function Privacy() {
             <Reveal>
               <div className="flex items-center gap-3 rounded-2xl border border-white/65 bg-white/40 px-6 py-4 text-sm text-ink-700/70 shadow-card backdrop-blur-md">
                 <Heart className="h-4 w-4 shrink-0 text-blush-400" />
-                <p>This policy is written in plain English on purpose. If something's unclear, reach out — we'd rather explain it than hide behind legalese.</p>
+                <p>This policy is written in plain English on purpose. If something's unclear, reach out - we'd rather explain it than hide behind legalese.</p>
               </div>
             </Reveal>
           </motion.div>

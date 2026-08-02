@@ -12,6 +12,7 @@ import GlobeStickers from '../components/ui/globe-stickers'
 import MatchesCalendar from '../components/ui/matches-calendar'
 import VerifiedWall from '../components/ui/verified-wall'
 import PhoneCarousel from '../components/ui/phone-carousel'
+import { AppSwipeScreen, AppChatScreen, AppMatchScreen } from '../components/ui/app-preview-screens'
 import {
   stats,
   marqueeWords,
@@ -90,7 +91,7 @@ function Hero() {
                   ))}
                 </div>
                 <p className="text-sm font-medium text-ink-700/80">
-                  loved by <span className="font-bold text-ink-800">2.4M+</span> verified cuties
+                  loved by <span className="font-bold text-ink-800">10K+</span> verified cuties
                 </p>
               </div>
             </div>
@@ -262,9 +263,9 @@ function HowItWorks() {
 
 /* ── App preview carousel ────────────────────────────────────────── */
 const appScreens = [
-  { src: '/screens/profile.jpg',  alt: 'Rissme profile screen'  },
-  { src: '/screens/swipe.jpg',    alt: 'Rissme swipe screen'    },
-  { src: '/screens/passport.jpg', alt: 'Rissme passport screen' },
+  { component: <AppSwipeScreen /> },
+  { component: <AppChatScreen /> },
+  { component: <AppMatchScreen /> },
 ]
 
 function AppPreview() {
@@ -285,13 +286,13 @@ function AppPreview() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-5 max-w-md text-lg text-ink-700/75">
-                Clean, fast, and built around real connections. Rissme fits in your pocket and gets out of the way — so you spend less time on the app and more time on the date.
+                Clean, fast, and built around real connections. Rissme fits in your pocket and gets out of the way - so you spend less time on the app and more time on the date.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
               <ul className="mt-8 space-y-3">
                 {[
-                  'Verified profiles only — zero catfish, guaranteed',
+                  'Verified profiles only - zero catfish, guaranteed',
                   '24-hour match window keeps things moving',
                   'Super-like, rewind, and boost when it counts',
                 ].map((item) => (

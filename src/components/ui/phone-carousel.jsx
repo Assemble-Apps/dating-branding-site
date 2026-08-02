@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Wifi, Signal, BatteryFull } from 'lucide-react'
 
 // ── Phone frame ────────────────────────────────────────────────────────
-function PhoneFrame({ src, alt, active, offset }) {
+function PhoneFrame({ src, alt, component, active, offset }) {
   const scale = active ? 1 : 0.82
   const rotateY = offset * -18
   const translateX = offset * 38
@@ -32,31 +32,36 @@ function PhoneFrame({ src, alt, active, offset }) {
 
           {/* Screen bezel */}
           <div className="overflow-hidden rounded-[2.5rem] bg-black">
-            {/* Status bar */}
-            <div className="relative flex h-10 items-center justify-between bg-black px-6">
-              <span className="text-[10px] font-semibold text-white/80">9:41</span>
-              {/* Dynamic island */}
-              <div className="absolute left-1/2 top-2 h-5 w-20 -translate-x-1/2 rounded-full bg-black ring-1 ring-white/10" />
-              <div className="flex items-center gap-1">
-                <div className="h-2.5 w-3.5 rounded-sm border border-white/70 p-px">
-                  <div className="h-full w-3/4 rounded-sm bg-white/70" />
-                </div>
+            {/* Status bar — white bg so Dynamic Island is clearly visible (dark pill on light) */}
+            <div className="relative flex h-[52px] items-center justify-between bg-white px-5">
+              <span className="text-[10px] font-bold text-ink-800">9:41</span>
+
+              {/* Dynamic island — dark, pops against white; top-[9px] ≈ real device position */}
+              <div className="absolute left-1/2 top-[9px] h-[22px] w-[86px] -translate-x-1/2 rounded-full bg-ink-800" />
+
+              {/* Signal · WiFi · Battery — Lucide icons for a clean, consistent look */}
+              <div className="flex items-center gap-[5px] text-ink-800">
+                <Signal className="h-[13px] w-[13px]" strokeWidth={2} />
+                <Wifi className="h-[13px] w-[13px]" strokeWidth={2} />
+                <BatteryFull className="h-[13px] w-[13px]" strokeWidth={2} />
               </div>
             </div>
 
-            {/* App screen */}
-            <div className="relative aspect-[9/19] w-full overflow-hidden bg-gradient-to-b from-peach-100 to-blush-100">
-              <img
-                src={src}
-                alt={alt}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
+            {/* App screen — accepts either an image src or a React component */}
+            <div className="relative aspect-[9/19] w-full overflow-hidden">
+              {component ?? (
+                <img
+                  src={src}
+                  alt={alt}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              )}
             </div>
 
             {/* Home indicator */}
-            <div className="flex h-6 items-center justify-center bg-black">
-              <div className="h-1 w-24 rounded-full bg-white/30" />
+            <div className="flex h-5 items-center justify-center bg-white">
+              <div className="h-1 w-20 rounded-full bg-ink-800/20" />
             </div>
           </div>
         </div>
@@ -73,7 +78,7 @@ function NavBtn({ onClick, children }) {
   return (
     <button
       onClick={onClick}
-      className="grid h-10 w-10 place-items-center rounded-full border border-white/65 bg-white/52 text-ink-700 shadow-card backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-blush-300/50 hover:text-blush-500 hover:shadow-md"
+      className="grid h-8 w-8 place-items-center rounded-full bg-ink-800/8 text-ink-700/60 transition-colors hover:bg-ink-800/12 hover:text-ink-800"
     >
       {children}
     </button>
@@ -100,7 +105,7 @@ export default function PhoneCarousel({ images, autoPlayMs = 3200 }) {
   }))
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col items-center gap-5">
       {/* Carousel stage */}
       <div className="relative h-[500px] w-full max-w-md sm:h-[560px]">
         {visible.map(({ offset, index }) => (
@@ -108,6 +113,7 @@ export default function PhoneCarousel({ images, autoPlayMs = 3200 }) {
             key={index}
             src={images[index].src}
             alt={images[index].alt}
+            component={images[index].component}
             active={offset === 0}
             offset={offset}
           />
@@ -115,21 +121,21 @@ export default function PhoneCarousel({ images, autoPlayMs = 3200 }) {
       </div>
 
       {/* Controls */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-3">
         <NavBtn onClick={prev}>
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="h-3.5 w-3.5" />
         </NavBtn>
 
         {/* Dots */}
-        <div className="flex gap-2">
+        <div className="flex items-center gap-1.5">
           {images.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-[7px] rounded-full transition-all duration-300 ${
                 i === current
-                  ? 'w-6 bg-gradient-to-r from-peach-400 to-blush-400'
-                  : 'w-2 bg-ink-800/20 hover:bg-blush-300/60'
+                  ? 'w-5 bg-gradient-to-r from-peach-400 to-blush-400'
+                  : 'w-[7px] bg-ink-800/18 hover:bg-ink-800/30'
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />

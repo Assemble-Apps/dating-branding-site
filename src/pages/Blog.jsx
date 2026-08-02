@@ -16,7 +16,7 @@ const comingSoon = [
     icon: ShieldCheck,
     tag: 'safety',
     title: 'How we detect fake profiles before they reach you',
-    teaser: "A peek behind the curtain of Rissme's verification system — written by the team who built it.",
+    teaser: "A peek behind the curtain of Rissme's verification system - written by the team who built it.",
     color: 'from-blush-300 to-lilac-400',
   },
   {
@@ -36,7 +36,7 @@ const comingSoon = [
   {
     icon: HeartIcon,
     tag: 'real talk',
-    title: "Dating apps made us lonelier — here's why Rissme is different",
+    title: "Dating apps made us lonelier - here's why Rissme is different",
     teaser: 'We looked at the research. We talked to our users. Then we built something different.',
     color: 'from-blush-200 to-lilac-300',
   },
@@ -55,7 +55,7 @@ export default function Blog() {
       <PageHero
         eyebrow={<><BookOpen className="inline h-3.5 w-3.5 -translate-y-0.5" /> the rissme blog</>}
         title={<>dating intel, <span className="text-gradient">delivered.</span></>}
-        sub="Real talk on modern dating, product deep dives, safety guides, and the occasional hot take. We're cooking — first posts dropping at launch."
+        sub="Real talk on modern dating, product deep dives, safety guides, and the occasional hot take. We're cooking - first posts dropping at launch."
       />
 
       {/* Coming soon notice */}
@@ -71,7 +71,7 @@ export default function Blog() {
                 the blog is almost <span className="text-gradient">ready to spill</span>
               </h2>
               <p className="mx-auto mt-4 max-w-md text-mist-300/85">
-                Join the waitlist and you'll be the first to read — along with early access to the app.
+                Join the waitlist and you'll be the first to read - along with early access to the app.
               </p>
               <div className="mt-8 flex justify-center">
                 <Button to="/download">
@@ -92,7 +92,7 @@ export default function Blog() {
               what's <span className="text-gradient">dropping soon</span>
             </h2>
             <p className="mx-auto mt-3 max-w-md text-ink-700/75">
-              These are the first pieces we're writing. No publish date yet — but they're real.
+              These are the first pieces we're writing. No publish date yet - but they're real.
             </p>
           </div>
         </Reveal>
@@ -138,7 +138,7 @@ export default function Blog() {
                 don't miss the first drop
               </h2>
               <p className="mx-auto mt-3 max-w-sm text-ink-700/75">
-                Get notified the moment the blog goes live — along with your early app access.
+                Get notified the moment the blog goes live - along with your early app access.
               </p>
             </div>
             <Button to="/download">

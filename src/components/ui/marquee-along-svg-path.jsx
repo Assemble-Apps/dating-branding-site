@@ -12,7 +12,7 @@ const wrap = (min, max, v) => {
   return ((((v - min) % range) + range) % range) + min
 }
 
-// Each animated item in its own component — keeps hook calls at component top level
+// Each animated item in its own component - keeps hook calls at component top level
 function PathItem({
   baseOffset,
   index,
