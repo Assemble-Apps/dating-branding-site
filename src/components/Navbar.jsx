@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Heart } from 'lucide-react'
 import { Button } from './ui'
+import { RissmeLogo } from './ui/RissmeLogo'
 
 const links = [
   { to: '/features', label: 'Features' },
@@ -13,11 +14,11 @@ const links = [
 
 function Logo() {
   return (
-    <Link to="/" className="group flex items-center gap-2" aria-label="Rissme home">
-      <span className="grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-peach-400 to-blush-400 shadow-pill transition-transform group-hover:rotate-6">
-        <Heart className="h-4 w-4 fill-white text-white" />
-      </span>
-      <span className="font-display text-2xl font-semibold tracking-tight text-mist-100">rissme</span>
+    <Link to="/" className="group" aria-label="Rissme home">
+      <RissmeLogo
+        variant="dark"
+        markClass="h-9 w-auto transition-transform duration-300 group-hover:scale-105"
+      />
     </Link>
   )
 }

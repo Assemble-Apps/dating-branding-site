@@ -398,6 +398,42 @@ function Testimonials() {
   )
 }
 
+/* ── Ad Video ────────────────────────────────────────────────────── */
+function AdVideo() {
+  return (
+    <section className="section py-12 sm:py-20">
+      <Reveal>
+        <SectionHeading
+          eyebrow="the vibe check"
+          title="see it for yourself"
+          sub="30 seconds. then you'll get it."
+        />
+      </Reveal>
+
+      <Reveal delay={0.15}>
+        <div className="relative mx-auto mt-12 max-w-3xl">
+          {/* glow ring */}
+          <div
+            className="pointer-events-none absolute -inset-3 rounded-[2.8rem] opacity-40 blur-2xl"
+            style={{ background: 'linear-gradient(135deg,#FF4FA8 0%,#FF8C78 100%)' }}
+          />
+          {/* video card */}
+          <div className="relative overflow-hidden rounded-[2.2rem] border border-white/60 shadow-[0_24px_80px_-12px_rgba(16,13,24,0.22)] backdrop-blur-md">
+            <video
+              src="/rissme_ad_vid/vid.mp4"
+              autoPlay
+              loop
+              playsInline
+              controls
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  )
+}
+
 /* ── FAQ ──────────────────────────────────────────────────────────── */
 function Faq() {
   const [open, setOpen] = useState(0)
@@ -488,6 +524,7 @@ export default function Home() {
       <AppPreview />
       <VerifiedCallout />
       <Testimonials />
+      <AdVideo />
       <Faq />
       <FinalCta />
       <VerifiedReel />

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Instagram, Music2, Youtube, Twitter } from 'lucide-react'
 import { Heart } from './Decor'
 import { GradientFooter } from './ui/gradient-footer'
+import { RissmeLogoStacked } from './ui/RissmeLogo'
 
 const cols = [
   {
@@ -49,12 +50,7 @@ export default function Footer() {
 
           {/* Brand column */}
           <div>
-            <div className="flex items-center gap-2">
-              <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-peach-400 to-blush-400 shadow-pill">
-                <Heart className="h-5 w-5 fill-white text-white" />
-              </span>
-              <span className="font-display text-2xl font-semibold text-ink-800">rissme</span>
-            </div>
+            <RissmeLogoStacked variant="light" markClass="h-14 w-auto" />
             <p className="mt-4 max-w-xs text-sm text-ink-700/65">
               Dating that feels like a crush, not a chore. Verified humans, real matches, zero ick.
             </p>

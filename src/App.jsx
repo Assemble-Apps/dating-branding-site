@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 import Layout from './components/Layout'
+import Preloader from './components/ui/Preloader'
 import Home from './pages/Home'
 import Features from './pages/Features'
 import Safety from './pages/Safety'
@@ -39,9 +42,23 @@ function NotFound() {
 }
 
 export default function App() {
+  const [preloaderDone, setPreloaderDone] = useState(
+    () => sessionStorage.getItem('rissme_intro') === '1'
+  )
+
+  const handleDone = () => {
+    sessionStorage.setItem('rissme_intro', '1')
+    setPreloaderDone(true)
+  }
+
   return (
-    <Layout>
-      <Routes>
+    <>
+      <AnimatePresence>
+        {!preloaderDone && <Preloader key="preloader" onDone={handleDone} />}
+      </AnimatePresence>
+
+      <Layout>
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/features" element={<Features />} />
         <Route path="/safety" element={<Safety />} />
@@ -55,7 +72,8 @@ export default function App() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/press" element={<Press />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
+        </Routes>
+      </Layout>
+    </>
   )
 }

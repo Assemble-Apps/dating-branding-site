@@ -21,7 +21,7 @@ function PhoneFrame({ src, alt, component, active, offset }) {
       }}
     >
       {/* Phone shell */}
-      <div className="relative w-[220px] sm:w-[248px]">
+      <div className="relative w-[260px]">
         {/* Outer frame */}
         <div className="relative rounded-[2.8rem] bg-gradient-to-b from-ink-800 to-ink-800/90 p-[3px] shadow-[0_32px_80px_-8px_rgba(16,13,24,0.55)]">
           {/* Side buttons */}
@@ -107,7 +107,7 @@ export default function PhoneCarousel({ images, autoPlayMs = 3200 }) {
   return (
     <div className="flex flex-col items-center gap-5">
       {/* Carousel stage */}
-      <div className="relative h-[500px] w-full max-w-md sm:h-[560px]">
+      <div className="relative h-[580px] w-full max-w-md">
         {visible.map(({ offset, index }) => (
           <PhoneFrame
             key={index}
