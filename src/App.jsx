@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import Layout from './components/Layout'
 import Preloader from './components/ui/Preloader'
 import Home from './pages/Home'
@@ -53,8 +53,39 @@ export default function App() {
 
   return (
     <>
+      {/* ── Preloader ───────────────────────────────────────────── */}
       <AnimatePresence>
         {!preloaderDone && <Preloader key="preloader" onDone={handleDone} />}
+      </AnimatePresence>
+
+      {/*
+        Split-curtain reveal — two dark panels (matching the preloader's
+        dark final phase) sit above the page at z-[9998].
+        The preloader (z-[9999]) covers them while it plays.
+        As the preloader fades out its dark image shows through as the
+        curtain, giving a seamless handoff.
+        When preloaderDone fires, the top half flies up and the bottom
+        half drops down — opening like a shutter to expose the page.
+      */}
+      <AnimatePresence>
+        {!preloaderDone && (
+          <motion.div
+            key="curtain-top"
+            className="pointer-events-none fixed inset-x-0 top-0 z-[9998] h-1/2"
+            style={{ background: '#100D18' }}
+            exit={{ y: '-101%', transition: { duration: 0.95, ease: [0.22, 1, 0.36, 1] } }}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {!preloaderDone && (
+          <motion.div
+            key="curtain-bot"
+            className="pointer-events-none fixed inset-x-0 bottom-0 z-[9998] h-1/2"
+            style={{ background: '#100D18' }}
+            exit={{ y: '101%', transition: { duration: 0.95, ease: [0.22, 1, 0.36, 1] } }}
+          />
+        )}
       </AnimatePresence>
 
       <Layout>
