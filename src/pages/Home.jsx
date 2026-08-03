@@ -425,6 +425,7 @@ function AdVideo() {
               autoPlay
               loop
               playsInline
+              muted
               controls
               className="h-full w-full object-cover"
             />
