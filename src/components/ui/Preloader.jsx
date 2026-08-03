@@ -200,7 +200,7 @@ export default function Preloader({ onDone }) {
                           boxShadow: '0 4px 24px rgba(16,13,24,0.08), inset 0 1px 0 rgba(255,255,255,0.6)',
                         }}
                       >
-                        click to discover
+                        your one is in there
                         <span style={{ color: '#FF69B4' }}>→</span>
                       </motion.button>
                     )}
