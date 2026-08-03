@@ -12,6 +12,7 @@
  */
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import CrowdCanvas from './CrowdCanvas'
 
 // ── Gallery portraits ─────────────────────────────────────────────────
 const GALLERY = [
@@ -53,10 +54,10 @@ export default function Preloader({ onDone }) {
   const cardRef = useRef(null)
   const rafRef  = useRef(null)
 
-  // ── Phase 1: counter 0 → 100 (easeInOutExpo, 1800 ms) ──────────────
+  // ── Phase 1: counter 0 → 100 (easeInOutExpo, 5500 ms) ──────────────
   useEffect(() => {
     const start    = performance.now()
-    const duration = 1800
+    const duration = 5500
 
     const step = (now) => {
       const t = Math.min((now - start) / duration, 1)
@@ -64,8 +65,7 @@ export default function Preloader({ onDone }) {
       if (t < 1) {
         rafRef.current = requestAnimationFrame(step)
       } else {
-        // brief pause then gallery
-        setTimeout(() => setPhase('gallery'), 200)
+        setPhase('ready')
       }
     }
     rafRef.current = requestAnimationFrame(step)
@@ -109,6 +109,7 @@ export default function Preloader({ onDone }) {
   }, [phase])
 
   const showCard     = phase === 'gallery'
+  const showCounter  = phase === 'counting' || phase === 'ready'
   const showExpanded = phase === 'expanding' || phase === 'revealing' || phase === 'done'
 
   return (
@@ -123,53 +124,88 @@ export default function Preloader({ onDone }) {
 
           {/* ── Counter layer ────────────────────────────────────── */}
           <AnimatePresence>
-            {phase === 'counting' && (
+            {showCounter && (
               <motion.div
                 key="counter"
-                className="absolute inset-0 flex flex-col items-center justify-center"
+                className="absolute inset-0 flex flex-col items-center justify-start overflow-hidden pt-14 sm:pt-20"
                 exit={{ opacity: 0, y: -12, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }}
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <LogoMark />
-                </motion.div>
+                {/* crowd walks at the bottom while counter ticks */}
+                <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} />
 
-                <motion.div
-                  className="mt-8 flex items-end leading-none"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.25, duration: 0.4 }}
-                >
-                  <motion.span
-                    className="tabular-nums"
-                    style={{
-                      fontFamily: 'Fraunces, serif',
-                      fontSize: 'clamp(96px, 18vw, 160px)',
-                      fontWeight: 600,
-                      color: '#100D18',
-                      letterSpacing: '-0.03em',
-                    }}
-                    animate={{ scale: [1, 1.025, 1] }}
-                    transition={{ duration: 1.8, ease: 'easeInOut' }}
+                {/* logo + counter float above crowd */}
+                <div className="relative z-10 flex flex-col items-center">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    {count}
-                  </motion.span>
-                  <span
-                    style={{
-                      fontFamily: 'Fraunces, serif',
-                      fontSize: 'clamp(48px, 8vw, 72px)',
-                      fontWeight: 600,
-                      color: '#FF69B4',
-                      marginLeft: '4px',
-                      marginBottom: '8px',
-                    }}
+                    <LogoMark />
+                  </motion.div>
+
+                  <motion.div
+                    className="mt-6 flex items-baseline leading-none"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.25, duration: 0.4 }}
                   >
-                    %
-                  </span>
-                </motion.div>
+                    <motion.span
+                      className="tabular-nums"
+                      style={{
+                        fontFamily: 'Fraunces, serif',
+                        fontSize: 'clamp(96px, 18vw, 160px)',
+                        fontWeight: 600,
+                        color: '#100D18',
+                        letterSpacing: '-0.03em',
+                      }}
+                      animate={{ scale: [1, 1.025, 1] }}
+                      transition={{ duration: 5.5, ease: 'easeInOut' }}
+                    >
+                      {count}
+                    </motion.span>
+                    <span
+                      style={{
+                        fontFamily: 'Fraunces, serif',
+                        fontSize: 'clamp(18px, 2.5vw, 26px)',
+                        fontWeight: 500,
+                        color: '#FF69B4',
+                        marginLeft: '6px',
+                      }}
+                    >
+                      %
+                    </span>
+                  </motion.div>
+
+                  {/* click to discover — appears when counting finishes */}
+                  <AnimatePresence>
+                    {phase === 'ready' && (
+                      <motion.button
+                        key="cta"
+                        onClick={() => setPhase('gallery')}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="mt-8 flex items-center gap-2 rounded-full px-7 py-3"
+                        style={{
+                          fontFamily: '"Plus Jakarta Sans", system-ui, sans-serif',
+                          fontSize: '0.875rem',
+                          fontWeight: 600,
+                          color: '#100D18',
+                          letterSpacing: '0.02em',
+                          background: 'rgba(255,255,255,0.28)',
+                          backdropFilter: 'blur(16px)',
+                          WebkitBackdropFilter: 'blur(16px)',
+                          border: '1px solid rgba(255,255,255,0.55)',
+                          boxShadow: '0 4px 24px rgba(16,13,24,0.08), inset 0 1px 0 rgba(255,255,255,0.6)',
+                        }}
+                      >
+                        click to discover
+                        <span style={{ color: '#FF69B4' }}>→</span>
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

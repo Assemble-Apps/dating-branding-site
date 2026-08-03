@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Branding site for Rissme - a Gen-Z dating app",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -n vite,api -c cyan,magenta \"vite\" \"node server/index.js\"",
+    "dev:ui": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -20,6 +21,7 @@
     "framer-motion": "^11.3.19",
     "gsap": "^3.15.0",
     "lucide-react": "^0.427.0",
+    "pg": "^8.22.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.0",
@@ -28,6 +30,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
+    "concurrently": "^10.0.4",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.9",
     "vite": "^5.4.0"

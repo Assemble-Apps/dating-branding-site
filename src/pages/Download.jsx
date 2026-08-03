@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, PartyPopper, Gift, Mail } from 'lucide-react'
+import { Check, PartyPopper, Gift, Mail, Sparkles } from 'lucide-react'
 import { Reveal } from '../components/ui'
 import IphoneChat from '../components/ui/IphoneChat'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
@@ -25,27 +25,24 @@ const perks = [
 
 export default function Download() {
   const [email, setEmail] = useState('')
-  const [done, setDone] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'done' | 'duplicate'
 
   const submit = async (e) => {
     e.preventDefault()
     if (!email.trim()) return
 
-    setLoading(true)
+    setStatus('loading')
     try {
-      await fetch('/api/waitlist', {
+      const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       })
+      const data = await res.json()
+      setStatus(data.alreadyOnList ? 'duplicate' : 'done')
     } catch {
-      // fail silently - still show success so UX isn't broken
-    } finally {
-      setLoading(false)
+      setStatus('done') // fail open — still show success so UX isn't broken
     }
-
-    setDone(true)
   }
 
   return (
@@ -82,23 +79,50 @@ export default function Download() {
           <Reveal delay={0.16}>
             <div className="mx-auto mt-8 max-w-md lg:mx-0">
               <AnimatePresence mode="wait">
-                {done ? (
+                {status === 'done' && (
                   <motion.div
                     key="done"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="rounded-3xl border border-white/10 bg-white/52 p-7 text-center shadow-card backdrop-blur-md"
+                    initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="rounded-3xl border border-blush-200 bg-white p-7 text-center shadow-[0_8px_40px_-8px_rgba(255,105,180,0.18)]"
                   >
-                    <PartyPopper className="mx-auto h-10 w-10 text-blush-400" />
-                    <h3 className="mt-3 inline-flex items-center gap-2 font-display text-2xl font-semibold text-mist-100">
-                      you’re on the list! <PartyPopper className="h-5 w-5 text-blush-300" />
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-peach-200 to-blush-300">
+                      <PartyPopper className="h-7 w-7 text-white" />
+                    </div>
+                    <h3 className="mt-4 font-display text-2xl font-semibold text-ink-800">
+                      you're on the list!{' '}
+                      <PartyPopper className="inline h-5 w-5 -translate-y-0.5 text-blush-400" />
                     </h3>
-                    <p className="mt-2 text-mist-300/85">
-                      Keep an eye on your inbox, <span className="font-semibold text-mist-100">{email}</span> - your
-                      launch-day surprise is loading.
+                    <p className="mt-2 text-sm text-ink-700/70">
+                      Keep an eye on your inbox —
                     </p>
+                    <p className="mt-1 break-all font-semibold text-blush-500">{email}</p>
+                    <p className="mt-1 text-sm text-ink-700/70">your launch-day surprise is loading.</p>
                   </motion.div>
-                ) : (
+                )}
+
+                {status === 'duplicate' && (
+                  <motion.div
+                    key="duplicate"
+                    initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="rounded-3xl border border-lilac-200 bg-white p-7 text-center shadow-[0_8px_40px_-8px_rgba(160,130,220,0.18)]"
+                  >
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-lilac-200 to-blush-300">
+                      <Sparkles className="h-7 w-7 text-white" />
+                    </div>
+                    <h3 className="mt-4 font-display text-2xl font-semibold text-ink-800">
+                      already on the list!
+                    </h3>
+                    <p className="mt-2 text-sm text-ink-700/70">we already have you saved —</p>
+                    <p className="mt-1 break-all font-semibold text-blush-500">{email}</p>
+                    <p className="mt-1 text-sm text-ink-700/70">sit tight, launch is coming.</p>
+                  </motion.div>
+                )}
+
+                {(status === 'idle' || status === 'loading') && (
                   <motion.form
                     key="form"
                     onSubmit={submit}
@@ -115,14 +139,8 @@ export default function Download() {
                       placeholder="your@email.com"
                       className="w-full rounded-full border border-ink-800/20 bg-white/70 px-6 py-3.5 text-ink-800 placeholder:text-ink-700/40 shadow-sm outline-none backdrop-blur transition focus:border-blush-400 focus:ring-4 focus:ring-blush-300/30"
                     />
-                    <button type="submit" disabled={loading} className="btn-primary shrink-0 whitespace-nowrap disabled:opacity-60">
-                      {loading ? (
-                        'Adding you…'
-                      ) : (
-                        <>
-                          Join the list <Mail className="h-4 w-4" />
-                        </>
-                      )}
+                    <button type="submit" disabled={status === 'loading'} className="btn-primary shrink-0 whitespace-nowrap disabled:opacity-60">
+                      {status === 'loading' ? 'Adding you…' : <> Join the list <Mail className="h-4 w-4" /> </>}
                     </button>
                   </motion.form>
                 )}
