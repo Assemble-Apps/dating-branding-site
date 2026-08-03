@@ -89,7 +89,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7 }) {
 
     const normalWalk = ({ peep, props }) => {
       const { startX, startY, endX } = props
-      const xDuration = 10
+      const xDuration = 13
       const yDuration = 0.25
 
       const tl = gsap.timeline()
@@ -186,6 +186,7 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7 }) {
 
     img.onload = () => {
       createPeeps()
+      createPeeps() // second pass — doubles the roster to 210 simultaneous walkers
       resize()
       gsap.ticker.add(render)
     }
@@ -201,5 +202,17 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7 }) {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="absolute bottom-0 left-0 h-[62%] w-full pointer-events-none" />
+  return (
+    <div
+      className="absolute bottom-0 left-0 h-[72%] w-full pointer-events-none"
+      style={{
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+        WebkitMaskComposite: 'source-in',
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+        maskComposite: 'intersect',
+      }}
+    >
+      <canvas ref={canvasRef} className="h-full w-full" />
+    </div>
+  )
 }
