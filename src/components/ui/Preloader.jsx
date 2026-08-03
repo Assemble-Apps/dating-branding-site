@@ -185,8 +185,10 @@ export default function Preloader({ onDone }) {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0 }}
+                        whileHover={{ scale: 1.06, boxShadow: '0 8px 32px rgba(255,105,180,0.28), inset 0 1px 0 rgba(255,255,255,0.7)', background: 'rgba(255,255,255,0.45)' }}
+                        whileTap={{ scale: 0.97 }}
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-8 flex items-center gap-2 rounded-full px-7 py-3"
+                        className="mt-8 flex cursor-pointer items-center gap-2 rounded-full px-7 py-3"
                         style={{
                           fontFamily: '"Plus Jakarta Sans", system-ui, sans-serif',
                           fontSize: '0.875rem',
@@ -200,7 +202,7 @@ export default function Preloader({ onDone }) {
                           boxShadow: '0 4px 24px rgba(16,13,24,0.08), inset 0 1px 0 rgba(255,255,255,0.6)',
                         }}
                       >
-                        your one is in there
+                        click here to find your one
                         <span style={{ color: '#FF69B4' }}>→</span>
                       </motion.button>
                     )}

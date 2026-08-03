@@ -16,7 +16,7 @@ function Logo() {
   return (
     <Link to="/" className="group" aria-label="Rissme home">
       <RissmeLogo
-        variant="dark"
+        variant="light"
         markClass="h-9 w-auto transition-transform duration-300 group-hover:scale-105"
       />
     </Link>
@@ -38,12 +38,18 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-5 sm:pt-4">
-      <nav
-        className={`section flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-5 dark-glass ${
-          scrolled ? 'shadow-card' : 'shadow-sm'
-        }`}
-      >
+    <header
+      className="fixed inset-x-0 top-0 z-40 transition-all duration-500"
+      style={scrolled ? {
+        background: 'rgba(255,255,255,0.55)',
+        backdropFilter: 'blur(20px) saturate(160%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+        boxShadow: '0 1px 0 rgba(255,255,255,0.38), 0 2px 24px rgba(16,13,24,0.07)',
+      } : {
+        background: 'transparent',
+      }}
+    >
+      <nav className="section flex items-center justify-between px-4 py-3.5 sm:px-5">
         <Logo />
 
         <div className="hidden items-center gap-1 md:flex">
@@ -53,7 +59,7 @@ export default function Navbar() {
               to={l.to}
               className={({ isActive }) =>
                 `rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                  isActive ? 'bg-white/10 text-mist-100' : 'text-mist-300/80 hover:text-mist-100'
+                  isActive ? 'text-ink-800' : 'text-ink-700/70 hover:text-ink-800'
                 }`
               }
             >
@@ -69,7 +75,7 @@ export default function Navbar() {
         </div>
 
         <button
-          className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-mist-100 md:hidden"
+          className="grid h-10 w-10 place-items-center rounded-full bg-ink-800/8 text-ink-800 md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}

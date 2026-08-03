@@ -4,10 +4,12 @@ import { FloatingBlobs, Heart, Sparkle } from './Decor'
 // Shared hero band for interior pages.
 export default function PageHero({ eyebrow, title, sub, children }) {
   return (
-    <section className="relative overflow-hidden dreamy-bg pb-14 pt-12 sm:pb-20 sm:pt-16">
+    <section className="relative overflow-hidden dreamy-bg pb-14 pt-28 sm:pb-20 sm:pt-32">
       <FloatingBlobs />
       <Heart className="absolute left-[8%] top-16 h-8 w-8 animate-floaty text-blush-300" />
       <Sparkle className="absolute right-[10%] top-24 h-7 w-7 animate-floatySlow text-lilac-300" />
+      {/* soft bottom fade into the page background */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40" style={{ background: 'linear-gradient(to bottom, transparent 0%, #EDE3D3 100%)' }} />
       <div className="section relative text-center">
         <Reveal>
           <span className="chip mx-auto">{eyebrow}</span>

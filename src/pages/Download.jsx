@@ -46,10 +46,11 @@ export default function Download() {
   }
 
   return (
-    <section className="relative overflow-hidden dreamy-bg py-16 sm:py-20">
+    <section className="relative overflow-hidden dreamy-bg pb-16 pt-28 sm:pb-20 sm:pt-32">
       <FloatingBlobs />
       <Sparkle className="absolute left-[8%] top-24 h-8 w-8 animate-floatySlow text-lilac-300" />
       <Heart className="absolute right-[10%] top-40 h-9 w-9 animate-floaty text-blush-300" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48" style={{ background: 'linear-gradient(to bottom, transparent 0%, #EDE3D3 100%)' }} />
 
       <div className="section relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         {/* Left: copy + form */}

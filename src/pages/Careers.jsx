@@ -71,7 +71,7 @@ export default function Careers() {
       />
 
       {/* Values */}
-      <section className="section py-16 sm:py-20">
+      <section className="section pt-28 pb-16 sm:pt-32 sm:pb-20">
         <Reveal>
           <SectionHeading
             eyebrow="how we work"

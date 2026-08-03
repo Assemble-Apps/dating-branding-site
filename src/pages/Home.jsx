@@ -26,8 +26,9 @@ import {
 /* ── Hero ─────────────────────────────────────────────────────────── */
 function Hero() {
   return (
-    <section className="relative overflow-hidden dreamy-bg pb-8 pt-10 sm:pb-10">
+    <section className="relative overflow-hidden dreamy-bg pb-8 pt-28 sm:pb-10 sm:pt-32">
       <FloatingBlobs />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48" style={{ background: 'linear-gradient(to bottom, transparent 0%, #EDE3D3 100%)' }} />
       <div className="section relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative text-center lg:text-left">
           <Reveal>

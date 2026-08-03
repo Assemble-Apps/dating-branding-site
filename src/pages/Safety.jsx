@@ -3,6 +3,7 @@ import { ArrowRight, Check, ShieldCheck, Camera, Brain, BadgeCheck } from 'lucid
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading, stagger, fadeUp } from '../components/ui'
 import IphoneChat from '../components/ui/IphoneChat'
+import VerifiedProfileCards from '../components/ui/VerifiedProfileCards'
 import { Heart, Sparkle, FloatingBlobs } from '../components/Decor'
 import { safetyPillars, safetyPromises } from '../data/content'
 
@@ -49,6 +50,30 @@ export default function Safety() {
             </motion.div>
           ))}
         </motion.div>
+      </section>
+
+      {/* Verified profiles gallery */}
+      <section className="dreamy-bg py-20 sm:py-28">
+        <div className="section grid items-center gap-16 lg:grid-cols-2">
+          <Reveal>
+            <div>
+              <span className="chip mb-5 inline-flex"><BadgeCheck className="h-3.5 w-3.5 -translate-y-px" /> real humans only</span>
+              <h2 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink-800 sm:text-5xl">
+                every face you see<br />
+                <span className="text-gradient">is verified.</span>
+              </h2>
+              <p className="mt-5 max-w-md text-lg text-ink-700/80">
+                No catfish. No stolen photos. No ghosts pretending to be someone else.
+                Every profile on Rissme passes a live selfie check before they can match with anyone.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <div className="flex justify-center pb-10">
+              <VerifiedProfileCards />
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       {/* Verification flow */}

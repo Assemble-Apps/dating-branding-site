@@ -59,7 +59,7 @@ export default function Blog() {
       />
 
       {/* Coming soon notice */}
-      <section className="section pb-4">
+      <section className="section pt-28 pb-4 sm:pt-32">
         <Reveal>
           <div className="relative overflow-hidden rounded-[2.5rem] mesh-panel border border-white/10 px-7 py-12 text-center shadow-card sm:py-16">
             <FloatingBlobs />
