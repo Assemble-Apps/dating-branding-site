@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Check, Sparkles, ArrowRight, Gem, Lock, Gift } from 'lucide-react'
+import { Check, Sparkles, ArrowRight, Gem } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { Button, Reveal, SectionHeading, stagger, fadeUp } from '../components/ui'
 import { Heart, Sparkle, Squiggle } from '../components/Decor'
@@ -21,30 +21,27 @@ function PlanCard({ p }) {
           most loved <Heart className="h-3 w-3 fill-white" />
         </span>
       )}
-      <div className="flex items-baseline justify-between">
+
+      {/* Tier badge */}
+      <span className={`self-start rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider ${
+        p.tier === 'Gold'
+          ? 'bg-amber-100 text-amber-600'
+          : p.highlight ? 'bg-white/15 text-mist-200' : 'bg-ink-800/8 text-ink-700/70'
+      }`}>
+        {p.tier}
+      </span>
+
+      <div className="mt-3 flex items-baseline justify-between">
         <h3 className={`font-display text-2xl font-semibold ${p.highlight ? 'text-mist-100' : 'text-ink-800'}`}>{p.duration}</h3>
         {p.highlight && <Sparkles className="h-5 w-5 text-blush-400" />}
       </div>
-      <p className="mt-1 text-sm font-medium text-blush-400">{p.tag}</p>
+      <p className="mt-0.5 text-sm font-medium text-blush-400">{p.tag}</p>
 
-      <div
-        className={`mt-5 flex items-start gap-2.5 rounded-2xl border px-4 py-3.5 ${
-          p.highlight ? 'border-white/15 bg-white/5' : 'border-ink-800/10 bg-ink-800/[0.04]'
-        }`}
-      >
-        <Lock className={`mt-0.5 h-4 w-4 shrink-0 ${p.highlight ? 'text-blush-300' : 'text-blush-400'}`} />
-        <p className={`text-sm leading-snug ${p.highlight ? 'text-mist-200' : 'text-ink-700/85'}`}>
-          Price reveal dropping soon - never this cheap again, promise. 🤫
-        </p>
+      {/* Price */}
+      <div className="mt-5 flex items-baseline gap-1">
+        <span className={`font-display text-4xl font-semibold ${p.highlight ? 'text-mist-100' : 'text-ink-800'}`}>{p.price}</span>
+        <span className={`text-sm ${p.highlight ? 'text-mist-300/70' : 'text-ink-700/55'}`}>{p.period}</span>
       </div>
-
-      {p.bonusDays ? (
-        <p className={`mt-3 flex items-center gap-1.5 text-sm font-semibold ${p.highlight ? 'text-blush-300' : 'text-blush-400'}`}>
-          <Gift className="h-3.5 w-3.5" /> +{p.bonusDays} extra days on us - {p.days + p.bonusDays} days total
-        </p>
-      ) : (
-        <p className={`mt-3 text-sm ${p.highlight ? 'text-mist-300/70' : 'text-ink-700/60'}`}>{p.days} days of full access</p>
-      )}
 
       <ul className="mt-7 flex-1 space-y-3">
         {planPerks.map((perk) => (
@@ -87,7 +84,7 @@ export default function Premium() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-40px' }}
-          className="grid gap-6 lg:grid-cols-3"
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
           {plans.map((p) => (
             <PlanCard key={p.duration} p={p} />
@@ -95,7 +92,7 @@ export default function Premium() {
         </motion.div>
         <Reveal>
           <p className="mt-6 text-center text-sm text-ink-700/65">
-            Cancel anytime, no awkward breakup convo required. Final pricing in INR, dropping soon.
+            Cancel anytime, no awkward breakup convo required. Pricing in INR.
           </p>
         </Reveal>
       </section>
@@ -142,7 +139,7 @@ export default function Premium() {
             <Squiggle className="absolute bottom-8 left-1/2 hidden h-6 w-40 -translate-x-1/2 text-white/10 sm:block" />
             <h2 className="font-display text-4xl font-semibold text-mist-100 sm:text-5xl">go <span className="text-gradient">Premium</span></h2>
             <p className="mx-auto mt-4 max-w-md text-lg text-mist-300">
-              Pick 3, 10, or 30 days - the 30-day plan comes with 3 extra days on us. Pricing's locked for now, but it won't be cheaper than this again.
+              Silver or Gold, weekly or monthly — pick what fits. Starting at ₹49/week.
             </p>
             <div className="mt-8 flex justify-center">
               <Button to="/download">

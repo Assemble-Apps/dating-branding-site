@@ -22,7 +22,7 @@ const typefaces = [
 
 const keyFacts = [
   { label: 'Founded', value: '2026' },
-  { label: 'HQ', value: 'Bengaluru, India' },
+  { label: 'HQ', value: 'Delhi, India' },
   { label: 'Stage', value: 'Pre-launch / Waitlist' },
   { label: 'Target audience', value: 'Gen Z, 18–28, India' },
   { label: 'Core differentiator', value: 'Verified-only, no bots' },

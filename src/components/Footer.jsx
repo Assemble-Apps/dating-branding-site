@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Instagram, Music2, Youtube, Twitter } from 'lucide-react'
+import { Instagram } from 'lucide-react'
 import { Heart } from './Decor'
-import { GradientFooter } from './ui/gradient-footer'
 import { RissmeLogoStacked } from './ui/RissmeLogo'
 
 const cols = [
@@ -35,15 +34,12 @@ const cols = [
 ]
 
 const socials = [
-  { icon: Instagram, label: 'Instagram' },
-  { icon: Music2,    label: 'TikTok'    },
-  { icon: Youtube,   label: 'YouTube'   },
-  { icon: Twitter,   label: 'X'         },
+  { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/rissmeapp/' },
 ]
 
 export default function Footer() {
   return (
-    <GradientFooter className="relative mt-10">
+    <footer className="relative mt-10">
       {/* Footer content sits on the cream page background */}
       <div className="section pb-14 pt-12">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
@@ -58,7 +54,9 @@ export default function Footer() {
               {socials.map((s) => (
                 <a
                   key={s.label}
-                  href="#"
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={s.label}
                   className="grid h-9 w-9 place-items-center rounded-full bg-ink-800/8 text-ink-700/70 transition-all hover:-translate-y-0.5 hover:bg-blush-400 hover:text-white"
                 >
@@ -96,6 +94,6 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} Rissme · Assemble Innovations</p>
         </div>
       </div>
-    </GradientFooter>
+    </footer>
   )
 }

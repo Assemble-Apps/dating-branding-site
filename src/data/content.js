@@ -187,13 +187,11 @@ export const safetyPromises = [
 ]
 
 // ── Premium plans (Premium page) ────────────────────────────────────────
-// One subscription, three durations. Pricing isn't locked yet, so each card
-// shows a "reveal soon" teaser instead of digits. The 30-day plan always
-// ships with 3 extra days on the house.
 export const plans = [
-  { duration: '3 Days', tag: 'try the vibe', days: 3, bonusDays: 0, highlight: false, cta: 'Get 3 days' },
-  { duration: '10 Days', tag: 'for the regulars', days: 10, bonusDays: 0, highlight: false, cta: 'Get 10 days' },
-  { duration: '30 Days', tag: 'maximum rizz', days: 30, bonusDays: 3, highlight: true, cta: 'Get 30 days' },
+  { duration: 'Weekly',  tier: 'Silver', tag: 'try the vibe',    price: '₹49',  period: '/week',  highlight: false, cta: 'Get Silver Weekly'  },
+  { duration: 'Monthly', tier: 'Silver', tag: 'for the regulars', price: '₹99',  period: '/month', highlight: false, cta: 'Get Silver Monthly' },
+  { duration: 'Weekly',  tier: 'Gold',   tag: 'level up',         price: '₹119', period: '/week',  highlight: false, cta: 'Get Gold Weekly'    },
+  { duration: 'Monthly', tier: 'Gold',   tag: 'maximum rizz',     price: '₹199', period: '/month', highlight: true,  cta: 'Get Gold Monthly'   },
 ]
 
 export const planPerks = [
