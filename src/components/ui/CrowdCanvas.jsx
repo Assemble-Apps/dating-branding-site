@@ -206,10 +206,8 @@ export default function CrowdCanvas({ src, rows = 15, cols = 7 }) {
     <div
       className="absolute bottom-0 left-0 h-[72%] w-full pointer-events-none"
       style={{
-        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-        WebkitMaskComposite: 'source-in',
-        maskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-        maskComposite: 'intersect',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 100%)',
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 100%)',
       }}
     >
       <canvas ref={canvasRef} className="h-full w-full" />
