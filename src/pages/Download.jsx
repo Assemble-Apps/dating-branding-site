@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, PartyPopper, Gift, Mail, Sparkles } from 'lucide-react'
+import { Check, PartyPopper, Gift, Mail, Sparkles, Download as DownloadIcon } from 'lucide-react'
 import { Reveal } from '../components/ui'
 import IphoneChat from '../components/ui/IphoneChat'
 import { Heart, Sparkle, Squiggle, FloatingBlobs } from '../components/Decor'
@@ -167,6 +167,26 @@ export default function Download() {
               <div className="flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
                 <StoreBadge src="/badges/app-store.svg" alt="Download on the App Store" />
                 <StoreBadge src="/badges/google-play.svg" alt="Get it on Google Play" />
+              </div>
+
+              {/* Direct APK download for Android early access */}
+              <div className="mt-5 flex items-center justify-center gap-3 lg:justify-start">
+                <div className="h-px flex-1 bg-ink-800/10 lg:max-w-[80px]" />
+                <span className="text-xs text-ink-700/50">or</span>
+                <div className="h-px flex-1 bg-ink-800/10 lg:max-w-[80px]" />
+              </div>
+              <div className="mt-4 flex justify-center lg:justify-start">
+                <motion.a
+                  href="https://rissme.com/downloads/rissme.apk"
+                  download
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center gap-2.5 rounded-full border border-ink-800/20 bg-white/60 px-5 py-2.5 text-sm font-semibold text-ink-800 shadow-sm backdrop-blur-sm transition hover:border-blush-300 hover:shadow-md"
+                >
+                  <DownloadIcon className="h-4 w-4 text-blush-400" />
+                  Download Android APK
+                  <span className="rounded-full bg-blush-100 px-2 py-0.5 text-xs font-semibold text-blush-500">early access</span>
+                </motion.a>
               </div>
             </div>
           </Reveal>
