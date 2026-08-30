@@ -26,6 +26,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# APK builds — large binary, distribute via server not git
+public/downloads/*.apk
+public/downloads/*.zip
+
 # editor / os
 .vscode/*
 !.vscode/extensions.json

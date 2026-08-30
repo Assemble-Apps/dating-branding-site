@@ -175,9 +175,9 @@ export default function Download() {
                 <span className="text-xs text-ink-700/50">or</span>
                 <div className="h-px flex-1 bg-ink-800/10 lg:max-w-[80px]" />
               </div>
-              <div className="mt-4 flex justify-center lg:justify-start">
+              <div className="mt-4 flex flex-col items-center gap-3 lg:items-start">
                 <motion.a
-                  href="https://rissme.com/downloads/rissme.apk"
+                  href="/downloads/rissme-1.0.7_8.apk"
                   download
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.97 }}
@@ -187,6 +187,17 @@ export default function Download() {
                   Download Android APK
                   <span className="rounded-full bg-blush-100 px-2 py-0.5 text-xs font-semibold text-blush-500">early access</span>
                 </motion.a>
+
+                {/* Install instructions */}
+                <div className="max-w-xs rounded-2xl border border-ink-800/10 bg-white/50 px-4 py-3 backdrop-blur-sm text-center lg:text-left">
+                  <p className="text-xs font-semibold text-ink-800/70 mb-1.5">how to install</p>
+                  <ol className="space-y-1 text-xs text-ink-700/60 list-none">
+                    <li><span className="font-semibold text-blush-400">1.</span> Download the APK above</li>
+                    <li><span className="font-semibold text-blush-400">2.</span> Open it from your notifications or file manager</li>
+                    <li><span className="font-semibold text-blush-400">3.</span> Tap <span className="font-semibold text-ink-700/80">Settings → Install unknown apps</span> → Allow</li>
+                    <li><span className="font-semibold text-blush-400">4.</span> Hit Install — you're in 💗</li>
+                  </ol>
+                </div>
               </div>
             </div>
           </Reveal>
